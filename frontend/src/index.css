@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  body {
+    background-color: #FAFAF7;
+    color: #1A1710;
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-white rounded-xl border border-driven-border shadow-card;
+  }
+  .btn-primary {
+    @apply bg-driven-gold text-white font-medium px-4 py-2 rounded-lg hover:bg-yellow-600 transition-colors;
+  }
+  .btn-ghost {
+    @apply text-driven-text-secondary hover:bg-driven-border-light px-3 py-1.5 rounded-lg transition-colors;
+  }
+  .badge-novo {
+    @apply bg-driven-danger-light text-driven-danger text-xs font-semibold px-2.5 py-1 rounded-full;
+  }
+  .badge-analise {
+    @apply bg-driven-warning-light text-driven-warning text-xs font-semibold px-2.5 py-1 rounded-full;
+  }
+  .badge-encerrado {
+    @apply bg-driven-success-light text-driven-success text-xs font-semibold px-2.5 py-1 rounded-full;
+  }
+  .score-critical {
+    @apply bg-driven-danger text-white text-xs font-bold px-2 py-0.5 rounded;
+  }
+  .score-high {
+    @apply bg-driven-warning text-white text-xs font-bold px-2 py-0.5 rounded;
+  }
+  .score-medium {
+    @apply bg-driven-gold text-white text-xs font-bold px-2 py-0.5 rounded;
+  }
+  .score-low {
+    @apply bg-driven-success text-white text-xs font-bold px-2 py-0.5 rounded;
+  }
+}
+
+/* Scrollbar suave */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: #F0EDE4; }
+::-webkit-scrollbar-thumb { background: #C9A84C44; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #C9A84C88; }

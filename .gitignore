@@ -1,0 +1,76 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+htmlcov/
+.coverage
+coverage.xml
+
+# Environment
+.env
+.env.local
+.env.production
+backend/.env
+
+# Node
+node_modules/
+frontend/dist/
+frontend/.vite/
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log
+logs/
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Reports (generated)
+reports/*.pdf
+reports/*.csv
+reports/*.json
+!reports/.gitkeep
+!reports/README.md
+
+# Data (large files)
+data/raw/
+data/processed/
+!data/.gitkeep
+!data/README.md
+
+# ML artifacts
+ml-pipeline/models/*.pkl
+ml-pipeline/models/*.joblib
+ml-pipeline/artifacts/
+
+# Docker
+.docker/
+
+# Secrets
+*.pem
+*.key
+credentials.json

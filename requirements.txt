@@ -1,0 +1,16 @@
+# Driven Fraud Detection Platform — Root Dependencies
+# Install backend dependencies:
+#   pip install -r requirements.txt
+
+-r backend/requirements.txt
+
+# ML Pipeline (optional — uncomment when enabling ML scoring)
+# scikit-learn>=1.4.0
+# pandas>=2.2.0
+# numpy>=1.26.0
+# joblib>=1.3.0
+
+# Testing (optional)
+# pytest>=8.0.0
+# pytest-asyncio>=0.23.0
+# httpx>=0.27.0
