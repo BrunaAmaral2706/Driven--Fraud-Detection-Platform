@@ -1,29 +1,20 @@
 # Screenshots
 
-Professional visuals for README, LinkedIn, and portfolio presentations.
+Add real platform captures here for the README and portfolio.
 
-## Required Images
+## Files
 
-| File | Usage |
+| File | Screen |
 |---|---|
-| `banner.png` | README header banner |
-| `overview.png` | Executive dashboard overview |
-| `analytics.png` | Fraud analytics charts |
-| `risk-monitoring.png` | Risk monitoring view |
+| `overview.png` | Executive dashboard |
+| `analytics.png` | Fraud analytics |
 | `alerts.png` | Alerts center |
-| `ml-monitoring.png` | ML monitoring dashboard |
-| `architecture.png` | System architecture diagram |
+| `ai-monitoring.png` | ML monitoring |
+| `transactions.png` | Transactions monitoring |
 
-## Generate Placeholders
-
-```bash
-pip install Pillow
-python scripts/generate_screenshot_placeholders.py
-```
-
-## Replace with Real Captures
+## How to capture
 
 1. Start the platform: `.\scripts\start-dev.ps1`
 2. Open http://localhost:5173
-3. Capture each screen (1920×1080 recommended)
-4. Save as the filenames above
+3. Capture each screen and save with the filenames above
+4. Commit and push to update the README on GitHub
