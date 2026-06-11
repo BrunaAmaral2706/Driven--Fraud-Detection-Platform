@@ -64,9 +64,11 @@ Esta plataforma demonstra como organizar esse fluxo em uma interface única:
 
 ---
 
-## Projeto Online
+## Dashboard Online
 
-**https://node-js-react-e-java-script-moderno-eight.vercel.app**
+Acesse a versão publicada da plataforma:
+
+**https://driven-fraud-detection-platform.vercel.app**
 
 ---
 
@@ -263,7 +265,7 @@ Profissional com experiência em prevenção à fraude, análise operacional, mo
 | | |
 |---|---|
 | **GitHub** | https://github.com/BrunaAmaral2706 |
-| **Projeto Online** | https://node-js-react-e-java-script-moderno-eight.vercel.app |
+| **Dashboard Online** | https://driven-fraud-detection-platform.vercel.app |
 
 ---
 
