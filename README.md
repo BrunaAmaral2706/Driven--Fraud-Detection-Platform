@@ -1,11 +1,15 @@
 # Driven Fraud Detection Platform
 
-Plataforma web de monitoramento e investigação antifraude, com dashboard operacional, APIs REST e dados de demonstração.
+Plataforma web de monitoramento e investigação antifraude com dashboard operacional, APIs REST, arquitetura analítica baseada em Data Medallion e conceito Lakehouse.
 
 [![Python](https://img.shields.io/badge/Python-3.11+-3776AB?logo=python&logoColor=white)]()
 [![React](https://img.shields.io/badge/React-18-61DAFB?logo=react&logoColor=black)]()
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.110-009688?logo=fastapi&logoColor=white)]()
 [![License](https://img.shields.io/badge/License-MIT-C9A84C)]()
+[![Medallion](https://img.shields.io/badge/Medallion-Architecture-475569)]()
+[![Lakehouse](https://img.shields.io/badge/Lakehouse-Concept-334155)]()
+[![ETL](https://img.shields.io/badge/ETL-Python-2D5FA6)]()
+[![Gold JSON](https://img.shields.io/badge/Gold-JSON-C9A84C)]()
 
 ---
 
