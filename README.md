@@ -354,21 +354,6 @@ Screenshots reais em `./screenshots/`:
 
 ---
 
-## Autor
-
-### Bruna Amaral
-
-Fraud Analytics · Data Analytics · Prevenção à Fraude · Monitoramento de Risco · Python · SQL · Power BI
-
-Profissional com experiência em prevenção à fraude, análise operacional, monitoramento transacional e automação de processos.
-
-| | |
-|---|---|
-| **GitHub** | https://github.com/BrunaAmaral2706 |
-| **Dashboard Online** | https://driven-fraud-detection-platform.vercel.app |
-
----
-
 ## Documentação Complementar
 
 | Documento | Conteúdo |
@@ -398,3 +383,18 @@ Copyright (c) 2024–2026 Driven Fraud Detection Platform. See [LICENSE](./LICEN
 ---
 
 If this project aligns with the type of analytics and operational engineering you value, consider starring the repository.
+
+---
+
+## Author
+
+### Bruna Amaral
+
+Fraud Analytics · Data Analytics · Prevenção à Fraude · Monitoramento de Risco · Python · SQL · Power BI
+
+Profissional com experiência em prevenção à fraude, análise operacional, monitoramento transacional e automação de processos.
+
+| Resource | Link |
+|---|---|
+| GitHub | https://github.com/BrunaAmaral2706 |
+| Dashboard Online | https://driven-fraud-detection-platform.vercel.app |
