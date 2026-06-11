@@ -15,13 +15,15 @@ Full-stack platform combining transactional monitoring, behavioral risk analysis
 
 | Module | Description |
 |---|---|
-| Executive Dashboard | KPIs, risk scores, alert distribution, time-series analytics |
-| Alert Center | Real-time triage with severity scoring and filters |
-| Investigations | Case management with event timelines |
-| Transactions | End-to-end transaction surveillance |
-| Clients | Customer risk profiling and activity correlation |
-| Rules Engine | Configurable anti-fraud rules with trigger analytics |
-| AI Reports | Investigative summaries (LLM-ready architecture) |
+| Executive Dashboard | KPIs (API), alert distribution pie chart, recent alerts table, date-range filter |
+| Alert Center | Fraud-type analytical summary + compact operational triage table |
+| Investigations | Investigative console with status KPIs, priority and analyst assignment |
+| Transactions | Volume KPIs, channel/type charts, dense transaction feed table |
+| Clients | Risk distribution map and monitored customer profiles |
+| Rules Engine | Active rules KPIs, trigger analytics, technical rules catalog |
+| AI Reports | Investigative summaries via `generate-report` endpoint (LLM-ready) |
+
+> Documentação institucional completa em português nas seções abaixo. Índice técnico: [docs/README.md](./docs/README.md).
 
 ---
 
@@ -80,7 +82,7 @@ Funcionalidades derivadas dos módulos e rotas implementados no frontend (`App.j
 
 | Módulo | Rota | Funcionalidades |
 |---|---|---|
-| Dashboard executivo | `/` | Total de alertas, alertas críticos, score médio de risco, transações suspeitas, gráfico de alertas por tipo, série temporal, tabela de alertas recentes |
+| Dashboard executivo | `/` | Total de alertas, alertas críticos, score médio de risco, transações suspeitas, gráfico de alertas por tipo (API), série temporal (demo v1.0), tabela de alertas recentes |
 | Gestão de alertas | `/alertas` | KPIs de triagem, resumo por tipo de fraude (clicável), fila operacional com score, valor, localização e status |
 | Detalhe de alerta | `/alertas/:id` | Dados do cliente, dispositivo, IP, localização, valor e geração de parecer investigativo |
 | Central investigativa | `/investigacoes` | Tabela operacional por status (Em andamento, Concluída, Arquivada), prioridade, analista e score |
@@ -235,7 +237,7 @@ KPIs de disparos, analytics por categoria e catálogo técnico de regras.
 ```
 ┌─────────────────────────────────────────────────────────────┐
 │  Frontend — React 18 · Vite · TailwindCSS · Recharts        │
-│  Dashboard │ Alerts │ Investigations │ Transactions │ Rules │
+│  Dashboard │ Alerts │ Investigations │ Transactions │ Clients │ Rules │
 └────────────────────────────┬────────────────────────────────┘
                              │ REST /api/v1
 ┌────────────────────────────▼────────────────────────────────┐
@@ -334,10 +336,16 @@ npm run dev
 
 ## Documentation
 
-- [ARCHITECTURE.md](./ARCHITECTURE.md) — system design and data flow
-- [docs/roadmap.md](./docs/roadmap.md) — product roadmap
-- [ml-pipeline/README.md](./ml-pipeline/README.md) — ML layer structure
-- [screenshots/README.md](./screenshots/README.md) — how to add platform captures
+| Document | Description |
+|---|---|
+| [docs/README.md](./docs/README.md) | Índice central da documentação |
+| [ARCHITECTURE.md](./ARCHITECTURE.md) | Arquitetura técnica enterprise |
+| [docs/roadmap.md](./docs/roadmap.md) | Roadmap v1.0 / v1.1 / v2.0 |
+| [architecture/system-overview.md](./architecture/system-overview.md) | Componentes e módulos |
+| [architecture/data-flow.md](./architecture/data-flow.md) | Fluxos por tela e API |
+| [architecture/ml-pipeline.md](./architecture/ml-pipeline.md) | ML atual vs. planejado |
+| [ml-pipeline/README.md](./ml-pipeline/README.md) | Estrutura do pipeline ML |
+| [screenshots/README.md](./screenshots/README.md) | Capturas de tela do README |
 
 ---
 

@@ -1,11 +1,19 @@
 # Architecture Documentation
 
-> This document has been superseded by the enterprise architecture reference.
+> Este documento redireciona para a referência técnica enterprise atualizada.
 
-**See:** [ARCHITECTURE.md](../ARCHITECTURE.md)
+## Documentação principal
 
-Additional diagrams:
+- **[ARCHITECTURE.md](../ARCHITECTURE.md)** — arquitetura completa (camadas, APIs, scoring, deploy)
 
-- [System Overview](../architecture/system-overview.md)
-- [Data Flow](../architecture/data-flow.md)
-- [ML Pipeline](../architecture/ml-pipeline.md)
+## Diagramas complementares
+
+| Documento | Conteúdo atualizado |
+|---|---|
+| [system-overview.md](../architecture/system-overview.md) | Componentes, rotas frontend, APIs, seed |
+| [data-flow.md](../architecture/data-flow.md) | Fluxos por módulo (dashboard, alertas, investigações, etc.) |
+| [ml-pipeline.md](../architecture/ml-pipeline.md) | ML v1.0 (rule-based) vs v2.0 (modelo) |
+
+## Índice geral
+
+Ver **[docs/README.md](./README.md)** para o índice completo da documentação do projeto.

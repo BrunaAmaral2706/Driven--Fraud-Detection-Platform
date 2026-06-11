@@ -52,16 +52,32 @@ Driven Fraud Detection Platform is a **modular monolith** designed for financial
 
 | Component | Responsibility |
 |---|---|
-| `pages/` | Route-level views (Dashboard, Alerts, Investigations) |
-| `components/` | Reusable UI primitives (badges, filters, spinners) |
-| `layouts/` | Shell layout (sidebar, navbar, date-range context) |
-| `services/api.js` | HTTP client with centralized error handling |
-| `context/` | Cross-cutting UI state (date range filter) |
+| `pages/` | Route-level views — Dashboard, Alerts, Investigations, Transactions, Clients, Rules (+ detail pages) |
+| `components/` | Reusable UI primitives (`ScoreBadge`, `StatusBadge`, `DateRangeFilter`, spinners) |
+| `layouts/` | Shell layout (sidebar, navbar, `MainLayout`) |
+| `services/api.js` | HTTP client (Axios) for `/api/v1` endpoints |
+| `context/` | Cross-cutting UI state (`DateRangeContext`) |
+| `config/` | Demo period defaults (`demoPeriod.js` — maio/2024) |
+
+**Frontend routes:**
+
+| Route | Page | UI pattern |
+|---|---|---|
+| `/` | Dashboard | KPI cards, pie chart (API), line chart (demo), recent alerts |
+| `/alertas` | Alerts | Fraud summary table + operational triage queue |
+| `/alertas/:id` | Alert detail | Client/device data + AI report generation |
+| `/investigacoes` | Investigations | Investigative console — dense status table |
+| `/investigacoes/:id` | Investigation detail | Timeline JSON + linked alert |
+| `/transacoes` | Transactions | Channel/type charts + transaction feed table |
+| `/clientes` | Clients | Risk map + profile cards with risk meter |
+| `/regras` | Rules | Rule KPIs, trigger charts, catalog table |
 
 **Key design decisions:**
 - Vite dev proxy routes `/api` → backend (no CORS issues in dev)
 - TailwindCSS custom `driven` design system (fintech premium palette)
-- Recharts for executive analytics visualization
+- Recharts for executive and operational analytics
+- Compact enterprise layout — dense operational tables (SOC-style) across list modules
+- Date range filter in navbar applies to dashboard metrics; list pages load full demo dataset
 
 ### 3.2 Application Layer (`backend/app/`)
 
@@ -145,8 +161,10 @@ ml-pipeline/
    - total_alerts, critical_alerts, avg_risk_score
    - alerts_by_type, alerts_by_status
    - recent_alerts (top 5)
-4. Recharts renders pie/line visualizations
+4. Recharts renders pie chart (API data) and line chart (demo series in v1.0)
 ```
+
+> **Note:** The line chart in `Dashboard.jsx` uses a frontend demo series. KPIs, pie chart and recent alerts are API-driven. Full API-backed time series is planned for v1.1 (see `docs/roadmap.md`).
 
 ### 4.3 Transactional Monitoring Flow
 

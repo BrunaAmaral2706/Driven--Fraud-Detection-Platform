@@ -14,7 +14,15 @@ ml-pipeline/
 
 ## Current State (v1.0)
 
-Rule-based scoring is implemented in `backend/app/services/` with a clear interface for ML replacement.
+| Capability | Implementation |
+|---|---|
+| Risk scores in UI | Seed-based scores (0–100) in `seed_service.py` |
+| Score display | `ScoreBadge.jsx` thresholds (85/70/50) |
+| Dashboard critical | `dashboard_service.py` — alerts with score ≥ 80 |
+| AI report | `ai_report_service.py` — template-based investigative summary |
+| ML model | Not deployed — rule-based demo data only |
+
+Rule-based scoring runs in `backend/app/services/` with a clear interface for ML replacement.
 
 ## Planned Pipeline (v2.0)
 
@@ -38,7 +46,7 @@ Raw Transaction
 | `hour_of_day` | Categorical | Temporal pattern |
 | `channel_risk` | Categorical | Channel risk weight |
 
-## Monitoring KPIs
+## Monitoring KPIs (Target)
 
 | Metric | Target |
 |---|---|
@@ -55,5 +63,10 @@ from ml_pipeline.inference.predictor import FraudScorer
 
 score = FraudScorer().predict(transaction_features)
 ```
+
+## Related documentation
+
+- [architecture/ml-pipeline.md](../architecture/ml-pipeline.md)
+- [docs/roadmap.md](../docs/roadmap.md) — v2.0 ML milestones
 
 > This module does not alter the current operational pipeline. It provides the enterprise structure for ML evolution.
