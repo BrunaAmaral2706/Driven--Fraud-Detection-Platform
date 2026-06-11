@@ -1,0 +1,4373 @@
+{
+  "dashboard": {
+    "total_alerts": 25,
+    "critical_alerts": 12,
+    "avg_risk_score": 74.2,
+    "suspicious_transactions": 32,
+    "alerts_by_type": [
+      {
+        "type": "Cadastro Suspeito",
+        "count": 2
+      },
+      {
+        "type": "Comportamento Atípico",
+        "count": 6
+      },
+      {
+        "type": "Fraude Transacional",
+        "count": 9
+      },
+      {
+        "type": "Lavagem de Dinheiro",
+        "count": 2
+      },
+      {
+        "type": "Outros",
+        "count": 6
+      }
+    ],
+    "alerts_by_status": [
+      {
+        "status": "Em análise",
+        "count": 7
+      },
+      {
+        "status": "Encerrado",
+        "count": 7
+      },
+      {
+        "status": "Novo",
+        "count": 11
+      }
+    ],
+    "recent_alerts": [
+      {
+        "id": 15,
+        "alert_code": "#1239",
+        "fraud_type": "Comportamento Atípico",
+        "status": "Encerrado",
+        "risk_score": 96.5,
+        "amount": 89590.33,
+        "created_at": "2024-05-30T14:18:00",
+        "user": {
+          "name": "Pedro Ferreira"
+        }
+      },
+      {
+        "id": 14,
+        "alert_code": "#1238",
+        "fraud_type": "Comportamento Atípico",
+        "status": "Em análise",
+        "risk_score": 68.4,
+        "amount": 77886.21,
+        "created_at": "2024-05-30T07:10:00",
+        "user": {
+          "name": "Maria Santos"
+        }
+      },
+      {
+        "id": 5,
+        "alert_code": "#1229",
+        "fraud_type": "Outros",
+        "status": "Encerrado",
+        "risk_score": 51.7,
+        "amount": 33965.29,
+        "created_at": "2024-05-28T20:19:00",
+        "user": {
+          "name": "Maria Santos"
+        }
+      },
+      {
+        "id": 4,
+        "alert_code": "#1228",
+        "fraud_type": "Fraude Transacional",
+        "status": "Em análise",
+        "risk_score": 65.7,
+        "amount": 41108.27,
+        "created_at": "2024-05-25T20:21:00",
+        "user": {
+          "name": "Pedro Ferreira"
+        }
+      },
+      {
+        "id": 12,
+        "alert_code": "#1236",
+        "fraud_type": "Fraude Transacional",
+        "status": "Novo",
+        "risk_score": 63.8,
+        "amount": 30867.58,
+        "created_at": "2024-05-22T20:41:00",
+        "user": {
+          "name": "João Silva"
+        }
+      }
+    ]
+  },
+  "alerts": {
+    "total": 25,
+    "items": [
+      {
+        "id": 15,
+        "alert_code": "#1239",
+        "fraud_type": "Comportamento Atípico",
+        "status": "Encerrado",
+        "risk_score": 96.5,
+        "amount": 89590.33,
+        "location": "Rio de Janeiro, BR",
+        "created_at": "2024-05-30T14:18:00",
+        "user": {
+          "id": 5,
+          "name": "Pedro Ferreira"
+        }
+      },
+      {
+        "id": 14,
+        "alert_code": "#1238",
+        "fraud_type": "Comportamento Atípico",
+        "status": "Em análise",
+        "risk_score": 68.4,
+        "amount": 77886.21,
+        "location": "Miami, US",
+        "created_at": "2024-05-30T07:10:00",
+        "user": {
+          "id": 2,
+          "name": "Maria Santos"
+        }
+      },
+      {
+        "id": 5,
+        "alert_code": "#1229",
+        "fraud_type": "Outros",
+        "status": "Encerrado",
+        "risk_score": 51.7,
+        "amount": 33965.29,
+        "location": "Lisboa, PT",
+        "created_at": "2024-05-28T20:19:00",
+        "user": {
+          "id": 2,
+          "name": "Maria Santos"
+        }
+      },
+      {
+        "id": 4,
+        "alert_code": "#1228",
+        "fraud_type": "Fraude Transacional",
+        "status": "Em análise",
+        "risk_score": 65.7,
+        "amount": 41108.27,
+        "location": "Lisboa, PT",
+        "created_at": "2024-05-25T20:21:00",
+        "user": {
+          "id": 5,
+          "name": "Pedro Ferreira"
+        }
+      },
+      {
+        "id": 12,
+        "alert_code": "#1236",
+        "fraud_type": "Fraude Transacional",
+        "status": "Novo",
+        "risk_score": 63.8,
+        "amount": 30867.58,
+        "location": "Miami, US",
+        "created_at": "2024-05-22T20:41:00",
+        "user": {
+          "id": 1,
+          "name": "João Silva"
+        }
+      },
+      {
+        "id": 23,
+        "alert_code": "#1247",
+        "fraud_type": "Comportamento Atípico",
+        "status": "Em análise",
+        "risk_score": 93.4,
+        "amount": 76226.28,
+        "location": "São Paulo, BR",
+        "created_at": "2024-05-21T08:32:00",
+        "user": {
+          "id": 11,
+          "name": "Bruno Martins"
+        }
+      },
+      {
+        "id": 20,
+        "alert_code": "#1244",
+        "fraud_type": "Fraude Transacional",
+        "status": "Encerrado",
+        "risk_score": 52.6,
+        "amount": 24235.44,
+        "location": "Curitiba, BR",
+        "created_at": "2024-05-20T18:06:00",
+        "user": {
+          "id": 8,
+          "name": "Juliana Mendes"
+        }
+      },
+      {
+        "id": 6,
+        "alert_code": "#1230",
+        "fraud_type": "Fraude Transacional",
+        "status": "Novo",
+        "risk_score": 94.8,
+        "amount": 79145.61,
+        "location": "Lisboa, PT",
+        "created_at": "2024-05-20T10:31:00",
+        "user": {
+          "id": 1,
+          "name": "João Silva"
+        }
+      },
+      {
+        "id": 18,
+        "alert_code": "#1242",
+        "fraud_type": "Outros",
+        "status": "Novo",
+        "risk_score": 64.7,
+        "amount": 52738.67,
+        "location": "Madri, ES",
+        "created_at": "2024-05-19T19:02:00",
+        "user": {
+          "id": 4,
+          "name": "Ana Costa"
+        }
+      },
+      {
+        "id": 25,
+        "alert_code": "#1249",
+        "fraud_type": "Cadastro Suspeito",
+        "status": "Encerrado",
+        "risk_score": 72.6,
+        "amount": 38965.91,
+        "location": "São Paulo, BR",
+        "created_at": "2024-05-18T01:53:00",
+        "user": {
+          "id": 3,
+          "name": "Carlos Oliveira"
+        }
+      },
+      {
+        "id": 11,
+        "alert_code": "#1235",
+        "fraud_type": "Comportamento Atípico",
+        "status": "Em análise",
+        "risk_score": 51.2,
+        "amount": 9175.31,
+        "location": "Madri, ES",
+        "created_at": "2024-05-16T07:50:00",
+        "user": {
+          "id": 10,
+          "name": "Camila Rocha"
+        }
+      },
+      {
+        "id": 1,
+        "alert_code": "#1225",
+        "fraud_type": "Lavagem de Dinheiro",
+        "status": "Novo",
+        "risk_score": 84.0,
+        "amount": 48738.47,
+        "location": "Curitiba, BR",
+        "created_at": "2024-05-15T04:16:00",
+        "user": {
+          "id": 11,
+          "name": "Bruno Martins"
+        }
+      },
+      {
+        "id": 8,
+        "alert_code": "#1232",
+        "fraud_type": "Outros",
+        "status": "Encerrado",
+        "risk_score": 80.7,
+        "amount": 64308.93,
+        "location": "Lisboa, PT",
+        "created_at": "2024-05-14T06:59:00",
+        "user": {
+          "id": 10,
+          "name": "Camila Rocha"
+        }
+      },
+      {
+        "id": 13,
+        "alert_code": "#1237",
+        "fraud_type": "Comportamento Atípico",
+        "status": "Novo",
+        "risk_score": 91.6,
+        "amount": 7246.95,
+        "location": "São Paulo, BR",
+        "created_at": "2024-05-14T05:17:00",
+        "user": {
+          "id": 3,
+          "name": "Carlos Oliveira"
+        }
+      },
+      {
+        "id": 3,
+        "alert_code": "#1227",
+        "fraud_type": "Outros",
+        "status": "Em análise",
+        "risk_score": 97.3,
+        "amount": 77539.78,
+        "location": "Lisboa, PT",
+        "created_at": "2024-05-13T19:29:00",
+        "user": {
+          "id": 7,
+          "name": "Rafael Souza"
+        }
+      },
+      {
+        "id": 19,
+        "alert_code": "#1243",
+        "fraud_type": "Comportamento Atípico",
+        "status": "Novo",
+        "risk_score": 79.6,
+        "amount": 27349.74,
+        "location": "São Paulo, BR",
+        "created_at": "2024-05-11T07:16:00",
+        "user": {
+          "id": 12,
+          "name": "Larissa Nunes"
+        }
+      },
+      {
+        "id": 24,
+        "alert_code": "#1248",
+        "fraud_type": "Cadastro Suspeito",
+        "status": "Novo",
+        "risk_score": 83.7,
+        "amount": 49875.4,
+        "location": "Madri, ES",
+        "created_at": "2024-05-11T04:40:00",
+        "user": {
+          "id": 1,
+          "name": "João Silva"
+        }
+      },
+      {
+        "id": 10,
+        "alert_code": "#1234",
+        "fraud_type": "Fraude Transacional",
+        "status": "Em análise",
+        "risk_score": 44.2,
+        "amount": 21801.41,
+        "location": "Lisboa, PT",
+        "created_at": "2024-05-08T02:57:00",
+        "user": {
+          "id": 1,
+          "name": "João Silva"
+        }
+      },
+      {
+        "id": 16,
+        "alert_code": "#1240",
+        "fraud_type": "Outros",
+        "status": "Novo",
+        "risk_score": 84.1,
+        "amount": 5616.29,
+        "location": "Lisboa, PT",
+        "created_at": "2024-05-07T01:37:00",
+        "user": {
+          "id": 5,
+          "name": "Pedro Ferreira"
+        }
+      },
+      {
+        "id": 21,
+        "alert_code": "#1245",
+        "fraud_type": "Outros",
+        "status": "Encerrado",
+        "risk_score": 57.8,
+        "amount": 88554.87,
+        "location": "Curitiba, BR",
+        "created_at": "2024-05-06T14:53:00",
+        "user": {
+          "id": 5,
+          "name": "Pedro Ferreira"
+        }
+      },
+      {
+        "id": 2,
+        "alert_code": "#1226",
+        "fraud_type": "Fraude Transacional",
+        "status": "Novo",
+        "risk_score": 90.8,
+        "amount": 14179.3,
+        "location": "São Paulo, BR",
+        "created_at": "2024-05-05T16:31:00",
+        "user": {
+          "id": 4,
+          "name": "Ana Costa"
+        }
+      },
+      {
+        "id": 9,
+        "alert_code": "#1233",
+        "fraud_type": "Fraude Transacional",
+        "status": "Em análise",
+        "risk_score": 41.2,
+        "amount": 50075.98,
+        "location": "Madri, ES",
+        "created_at": "2024-05-04T07:14:00",
+        "user": {
+          "id": 8,
+          "name": "Juliana Mendes"
+        }
+      },
+      {
+        "id": 22,
+        "alert_code": "#1246",
+        "fraud_type": "Fraude Transacional",
+        "status": "Novo",
+        "risk_score": 83.8,
+        "amount": 14412.59,
+        "location": "Rio de Janeiro, BR",
+        "created_at": "2024-05-04T04:16:00",
+        "user": {
+          "id": 11,
+          "name": "Bruno Martins"
+        }
+      },
+      {
+        "id": 7,
+        "alert_code": "#1231",
+        "fraud_type": "Fraude Transacional",
+        "status": "Encerrado",
+        "risk_score": 85.2,
+        "amount": 11991.04,
+        "location": "Lisboa, PT",
+        "created_at": "2024-05-03T23:31:00",
+        "user": {
+          "id": 2,
+          "name": "Maria Santos"
+        }
+      },
+      {
+        "id": 17,
+        "alert_code": "#1241",
+        "fraud_type": "Lavagem de Dinheiro",
+        "status": "Novo",
+        "risk_score": 75.1,
+        "amount": 60931.52,
+        "location": "Lisboa, PT",
+        "created_at": "2024-05-02T16:05:00",
+        "user": {
+          "id": 3,
+          "name": "Carlos Oliveira"
+        }
+      }
+    ]
+  },
+  "investigations": {
+    "total": 15,
+    "items": [
+      {
+        "id": 14,
+        "investigation_code": "INV-2024-0014",
+        "status": "Concluída",
+        "analyst": "Fernanda Costa",
+        "risk_score": 68.4,
+        "priority": "CRITICAL",
+        "created_at": "2026-06-11T13:07:04.304730",
+        "alert_created_at": "2024-05-30T07:10:00",
+        "alert_id": 14,
+        "alert_code": "#1238",
+        "fraud_type": "Comportamento Atípico",
+        "user_name": "Maria Santos"
+      },
+      {
+        "id": 15,
+        "investigation_code": "INV-2024-0015",
+        "status": "Arquivada",
+        "analyst": "Fernanda Costa",
+        "risk_score": 96.5,
+        "priority": "LOW",
+        "created_at": "2026-06-11T13:07:04.304730",
+        "alert_created_at": "2024-05-30T14:18:00",
+        "alert_id": 15,
+        "alert_code": "#1239",
+        "fraud_type": "Comportamento Atípico",
+        "user_name": "Pedro Ferreira"
+      },
+      {
+        "id": 13,
+        "investigation_code": "INV-2024-0013",
+        "status": "Concluída",
+        "analyst": "Ana Lima",
+        "risk_score": 91.6,
+        "priority": "CRITICAL",
+        "created_at": "2026-06-11T13:07:04.302715",
+        "alert_created_at": "2024-05-14T05:17:00",
+        "alert_id": 13,
+        "alert_code": "#1237",
+        "fraud_type": "Comportamento Atípico",
+        "user_name": "Carlos Oliveira"
+      },
+      {
+        "id": 11,
+        "investigation_code": "INV-2024-0011",
+        "status": "Em andamento",
+        "analyst": "Rafael Torres",
+        "risk_score": 51.2,
+        "priority": "HIGH",
+        "created_at": "2026-06-11T13:07:04.300704",
+        "alert_created_at": "2024-05-16T07:50:00",
+        "alert_id": 11,
+        "alert_code": "#1235",
+        "fraud_type": "Comportamento Atípico",
+        "user_name": "Camila Rocha"
+      },
+      {
+        "id": 12,
+        "investigation_code": "INV-2024-0012",
+        "status": "Em andamento",
+        "analyst": "Rafael Torres",
+        "risk_score": 63.8,
+        "priority": "LOW",
+        "created_at": "2026-06-11T13:07:04.300704",
+        "alert_created_at": "2024-05-22T20:41:00",
+        "alert_id": 12,
+        "alert_code": "#1236",
+        "fraud_type": "Fraude Transacional",
+        "user_name": "João Silva"
+      },
+      {
+        "id": 10,
+        "investigation_code": "INV-2024-0010",
+        "status": "Concluída",
+        "analyst": "Ana Lima",
+        "risk_score": 44.2,
+        "priority": "MEDIUM",
+        "created_at": "2026-06-11T13:07:04.298687",
+        "alert_created_at": "2024-05-08T02:57:00",
+        "alert_id": 10,
+        "alert_code": "#1234",
+        "fraud_type": "Fraude Transacional",
+        "user_name": "João Silva"
+      },
+      {
+        "id": 9,
+        "investigation_code": "INV-2024-0009",
+        "status": "Concluída",
+        "analyst": "Fernanda Costa",
+        "risk_score": 41.2,
+        "priority": "LOW",
+        "created_at": "2026-06-11T13:07:04.294635",
+        "alert_created_at": "2024-05-04T07:14:00",
+        "alert_id": 9,
+        "alert_code": "#1233",
+        "fraud_type": "Fraude Transacional",
+        "user_name": "Juliana Mendes"
+      },
+      {
+        "id": 8,
+        "investigation_code": "INV-2024-0008",
+        "status": "Em andamento",
+        "analyst": "Fernanda Costa",
+        "risk_score": 80.7,
+        "priority": "CRITICAL",
+        "created_at": "2026-06-11T13:07:04.293663",
+        "alert_created_at": "2024-05-14T06:59:00",
+        "alert_id": 8,
+        "alert_code": "#1232",
+        "fraud_type": "Outros",
+        "user_name": "Camila Rocha"
+      },
+      {
+        "id": 7,
+        "investigation_code": "INV-2024-0007",
+        "status": "Arquivada",
+        "analyst": "Fernanda Costa",
+        "risk_score": 85.2,
+        "priority": "HIGH",
+        "created_at": "2026-06-11T13:07:04.291669",
+        "alert_created_at": "2024-05-03T23:31:00",
+        "alert_id": 7,
+        "alert_code": "#1231",
+        "fraud_type": "Fraude Transacional",
+        "user_name": "Maria Santos"
+      },
+      {
+        "id": 6,
+        "investigation_code": "INV-2024-0006",
+        "status": "Em andamento",
+        "analyst": "Carlos Mendes",
+        "risk_score": 94.8,
+        "priority": "MEDIUM",
+        "created_at": "2026-06-11T13:07:04.290647",
+        "alert_created_at": "2024-05-20T10:31:00",
+        "alert_id": 6,
+        "alert_code": "#1230",
+        "fraud_type": "Fraude Transacional",
+        "user_name": "João Silva"
+      },
+      {
+        "id": 5,
+        "investigation_code": "INV-2024-0005",
+        "status": "Concluída",
+        "analyst": "Fernanda Costa",
+        "risk_score": 51.7,
+        "priority": "CRITICAL",
+        "created_at": "2026-06-11T13:07:04.288605",
+        "alert_created_at": "2024-05-28T20:19:00",
+        "alert_id": 5,
+        "alert_code": "#1229",
+        "fraud_type": "Outros",
+        "user_name": "Maria Santos"
+      },
+      {
+        "id": 4,
+        "investigation_code": "INV-2024-0004",
+        "status": "Arquivada",
+        "analyst": "Carlos Mendes",
+        "risk_score": 65.7,
+        "priority": "LOW",
+        "created_at": "2026-06-11T13:07:04.287603",
+        "alert_created_at": "2024-05-25T20:21:00",
+        "alert_id": 4,
+        "alert_code": "#1228",
+        "fraud_type": "Fraude Transacional",
+        "user_name": "Pedro Ferreira"
+      },
+      {
+        "id": 3,
+        "investigation_code": "INV-2024-0003",
+        "status": "Concluída",
+        "analyst": "Ana Lima",
+        "risk_score": 97.3,
+        "priority": "HIGH",
+        "created_at": "2026-06-11T13:07:04.286602",
+        "alert_created_at": "2024-05-13T19:29:00",
+        "alert_id": 3,
+        "alert_code": "#1227",
+        "fraud_type": "Outros",
+        "user_name": "Rafael Souza"
+      },
+      {
+        "id": 2,
+        "investigation_code": "INV-2024-0002",
+        "status": "Arquivada",
+        "analyst": "Ana Lima",
+        "risk_score": 90.8,
+        "priority": "HIGH",
+        "created_at": "2026-06-11T13:07:04.285588",
+        "alert_created_at": "2024-05-05T16:31:00",
+        "alert_id": 2,
+        "alert_code": "#1226",
+        "fraud_type": "Fraude Transacional",
+        "user_name": "Ana Costa"
+      },
+      {
+        "id": 1,
+        "investigation_code": "INV-2024-0001",
+        "status": "Arquivada",
+        "analyst": "Carlos Mendes",
+        "risk_score": 84.0,
+        "priority": "LOW",
+        "created_at": "2026-06-11T13:07:04.284075",
+        "alert_created_at": "2024-05-15T04:16:00",
+        "alert_id": 1,
+        "alert_code": "#1225",
+        "fraud_type": "Lavagem de Dinheiro",
+        "user_name": "Bruno Martins"
+      }
+    ]
+  },
+  "transactions": {
+    "total": 84,
+    "items": [
+      {
+        "id": 51,
+        "transaction_code": "TX001500",
+        "tx_type": "TED",
+        "amount": 31313.2,
+        "status": "Bloqueada",
+        "risk_score": 66.1,
+        "merchant": "Amazon",
+        "channel": "Internet Banking",
+        "ip_address": "170.184.125.40",
+        "location": "Rio de Janeiro, BR",
+        "created_at": "2024-05-30T01:18:00",
+        "user_name": "Pedro Ferreira"
+      },
+      {
+        "id": 48,
+        "transaction_code": "TX001401",
+        "tx_type": "Cartão Crédito",
+        "amount": 24638.15,
+        "status": "Pendente",
+        "risk_score": 63.5,
+        "merchant": "Mercado Livre",
+        "channel": "Internet Banking",
+        "ip_address": "43.98.1.253",
+        "location": "Miami, US",
+        "created_at": "2024-05-29T22:10:00",
+        "user_name": "Maria Santos"
+      },
+      {
+        "id": 49,
+        "transaction_code": "TX001402",
+        "tx_type": "PIX",
+        "amount": 49696.51,
+        "status": "Aprovada",
+        "risk_score": 57.4,
+        "merchant": "Uber",
+        "channel": "Internet Banking",
+        "ip_address": "43.98.1.253",
+        "location": "Miami, US",
+        "created_at": "2024-05-28T16:10:00",
+        "user_name": "Maria Santos"
+      },
+      {
+        "id": 50,
+        "transaction_code": "TX001403",
+        "tx_type": "Cartão Crédito",
+        "amount": 45434.37,
+        "status": "Bloqueada",
+        "risk_score": 83.1,
+        "merchant": "Uber",
+        "channel": "ATM",
+        "ip_address": "43.98.1.253",
+        "location": "Miami, US",
+        "created_at": "2024-05-28T06:10:00",
+        "user_name": "Maria Santos"
+      },
+      {
+        "id": 47,
+        "transaction_code": "TX001400",
+        "tx_type": "Cartão Crédito",
+        "amount": 22079.39,
+        "status": "Aprovada",
+        "risk_score": 92.1,
+        "merchant": "iFood",
+        "channel": "Agência",
+        "ip_address": "43.98.1.253",
+        "location": "Miami, US",
+        "created_at": "2024-05-27T18:10:00",
+        "user_name": "Maria Santos"
+      },
+      {
+        "id": 17,
+        "transaction_code": "TX000501",
+        "tx_type": "TED",
+        "amount": 40225.08,
+        "status": "Pendente",
+        "risk_score": 54.0,
+        "merchant": "Mercado Livre",
+        "channel": "Internet Banking",
+        "ip_address": "139.245.200.237",
+        "location": "Lisboa, PT",
+        "created_at": "2024-05-27T15:19:00",
+        "user_name": "Maria Santos"
+      },
+      {
+        "id": 52,
+        "transaction_code": "TX001501",
+        "tx_type": "PIX",
+        "amount": 7910.98,
+        "status": "Bloqueada",
+        "risk_score": 48.3,
+        "merchant": "Transferência",
+        "channel": "Agência",
+        "ip_address": "170.184.125.40",
+        "location": "Rio de Janeiro, BR",
+        "created_at": "2024-05-27T15:18:00",
+        "user_name": "Pedro Ferreira"
+      },
+      {
+        "id": 16,
+        "transaction_code": "TX000500",
+        "tx_type": "Cartão Crédito",
+        "amount": 20042.68,
+        "status": "Aprovada",
+        "risk_score": 65.8,
+        "merchant": "Mercado Livre",
+        "channel": "App Mobile",
+        "ip_address": "139.245.200.237",
+        "location": "Lisboa, PT",
+        "created_at": "2024-05-26T18:19:00",
+        "user_name": "Maria Santos"
+      },
+      {
+        "id": 18,
+        "transaction_code": "TX000502",
+        "tx_type": "TED",
+        "amount": 40090.69,
+        "status": "Pendente",
+        "risk_score": 55.1,
+        "merchant": "Transferência",
+        "channel": "ATM",
+        "ip_address": "139.245.200.237",
+        "location": "Lisboa, PT",
+        "created_at": "2024-05-26T09:19:00",
+        "user_name": "Maria Santos"
+      },
+      {
+        "id": 15,
+        "transaction_code": "TX000404",
+        "tx_type": "PIX",
+        "amount": 12317.64,
+        "status": "Bloqueada",
+        "risk_score": 62.0,
+        "merchant": "Mercado Livre",
+        "channel": "Agência",
+        "ip_address": "249.129.196.46",
+        "location": "Lisboa, PT",
+        "created_at": "2024-05-25T16:21:00",
+        "user_name": "Pedro Ferreira"
+      },
+      {
+        "id": 11,
+        "transaction_code": "TX000400",
+        "tx_type": "Cartão Débito",
+        "amount": 28498.35,
+        "status": "Bloqueada",
+        "risk_score": 56.6,
+        "merchant": "Mercado Livre",
+        "channel": "ATM",
+        "ip_address": "249.129.196.46",
+        "location": "Lisboa, PT",
+        "created_at": "2024-05-24T21:21:00",
+        "user_name": "Pedro Ferreira"
+      },
+      {
+        "id": 12,
+        "transaction_code": "TX000401",
+        "tx_type": "Cartão Crédito",
+        "amount": 39309.37,
+        "status": "Pendente",
+        "risk_score": 65.6,
+        "merchant": "Uber",
+        "channel": "Agência",
+        "ip_address": "249.129.196.46",
+        "location": "Lisboa, PT",
+        "created_at": "2024-05-24T17:21:00",
+        "user_name": "Pedro Ferreira"
+      },
+      {
+        "id": 13,
+        "transaction_code": "TX000402",
+        "tx_type": "Cartão Débito",
+        "amount": 23711.99,
+        "status": "Pendente",
+        "risk_score": 24.4,
+        "merchant": "Mercado Livre",
+        "channel": "ATM",
+        "ip_address": "249.129.196.46",
+        "location": "Lisboa, PT",
+        "created_at": "2024-05-24T16:21:00",
+        "user_name": "Pedro Ferreira"
+      },
+      {
+        "id": 14,
+        "transaction_code": "TX000403",
+        "tx_type": "PIX",
+        "amount": 40939.33,
+        "status": "Aprovada",
+        "risk_score": 67.2,
+        "merchant": "Amazon",
+        "channel": "Internet Banking",
+        "ip_address": "249.129.196.46",
+        "location": "Lisboa, PT",
+        "created_at": "2024-05-24T01:21:00",
+        "user_name": "Pedro Ferreira"
+      },
+      {
+        "id": 41,
+        "transaction_code": "TX001202",
+        "tx_type": "Boleto",
+        "amount": 11157.66,
+        "status": "Pendente",
+        "risk_score": 30.7,
+        "merchant": "Transferência",
+        "channel": "ATM",
+        "ip_address": "64.50.49.138",
+        "location": "Miami, US",
+        "created_at": "2024-05-22T08:41:00",
+        "user_name": "João Silva"
+      },
+      {
+        "id": 40,
+        "transaction_code": "TX001201",
+        "tx_type": "Cartão Crédito",
+        "amount": 24480.03,
+        "status": "Aprovada",
+        "risk_score": 68.7,
+        "merchant": "Uber",
+        "channel": "Agência",
+        "ip_address": "64.50.49.138",
+        "location": "Miami, US",
+        "created_at": "2024-05-21T13:41:00",
+        "user_name": "João Silva"
+      },
+      {
+        "id": 39,
+        "transaction_code": "TX001200",
+        "tx_type": "Cartão Débito",
+        "amount": 35089.07,
+        "status": "Bloqueada",
+        "risk_score": 57.2,
+        "merchant": "Transferência",
+        "channel": "Internet Banking",
+        "ip_address": "64.50.49.138",
+        "location": "Miami, US",
+        "created_at": "2024-05-21T08:41:00",
+        "user_name": "João Silva"
+      },
+      {
+        "id": 77,
+        "transaction_code": "TX002303",
+        "tx_type": "PIX",
+        "amount": 16286.3,
+        "status": "Aprovada",
+        "risk_score": 34.9,
+        "merchant": "iFood",
+        "channel": "Agência",
+        "ip_address": "163.109.213.71",
+        "location": "São Paulo, BR",
+        "created_at": "2024-05-21T04:32:00",
+        "user_name": "Bruno Martins"
+      },
+      {
+        "id": 64,
+        "transaction_code": "TX002000",
+        "tx_type": "Cartão Débito",
+        "amount": 39985.76,
+        "status": "Pendente",
+        "risk_score": 23.5,
+        "merchant": "Transferência",
+        "channel": "App Mobile",
+        "ip_address": "226.18.226.63",
+        "location": "Curitiba, BR",
+        "created_at": "2024-05-20T14:06:00",
+        "user_name": "Juliana Mendes"
+      },
+      {
+        "id": 42,
+        "transaction_code": "TX001203",
+        "tx_type": "Cartão Débito",
+        "amount": 17253.49,
+        "status": "Pendente",
+        "risk_score": 56.8,
+        "merchant": "iFood",
+        "channel": "Agência",
+        "ip_address": "64.50.49.138",
+        "location": "Miami, US",
+        "created_at": "2024-05-19T21:41:00",
+        "user_name": "João Silva"
+      },
+      {
+        "id": 22,
+        "transaction_code": "TX000603",
+        "tx_type": "TED",
+        "amount": 3305.02,
+        "status": "Bloqueada",
+        "risk_score": 38.1,
+        "merchant": "Uber",
+        "channel": "Agência",
+        "ip_address": "62.15.62.225",
+        "location": "Lisboa, PT",
+        "created_at": "2024-05-19T14:31:00",
+        "user_name": "João Silva"
+      },
+      {
+        "id": 74,
+        "transaction_code": "TX002300",
+        "tx_type": "Cartão Débito",
+        "amount": 34665.96,
+        "status": "Pendente",
+        "risk_score": 16.8,
+        "merchant": "iFood",
+        "channel": "Agência",
+        "ip_address": "163.109.213.71",
+        "location": "São Paulo, BR",
+        "created_at": "2024-05-19T12:32:00",
+        "user_name": "Bruno Martins"
+      },
+      {
+        "id": 23,
+        "transaction_code": "TX000604",
+        "tx_type": "Cartão Crédito",
+        "amount": 19534.89,
+        "status": "Pendente",
+        "risk_score": 90.4,
+        "merchant": "Mercado Livre",
+        "channel": "Agência",
+        "ip_address": "62.15.62.225",
+        "location": "Lisboa, PT",
+        "created_at": "2024-05-19T07:31:00",
+        "user_name": "João Silva"
+      },
+      {
+        "id": 76,
+        "transaction_code": "TX002302",
+        "tx_type": "PIX",
+        "amount": 38042.45,
+        "status": "Pendente",
+        "risk_score": 84.2,
+        "merchant": "Uber",
+        "channel": "Internet Banking",
+        "ip_address": "163.109.213.71",
+        "location": "São Paulo, BR",
+        "created_at": "2024-05-19T00:32:00",
+        "user_name": "Bruno Martins"
+      },
+      {
+        "id": 21,
+        "transaction_code": "TX000602",
+        "tx_type": "Boleto",
+        "amount": 16053.51,
+        "status": "Pendente",
+        "risk_score": 16.8,
+        "merchant": "Amazon",
+        "channel": "Internet Banking",
+        "ip_address": "62.15.62.225",
+        "location": "Lisboa, PT",
+        "created_at": "2024-05-18T23:31:00",
+        "user_name": "João Silva"
+      },
+      {
+        "id": 20,
+        "transaction_code": "TX000601",
+        "tx_type": "Cartão Débito",
+        "amount": 24281.39,
+        "status": "Aprovada",
+        "risk_score": 33.3,
+        "merchant": "Mercado Livre",
+        "channel": "ATM",
+        "ip_address": "62.15.62.225",
+        "location": "Lisboa, PT",
+        "created_at": "2024-05-18T22:31:00",
+        "user_name": "João Silva"
+      },
+      {
+        "id": 75,
+        "transaction_code": "TX002301",
+        "tx_type": "Cartão Débito",
+        "amount": 1891.37,
+        "status": "Aprovada",
+        "risk_score": 30.0,
+        "merchant": "iFood",
+        "channel": "Internet Banking",
+        "ip_address": "163.109.213.71",
+        "location": "São Paulo, BR",
+        "created_at": "2024-05-18T17:32:00",
+        "user_name": "Bruno Martins"
+      },
+      {
+        "id": 65,
+        "transaction_code": "TX002001",
+        "tx_type": "PIX",
+        "amount": 11312.56,
+        "status": "Aprovada",
+        "risk_score": 49.2,
+        "merchant": "Mercado Livre",
+        "channel": "Internet Banking",
+        "ip_address": "226.18.226.63",
+        "location": "Curitiba, BR",
+        "created_at": "2024-05-18T13:06:00",
+        "user_name": "Juliana Mendes"
+      },
+      {
+        "id": 58,
+        "transaction_code": "TX001801",
+        "tx_type": "Cartão Débito",
+        "amount": 2107.56,
+        "status": "Aprovada",
+        "risk_score": 50.0,
+        "merchant": "Uber",
+        "channel": "ATM",
+        "ip_address": "81.240.67.53",
+        "location": "Madri, ES",
+        "created_at": "2024-05-18T08:02:00",
+        "user_name": "Ana Costa"
+      },
+      {
+        "id": 19,
+        "transaction_code": "TX000600",
+        "tx_type": "Cartão Crédito",
+        "amount": 44870.68,
+        "status": "Pendente",
+        "risk_score": 83.2,
+        "merchant": "Uber",
+        "channel": "ATM",
+        "ip_address": "62.15.62.225",
+        "location": "Lisboa, PT",
+        "created_at": "2024-05-17T11:31:00",
+        "user_name": "João Silva"
+      },
+      {
+        "id": 57,
+        "transaction_code": "TX001800",
+        "tx_type": "Boleto",
+        "amount": 30225.31,
+        "status": "Aprovada",
+        "risk_score": 17.8,
+        "merchant": "Transferência",
+        "channel": "App Mobile",
+        "ip_address": "81.240.67.53",
+        "location": "Madri, ES",
+        "created_at": "2024-05-17T11:02:00",
+        "user_name": "Ana Costa"
+      },
+      {
+        "id": 84,
+        "transaction_code": "TX002503",
+        "tx_type": "Cartão Débito",
+        "amount": 40116.4,
+        "status": "Aprovada",
+        "risk_score": 64.1,
+        "merchant": "Transferência",
+        "channel": "ATM",
+        "ip_address": "79.94.231.239",
+        "location": "São Paulo, BR",
+        "created_at": "2024-05-16T19:53:00",
+        "user_name": "Carlos Oliveira"
+      },
+      {
+        "id": 82,
+        "transaction_code": "TX002501",
+        "tx_type": "Cartão Crédito",
+        "amount": 28638.94,
+        "status": "Pendente",
+        "risk_score": 35.1,
+        "merchant": "iFood",
+        "channel": "App Mobile",
+        "ip_address": "79.94.231.239",
+        "location": "São Paulo, BR",
+        "created_at": "2024-05-16T18:53:00",
+        "user_name": "Carlos Oliveira"
+      },
+      {
+        "id": 83,
+        "transaction_code": "TX002502",
+        "tx_type": "Boleto",
+        "amount": 504.09,
+        "status": "Pendente",
+        "risk_score": 76.2,
+        "merchant": "Mercado Livre",
+        "channel": "Agência",
+        "ip_address": "79.94.231.239",
+        "location": "São Paulo, BR",
+        "created_at": "2024-05-15T22:53:00",
+        "user_name": "Carlos Oliveira"
+      },
+      {
+        "id": 81,
+        "transaction_code": "TX002500",
+        "tx_type": "Boleto",
+        "amount": 22896.11,
+        "status": "Bloqueada",
+        "risk_score": 26.9,
+        "merchant": "Uber",
+        "channel": "Agência",
+        "ip_address": "79.94.231.239",
+        "location": "São Paulo, BR",
+        "created_at": "2024-05-15T18:53:00",
+        "user_name": "Carlos Oliveira"
+      },
+      {
+        "id": 37,
+        "transaction_code": "TX001101",
+        "tx_type": "Boleto",
+        "amount": 42600.49,
+        "status": "Aprovada",
+        "risk_score": 33.7,
+        "merchant": "Uber",
+        "channel": "Internet Banking",
+        "ip_address": "91.109.106.120",
+        "location": "Madri, ES",
+        "created_at": "2024-05-14T20:50:00",
+        "user_name": "Camila Rocha"
+      },
+      {
+        "id": 2,
+        "transaction_code": "TX000101",
+        "tx_type": "TED",
+        "amount": 44082.67,
+        "status": "Aprovada",
+        "risk_score": 25.2,
+        "merchant": "iFood",
+        "channel": "Agência",
+        "ip_address": "110.230.150.103",
+        "location": "Curitiba, BR",
+        "created_at": "2024-05-14T07:16:00",
+        "user_name": "Bruno Martins"
+      },
+      {
+        "id": 38,
+        "transaction_code": "TX001102",
+        "tx_type": "Boleto",
+        "amount": 1532.13,
+        "status": "Bloqueada",
+        "risk_score": 25.5,
+        "merchant": "Amazon",
+        "channel": "ATM",
+        "ip_address": "91.109.106.120",
+        "location": "Madri, ES",
+        "created_at": "2024-05-14T06:50:00",
+        "user_name": "Camila Rocha"
+      },
+      {
+        "id": 4,
+        "transaction_code": "TX000103",
+        "tx_type": "Cartão Crédito",
+        "amount": 17547.96,
+        "status": "Aprovada",
+        "risk_score": 28.9,
+        "merchant": "Amazon",
+        "channel": "Agência",
+        "ip_address": "110.230.150.103",
+        "location": "Curitiba, BR",
+        "created_at": "2024-05-14T02:16:00",
+        "user_name": "Bruno Martins"
+      },
+      {
+        "id": 1,
+        "transaction_code": "TX000100",
+        "tx_type": "TED",
+        "amount": 33379.98,
+        "status": "Bloqueada",
+        "risk_score": 76.3,
+        "merchant": "Uber",
+        "channel": "Internet Banking",
+        "ip_address": "110.230.150.103",
+        "location": "Curitiba, BR",
+        "created_at": "2024-05-14T01:16:00",
+        "user_name": "Bruno Martins"
+      },
+      {
+        "id": 46,
+        "transaction_code": "TX001303",
+        "tx_type": "PIX",
+        "amount": 27712.61,
+        "status": "Pendente",
+        "risk_score": 90.2,
+        "merchant": "Uber",
+        "channel": "App Mobile",
+        "ip_address": "26.13.167.139",
+        "location": "São Paulo, BR",
+        "created_at": "2024-05-13T23:17:00",
+        "user_name": "Carlos Oliveira"
+      },
+      {
+        "id": 3,
+        "transaction_code": "TX000102",
+        "tx_type": "Boleto",
+        "amount": 8043.97,
+        "status": "Pendente",
+        "risk_score": 19.2,
+        "merchant": "Mercado Livre",
+        "channel": "Agência",
+        "ip_address": "110.230.150.103",
+        "location": "Curitiba, BR",
+        "created_at": "2024-05-13T20:16:00",
+        "user_name": "Bruno Martins"
+      },
+      {
+        "id": 36,
+        "transaction_code": "TX001100",
+        "tx_type": "Boleto",
+        "amount": 30834.03,
+        "status": "Pendente",
+        "risk_score": 75.8,
+        "merchant": "Uber",
+        "channel": "Agência",
+        "ip_address": "91.109.106.120",
+        "location": "Madri, ES",
+        "created_at": "2024-05-13T12:50:00",
+        "user_name": "Camila Rocha"
+      },
+      {
+        "id": 45,
+        "transaction_code": "TX001302",
+        "tx_type": "Boleto",
+        "amount": 11451.41,
+        "status": "Aprovada",
+        "risk_score": 35.7,
+        "merchant": "Transferência",
+        "channel": "Internet Banking",
+        "ip_address": "26.13.167.139",
+        "location": "São Paulo, BR",
+        "created_at": "2024-05-13T04:17:00",
+        "user_name": "Carlos Oliveira"
+      },
+      {
+        "id": 44,
+        "transaction_code": "TX001301",
+        "tx_type": "Cartão Crédito",
+        "amount": 13897.33,
+        "status": "Pendente",
+        "risk_score": 93.0,
+        "merchant": "Transferência",
+        "channel": "ATM",
+        "ip_address": "26.13.167.139",
+        "location": "São Paulo, BR",
+        "created_at": "2024-05-13T01:17:00",
+        "user_name": "Carlos Oliveira"
+      },
+      {
+        "id": 43,
+        "transaction_code": "TX001300",
+        "tx_type": "TED",
+        "amount": 6120.73,
+        "status": "Aprovada",
+        "risk_score": 36.8,
+        "merchant": "Transferência",
+        "channel": "Internet Banking",
+        "ip_address": "26.13.167.139",
+        "location": "São Paulo, BR",
+        "created_at": "2024-05-12T20:17:00",
+        "user_name": "Carlos Oliveira"
+      },
+      {
+        "id": 9,
+        "transaction_code": "TX000300",
+        "tx_type": "Cartão Débito",
+        "amount": 15764.39,
+        "status": "Aprovada",
+        "risk_score": 71.2,
+        "merchant": "iFood",
+        "channel": "ATM",
+        "ip_address": "175.185.30.175",
+        "location": "Lisboa, PT",
+        "created_at": "2024-05-12T00:29:00",
+        "user_name": "Rafael Souza"
+      },
+      {
+        "id": 27,
+        "transaction_code": "TX000801",
+        "tx_type": "TED",
+        "amount": 43355.88,
+        "status": "Aprovada",
+        "risk_score": 14.3,
+        "merchant": "Uber",
+        "channel": "ATM",
+        "ip_address": "172.167.96.113",
+        "location": "Lisboa, PT",
+        "created_at": "2024-05-11T23:59:00",
+        "user_name": "Camila Rocha"
+      },
+      {
+        "id": 28,
+        "transaction_code": "TX000802",
+        "tx_type": "Boleto",
+        "amount": 16941.28,
+        "status": "Bloqueada",
+        "risk_score": 33.7,
+        "merchant": "Uber",
+        "channel": "ATM",
+        "ip_address": "172.167.96.113",
+        "location": "Lisboa, PT",
+        "created_at": "2024-05-11T19:59:00",
+        "user_name": "Camila Rocha"
+      },
+      {
+        "id": 10,
+        "transaction_code": "TX000301",
+        "tx_type": "Boleto",
+        "amount": 20179.78,
+        "status": "Bloqueada",
+        "risk_score": 57.1,
+        "merchant": "Amazon",
+        "channel": "Agência",
+        "ip_address": "175.185.30.175",
+        "location": "Lisboa, PT",
+        "created_at": "2024-05-11T14:29:00",
+        "user_name": "Rafael Souza"
+      },
+      {
+        "id": 26,
+        "transaction_code": "TX000800",
+        "tx_type": "PIX",
+        "amount": 45355.75,
+        "status": "Pendente",
+        "risk_score": 58.0,
+        "merchant": "Mercado Livre",
+        "channel": "App Mobile",
+        "ip_address": "172.167.96.113",
+        "location": "Lisboa, PT",
+        "created_at": "2024-05-11T09:59:00",
+        "user_name": "Camila Rocha"
+      },
+      {
+        "id": 80,
+        "transaction_code": "TX002402",
+        "tx_type": "Cartão Crédito",
+        "amount": 45070.35,
+        "status": "Pendente",
+        "risk_score": 56.5,
+        "merchant": "Mercado Livre",
+        "channel": "Agência",
+        "ip_address": "144.3.29.20",
+        "location": "Madri, ES",
+        "created_at": "2024-05-11T02:40:00",
+        "user_name": "João Silva"
+      },
+      {
+        "id": 61,
+        "transaction_code": "TX001902",
+        "tx_type": "Boleto",
+        "amount": 12694.7,
+        "status": "Aprovada",
+        "risk_score": 92.5,
+        "merchant": "Uber",
+        "channel": "App Mobile",
+        "ip_address": "238.193.240.19",
+        "location": "São Paulo, BR",
+        "created_at": "2024-05-10T19:16:00",
+        "user_name": "Larissa Nunes"
+      },
+      {
+        "id": 79,
+        "transaction_code": "TX002401",
+        "tx_type": "Cartão Crédito",
+        "amount": 45650.17,
+        "status": "Aprovada",
+        "risk_score": 29.7,
+        "merchant": "iFood",
+        "channel": "Agência",
+        "ip_address": "144.3.29.20",
+        "location": "Madri, ES",
+        "created_at": "2024-05-09T21:40:00",
+        "user_name": "João Silva"
+      },
+      {
+        "id": 60,
+        "transaction_code": "TX001901",
+        "tx_type": "Cartão Crédito",
+        "amount": 14482.07,
+        "status": "Bloqueada",
+        "risk_score": 79.2,
+        "merchant": "Transferência",
+        "channel": "App Mobile",
+        "ip_address": "238.193.240.19",
+        "location": "São Paulo, BR",
+        "created_at": "2024-05-09T02:16:00",
+        "user_name": "Larissa Nunes"
+      },
+      {
+        "id": 63,
+        "transaction_code": "TX001904",
+        "tx_type": "PIX",
+        "amount": 10257.56,
+        "status": "Pendente",
+        "risk_score": 21.1,
+        "merchant": "iFood",
+        "channel": "Agência",
+        "ip_address": "238.193.240.19",
+        "location": "São Paulo, BR",
+        "created_at": "2024-05-08T22:16:00",
+        "user_name": "Larissa Nunes"
+      },
+      {
+        "id": 59,
+        "transaction_code": "TX001900",
+        "tx_type": "PIX",
+        "amount": 23553.52,
+        "status": "Bloqueada",
+        "risk_score": 38.3,
+        "merchant": "Mercado Livre",
+        "channel": "Internet Banking",
+        "ip_address": "238.193.240.19",
+        "location": "São Paulo, BR",
+        "created_at": "2024-05-08T16:16:00",
+        "user_name": "Larissa Nunes"
+      },
+      {
+        "id": 62,
+        "transaction_code": "TX001903",
+        "tx_type": "Cartão Crédito",
+        "amount": 20721.05,
+        "status": "Aprovada",
+        "risk_score": 54.1,
+        "merchant": "Transferência",
+        "channel": "Agência",
+        "ip_address": "238.193.240.19",
+        "location": "São Paulo, BR",
+        "created_at": "2024-05-08T09:16:00",
+        "user_name": "Larissa Nunes"
+      },
+      {
+        "id": 78,
+        "transaction_code": "TX002400",
+        "tx_type": "Cartão Crédito",
+        "amount": 28339.81,
+        "status": "Aprovada",
+        "risk_score": 24.4,
+        "merchant": "Mercado Livre",
+        "channel": "Agência",
+        "ip_address": "144.3.29.20",
+        "location": "Madri, ES",
+        "created_at": "2024-05-08T08:40:00",
+        "user_name": "João Silva"
+      },
+      {
+        "id": 34,
+        "transaction_code": "TX001000",
+        "tx_type": "Cartão Débito",
+        "amount": 21476.06,
+        "status": "Bloqueada",
+        "risk_score": 15.9,
+        "merchant": "iFood",
+        "channel": "App Mobile",
+        "ip_address": "55.139.34.186",
+        "location": "Lisboa, PT",
+        "created_at": "2024-05-06T05:57:00",
+        "user_name": "João Silva"
+      },
+      {
+        "id": 54,
+        "transaction_code": "TX001601",
+        "tx_type": "Cartão Crédito",
+        "amount": 5827.34,
+        "status": "Aprovada",
+        "risk_score": 65.0,
+        "merchant": "iFood",
+        "channel": "Internet Banking",
+        "ip_address": "123.129.236.219",
+        "location": "Lisboa, PT",
+        "created_at": "2024-05-05T23:37:00",
+        "user_name": "Pedro Ferreira"
+      },
+      {
+        "id": 67,
+        "transaction_code": "TX002101",
+        "tx_type": "Cartão Crédito",
+        "amount": 9611.46,
+        "status": "Pendente",
+        "risk_score": 53.2,
+        "merchant": "Amazon",
+        "channel": "App Mobile",
+        "ip_address": "3.171.210.142",
+        "location": "Curitiba, BR",
+        "created_at": "2024-05-05T19:53:00",
+        "user_name": "Pedro Ferreira"
+      },
+      {
+        "id": 53,
+        "transaction_code": "TX001600",
+        "tx_type": "Boleto",
+        "amount": 35377.1,
+        "status": "Pendente",
+        "risk_score": 83.1,
+        "merchant": "Mercado Livre",
+        "channel": "Internet Banking",
+        "ip_address": "123.129.236.219",
+        "location": "Lisboa, PT",
+        "created_at": "2024-05-05T19:37:00",
+        "user_name": "Pedro Ferreira"
+      },
+      {
+        "id": 35,
+        "transaction_code": "TX001001",
+        "tx_type": "PIX",
+        "amount": 21732.82,
+        "status": "Bloqueada",
+        "risk_score": 64.0,
+        "merchant": "Uber",
+        "channel": "Internet Banking",
+        "ip_address": "55.139.34.186",
+        "location": "Lisboa, PT",
+        "created_at": "2024-05-05T11:57:00",
+        "user_name": "João Silva"
+      },
+      {
+        "id": 8,
+        "transaction_code": "TX000203",
+        "tx_type": "Cartão Crédito",
+        "amount": 184.39,
+        "status": "Pendente",
+        "risk_score": 68.4,
+        "merchant": "Amazon",
+        "channel": "ATM",
+        "ip_address": "203.175.109.153",
+        "location": "São Paulo, BR",
+        "created_at": "2024-05-05T10:31:00",
+        "user_name": "Ana Costa"
+      },
+      {
+        "id": 5,
+        "transaction_code": "TX000200",
+        "tx_type": "Boleto",
+        "amount": 17622.19,
+        "status": "Pendente",
+        "risk_score": 44.0,
+        "merchant": "Transferência",
+        "channel": "ATM",
+        "ip_address": "203.175.109.153",
+        "location": "São Paulo, BR",
+        "created_at": "2024-05-05T07:31:00",
+        "user_name": "Ana Costa"
+      },
+      {
+        "id": 6,
+        "transaction_code": "TX000201",
+        "tx_type": "Boleto",
+        "amount": 9010.53,
+        "status": "Bloqueada",
+        "risk_score": 13.3,
+        "merchant": "Transferência",
+        "channel": "Agência",
+        "ip_address": "203.175.109.153",
+        "location": "São Paulo, BR",
+        "created_at": "2024-05-05T01:31:00",
+        "user_name": "Ana Costa"
+      },
+      {
+        "id": 68,
+        "transaction_code": "TX002102",
+        "tx_type": "Boleto",
+        "amount": 46718.99,
+        "status": "Pendente",
+        "risk_score": 32.7,
+        "merchant": "Mercado Livre",
+        "channel": "ATM",
+        "ip_address": "3.171.210.142",
+        "location": "Curitiba, BR",
+        "created_at": "2024-05-04T08:53:00",
+        "user_name": "Pedro Ferreira"
+      },
+      {
+        "id": 29,
+        "transaction_code": "TX000900",
+        "tx_type": "Cartão Débito",
+        "amount": 2699.07,
+        "status": "Bloqueada",
+        "risk_score": 29.1,
+        "merchant": "Mercado Livre",
+        "channel": "App Mobile",
+        "ip_address": "57.2.19.182",
+        "location": "Madri, ES",
+        "created_at": "2024-05-04T04:14:00",
+        "user_name": "Juliana Mendes"
+      },
+      {
+        "id": 69,
+        "transaction_code": "TX002103",
+        "tx_type": "TED",
+        "amount": 22382.71,
+        "status": "Bloqueada",
+        "risk_score": 39.3,
+        "merchant": "Transferência",
+        "channel": "Agência",
+        "ip_address": "3.171.210.142",
+        "location": "Curitiba, BR",
+        "created_at": "2024-05-03T23:53:00",
+        "user_name": "Pedro Ferreira"
+      },
+      {
+        "id": 7,
+        "transaction_code": "TX000202",
+        "tx_type": "Cartão Crédito",
+        "amount": 30349.82,
+        "status": "Pendente",
+        "risk_score": 19.8,
+        "merchant": "Transferência",
+        "channel": "Internet Banking",
+        "ip_address": "203.175.109.153",
+        "location": "São Paulo, BR",
+        "created_at": "2024-05-03T23:31:00",
+        "user_name": "Ana Costa"
+      },
+      {
+        "id": 66,
+        "transaction_code": "TX002100",
+        "tx_type": "Boleto",
+        "amount": 20832.97,
+        "status": "Bloqueada",
+        "risk_score": 93.3,
+        "merchant": "Amazon",
+        "channel": "Agência",
+        "ip_address": "3.171.210.142",
+        "location": "Curitiba, BR",
+        "created_at": "2024-05-03T20:53:00",
+        "user_name": "Pedro Ferreira"
+      },
+      {
+        "id": 31,
+        "transaction_code": "TX000902",
+        "tx_type": "Cartão Débito",
+        "amount": 47393.08,
+        "status": "Bloqueada",
+        "risk_score": 69.5,
+        "merchant": "iFood",
+        "channel": "Internet Banking",
+        "ip_address": "57.2.19.182",
+        "location": "Madri, ES",
+        "created_at": "2024-05-03T16:14:00",
+        "user_name": "Juliana Mendes"
+      },
+      {
+        "id": 32,
+        "transaction_code": "TX000903",
+        "tx_type": "TED",
+        "amount": 48239.57,
+        "status": "Aprovada",
+        "risk_score": 59.2,
+        "merchant": "iFood",
+        "channel": "Agência",
+        "ip_address": "57.2.19.182",
+        "location": "Madri, ES",
+        "created_at": "2024-05-03T16:14:00",
+        "user_name": "Juliana Mendes"
+      },
+      {
+        "id": 72,
+        "transaction_code": "TX002202",
+        "tx_type": "Cartão Débito",
+        "amount": 48271.14,
+        "status": "Bloqueada",
+        "risk_score": 83.9,
+        "merchant": "Uber",
+        "channel": "App Mobile",
+        "ip_address": "155.54.184.88",
+        "location": "Rio de Janeiro, BR",
+        "created_at": "2024-05-03T11:16:00",
+        "user_name": "Bruno Martins"
+      },
+      {
+        "id": 33,
+        "transaction_code": "TX000904",
+        "tx_type": "PIX",
+        "amount": 29645.68,
+        "status": "Pendente",
+        "risk_score": 30.6,
+        "merchant": "iFood",
+        "channel": "App Mobile",
+        "ip_address": "57.2.19.182",
+        "location": "Madri, ES",
+        "created_at": "2024-05-03T05:14:00",
+        "user_name": "Juliana Mendes"
+      },
+      {
+        "id": 70,
+        "transaction_code": "TX002200",
+        "tx_type": "TED",
+        "amount": 28632.7,
+        "status": "Aprovada",
+        "risk_score": 82.8,
+        "merchant": "Uber",
+        "channel": "App Mobile",
+        "ip_address": "155.54.184.88",
+        "location": "Rio de Janeiro, BR",
+        "created_at": "2024-05-03T03:16:00",
+        "user_name": "Bruno Martins"
+      },
+      {
+        "id": 30,
+        "transaction_code": "TX000901",
+        "tx_type": "TED",
+        "amount": 41977.52,
+        "status": "Pendente",
+        "risk_score": 23.0,
+        "merchant": "Amazon",
+        "channel": "Agência",
+        "ip_address": "57.2.19.182",
+        "location": "Madri, ES",
+        "created_at": "2024-05-02T23:14:00",
+        "user_name": "Juliana Mendes"
+      },
+      {
+        "id": 25,
+        "transaction_code": "TX000701",
+        "tx_type": "Boleto",
+        "amount": 21848.22,
+        "status": "Aprovada",
+        "risk_score": 43.1,
+        "merchant": "Uber",
+        "channel": "Internet Banking",
+        "ip_address": "243.141.43.68",
+        "location": "Lisboa, PT",
+        "created_at": "2024-05-02T18:31:00",
+        "user_name": "Maria Santos"
+      },
+      {
+        "id": 24,
+        "transaction_code": "TX000700",
+        "tx_type": "Boleto",
+        "amount": 37698.41,
+        "status": "Bloqueada",
+        "risk_score": 55.7,
+        "merchant": "Transferência",
+        "channel": "Internet Banking",
+        "ip_address": "243.141.43.68",
+        "location": "Lisboa, PT",
+        "created_at": "2024-05-02T01:31:00",
+        "user_name": "Maria Santos"
+      },
+      {
+        "id": 55,
+        "transaction_code": "TX001700",
+        "tx_type": "Boleto",
+        "amount": 29792.7,
+        "status": "Pendente",
+        "risk_score": 88.3,
+        "merchant": "Uber",
+        "channel": "App Mobile",
+        "ip_address": "104.31.242.228",
+        "location": "Lisboa, PT",
+        "created_at": "2024-05-01T18:05:00",
+        "user_name": "Carlos Oliveira"
+      },
+      {
+        "id": 73,
+        "transaction_code": "TX002203",
+        "tx_type": "PIX",
+        "amount": 36149.95,
+        "status": "Bloqueada",
+        "risk_score": 84.0,
+        "merchant": "Amazon",
+        "channel": "App Mobile",
+        "ip_address": "155.54.184.88",
+        "location": "Rio de Janeiro, BR",
+        "created_at": "2024-05-01T17:16:00",
+        "user_name": "Bruno Martins"
+      },
+      {
+        "id": 71,
+        "transaction_code": "TX002201",
+        "tx_type": "Cartão Crédito",
+        "amount": 19365.33,
+        "status": "Pendente",
+        "risk_score": 77.4,
+        "merchant": "Amazon",
+        "channel": "Agência",
+        "ip_address": "155.54.184.88",
+        "location": "Rio de Janeiro, BR",
+        "created_at": "2024-05-01T15:16:00",
+        "user_name": "Bruno Martins"
+      },
+      {
+        "id": 56,
+        "transaction_code": "TX001701",
+        "tx_type": "Cartão Crédito",
+        "amount": 47139.54,
+        "status": "Pendente",
+        "risk_score": 55.9,
+        "merchant": "Uber",
+        "channel": "App Mobile",
+        "ip_address": "104.31.242.228",
+        "location": "Lisboa, PT",
+        "created_at": "2024-05-01T01:05:00",
+        "user_name": "Carlos Oliveira"
+      }
+    ]
+  },
+  "clients": {
+    "total": 12,
+    "items": [
+      {
+        "id": 4,
+        "name": "Ana Costa",
+        "email": "ana.costa@email.com",
+        "document": "259.320.881-53",
+        "phone": "(11) 92674-2519",
+        "risk_level": "CRITICAL",
+        "is_active": true,
+        "alerts_count": 2,
+        "transactions_count": 6,
+        "created_at": "2024-04-24T00:00:00"
+      },
+      {
+        "id": 9,
+        "name": "Lucas Alves",
+        "email": "lucas.alves@email.com",
+        "document": "314.786.373-99",
+        "phone": "(11) 92169-3803",
+        "risk_level": "MEDIUM",
+        "is_active": true,
+        "alerts_count": 0,
+        "transactions_count": 0,
+        "created_at": "2024-04-20T00:00:00"
+      },
+      {
+        "id": 11,
+        "name": "Bruno Martins",
+        "email": "bruno.martins@email.com",
+        "document": "941.132.924-50",
+        "phone": "(11) 97572-5386",
+        "risk_level": "LOW",
+        "is_active": true,
+        "alerts_count": 3,
+        "transactions_count": 12,
+        "created_at": "2024-04-17T00:00:00"
+      },
+      {
+        "id": 10,
+        "name": "Camila Rocha",
+        "email": "camila.rocha@email.com",
+        "document": "573.488.376-91",
+        "phone": "(11) 94598-6313",
+        "risk_level": "LOW",
+        "is_active": true,
+        "alerts_count": 2,
+        "transactions_count": 6,
+        "created_at": "2024-04-16T00:00:00"
+      },
+      {
+        "id": 3,
+        "name": "Carlos Oliveira",
+        "email": "carlos.oliveira@email.com",
+        "document": "703.384.928-10",
+        "phone": "(11) 93615-7924",
+        "risk_level": "HIGH",
+        "is_active": true,
+        "alerts_count": 3,
+        "transactions_count": 10,
+        "created_at": "2024-04-13T00:00:00"
+      },
+      {
+        "id": 8,
+        "name": "Juliana Mendes",
+        "email": "juliana.mendes@email.com",
+        "document": "203.489.384-68",
+        "phone": "(11) 96977-3664",
+        "risk_level": "HIGH",
+        "is_active": true,
+        "alerts_count": 2,
+        "transactions_count": 7,
+        "created_at": "2024-04-08T00:00:00"
+      },
+      {
+        "id": 2,
+        "name": "Maria Santos",
+        "email": "maria.santos@email.com",
+        "document": "303.833.765-99",
+        "phone": "(11) 99928-7873",
+        "risk_level": "MEDIUM",
+        "is_active": true,
+        "alerts_count": 3,
+        "transactions_count": 9,
+        "created_at": "2024-04-02T00:00:00"
+      },
+      {
+        "id": 5,
+        "name": "Pedro Ferreira",
+        "email": "pedro.ferreira@email.com",
+        "document": "467.967.452-87",
+        "phone": "(11) 95333-1711",
+        "risk_level": "CRITICAL",
+        "is_active": true,
+        "alerts_count": 4,
+        "transactions_count": 13,
+        "created_at": "2024-03-27T00:00:00"
+      },
+      {
+        "id": 1,
+        "name": "João Silva",
+        "email": "joão.silva@email.com",
+        "document": "532.132.130-21",
+        "phone": "(11) 94582-4811",
+        "risk_level": "LOW",
+        "is_active": true,
+        "alerts_count": 4,
+        "transactions_count": 14,
+        "created_at": "2024-03-26T00:00:00"
+      },
+      {
+        "id": 6,
+        "name": "Fernanda Lima",
+        "email": "fernanda.lima@email.com",
+        "document": "227.487.180-80",
+        "phone": "(11) 95803-6925",
+        "risk_level": "MEDIUM",
+        "is_active": true,
+        "alerts_count": 0,
+        "transactions_count": 0,
+        "created_at": "2024-03-16T00:00:00"
+      },
+      {
+        "id": 7,
+        "name": "Rafael Souza",
+        "email": "rafael.souza@email.com",
+        "document": "171.146.777-39",
+        "phone": "(11) 95741-2307",
+        "risk_level": "MEDIUM",
+        "is_active": true,
+        "alerts_count": 1,
+        "transactions_count": 2,
+        "created_at": "2024-03-06T00:00:00"
+      },
+      {
+        "id": 12,
+        "name": "Larissa Nunes",
+        "email": "larissa.nunes@email.com",
+        "document": "680.997.835-50",
+        "phone": "(11) 94483-9179",
+        "risk_level": "CRITICAL",
+        "is_active": true,
+        "alerts_count": 1,
+        "transactions_count": 5,
+        "created_at": "2024-03-05T00:00:00"
+      }
+    ]
+  },
+  "rules": {
+    "total": 10,
+    "items": [
+      {
+        "id": 3,
+        "rule_code": "RG-003",
+        "name": "Login de dispositivo não reconhecido",
+        "description": "Alerta quando o acesso ocorre de um dispositivo ou IP nunca utilizado pelo cliente.",
+        "category": "Cadastro",
+        "severity": "MEDIUM",
+        "is_active": true,
+        "triggers_count": 56,
+        "created_at": "2025-11-23T13:07:04.169041"
+      },
+      {
+        "id": 6,
+        "rule_code": "RG-006",
+        "name": "CPF em lista restritiva",
+        "description": "Verifica documento contra bases de restrição interna e parceiros.",
+        "category": "Cadastro",
+        "severity": "CRITICAL",
+        "is_active": true,
+        "triggers_count": 12,
+        "created_at": "2026-01-31T13:07:04.169041"
+      },
+      {
+        "id": 10,
+        "rule_code": "RG-010",
+        "name": "Alteração cadastral recente",
+        "description": "Eleva risco após mudança de telefone, e-mail ou endereço nas últimas 48h.",
+        "category": "Cadastro",
+        "severity": "LOW",
+        "is_active": false,
+        "triggers_count": 8,
+        "created_at": "2025-06-14T13:07:04.169041"
+      },
+      {
+        "id": 2,
+        "rule_code": "RG-002",
+        "name": "Múltiplas transações em curto período",
+        "description": "Detecta 5 ou mais transações em menos de 10 minutos no mesmo canal.",
+        "category": "Comportamento",
+        "severity": "CRITICAL",
+        "is_active": true,
+        "triggers_count": 89,
+        "created_at": "2026-03-31T13:07:04.169041"
+      },
+      {
+        "id": 5,
+        "rule_code": "RG-005",
+        "name": "Geolocalização inconsistente",
+        "description": "Compara localização do dispositivo com histórico habitual do cliente.",
+        "category": "Comportamento",
+        "severity": "MEDIUM",
+        "is_active": true,
+        "triggers_count": 27,
+        "created_at": "2025-12-19T13:07:04.169041"
+      },
+      {
+        "id": 8,
+        "rule_code": "RG-008",
+        "name": "Tentativas de login falhas",
+        "description": "Bloqueia após 3 tentativas de senha incorreta em 15 minutos.",
+        "category": "Comportamento",
+        "severity": "MEDIUM",
+        "is_active": true,
+        "triggers_count": 203,
+        "created_at": "2025-07-07T13:07:04.169041"
+      },
+      {
+        "id": 9,
+        "rule_code": "RG-009",
+        "name": "Fracionamento de valores",
+        "description": "Detecta sequência de transações abaixo do limite de reporte regulatório.",
+        "category": "Lavagem de Dinheiro",
+        "severity": "CRITICAL",
+        "is_active": true,
+        "triggers_count": 41,
+        "created_at": "2026-02-27T13:07:04.169041"
+      },
+      {
+        "id": 1,
+        "rule_code": "RG-001",
+        "name": "Transação acima do limite diário",
+        "description": "Bloqueia transações que excedem o limite diário configurado por perfil de cliente.",
+        "category": "Transacional",
+        "severity": "HIGH",
+        "is_active": true,
+        "triggers_count": 142,
+        "created_at": "2026-02-14T13:07:04.169041"
+      },
+      {
+        "id": 4,
+        "rule_code": "RG-004",
+        "name": "Transferência para conta recém-criada",
+        "description": "Sinaliza PIX/TED para beneficiários com conta aberta há menos de 7 dias.",
+        "category": "Transacional",
+        "severity": "HIGH",
+        "is_active": true,
+        "triggers_count": 34,
+        "created_at": "2025-12-08T13:07:04.169041"
+      },
+      {
+        "id": 7,
+        "rule_code": "RG-007",
+        "name": "Transação internacional atípica",
+        "description": "Identifica operações em moeda estrangeira fora do padrão do cliente.",
+        "category": "Transacional",
+        "severity": "HIGH",
+        "is_active": true,
+        "triggers_count": 18,
+        "created_at": "2026-02-19T13:07:04.169041"
+      }
+    ]
+  },
+  "alertDetails": {
+    "1": {
+      "id": 1,
+      "alert_code": "#1225",
+      "fraud_type": "Lavagem de Dinheiro",
+      "status": "Novo",
+      "risk_score": 84.0,
+      "amount": 48738.47,
+      "device_info": "Windows 11 — Edge 120",
+      "ip_address": "110.230.150.103",
+      "location": "Curitiba, BR",
+      "created_at": "2024-05-15T04:16:00",
+      "user": {
+        "id": 11,
+        "name": "Bruno Martins",
+        "email": "bruno.martins@email.com",
+        "document": "941.132.924-50",
+        "phone": "(11) 97572-5386",
+        "risk_level": "LOW"
+      },
+      "transactions": [
+        {
+          "id": 1,
+          "transaction_code": "TX000100",
+          "tx_type": "TED",
+          "amount": 33379.98,
+          "status": "Bloqueada",
+          "risk_score": 76.3,
+          "created_at": "2024-05-14T01:16:00"
+        },
+        {
+          "id": 2,
+          "transaction_code": "TX000101",
+          "tx_type": "TED",
+          "amount": 44082.67,
+          "status": "Aprovada",
+          "risk_score": 25.2,
+          "created_at": "2024-05-14T07:16:00"
+        },
+        {
+          "id": 3,
+          "transaction_code": "TX000102",
+          "tx_type": "Boleto",
+          "amount": 8043.97,
+          "status": "Pendente",
+          "risk_score": 19.2,
+          "created_at": "2024-05-13T20:16:00"
+        },
+        {
+          "id": 4,
+          "transaction_code": "TX000103",
+          "tx_type": "Cartão Crédito",
+          "amount": 17547.96,
+          "status": "Aprovada",
+          "risk_score": 28.9,
+          "created_at": "2024-05-14T02:16:00"
+        }
+      ]
+    },
+    "2": {
+      "id": 2,
+      "alert_code": "#1226",
+      "fraud_type": "Fraude Transacional",
+      "status": "Novo",
+      "risk_score": 90.8,
+      "amount": 14179.3,
+      "device_info": "Samsung Galaxy S23 — Android 14",
+      "ip_address": "203.175.109.153",
+      "location": "São Paulo, BR",
+      "created_at": "2024-05-05T16:31:00",
+      "user": {
+        "id": 4,
+        "name": "Ana Costa",
+        "email": "ana.costa@email.com",
+        "document": "259.320.881-53",
+        "phone": "(11) 92674-2519",
+        "risk_level": "CRITICAL"
+      },
+      "transactions": [
+        {
+          "id": 5,
+          "transaction_code": "TX000200",
+          "tx_type": "Boleto",
+          "amount": 17622.19,
+          "status": "Pendente",
+          "risk_score": 44.0,
+          "created_at": "2024-05-05T07:31:00"
+        },
+        {
+          "id": 6,
+          "transaction_code": "TX000201",
+          "tx_type": "Boleto",
+          "amount": 9010.53,
+          "status": "Bloqueada",
+          "risk_score": 13.3,
+          "created_at": "2024-05-05T01:31:00"
+        },
+        {
+          "id": 7,
+          "transaction_code": "TX000202",
+          "tx_type": "Cartão Crédito",
+          "amount": 30349.82,
+          "status": "Pendente",
+          "risk_score": 19.8,
+          "created_at": "2024-05-03T23:31:00"
+        },
+        {
+          "id": 8,
+          "transaction_code": "TX000203",
+          "tx_type": "Cartão Crédito",
+          "amount": 184.39,
+          "status": "Pendente",
+          "risk_score": 68.4,
+          "created_at": "2024-05-05T10:31:00"
+        }
+      ]
+    },
+    "3": {
+      "id": 3,
+      "alert_code": "#1227",
+      "fraud_type": "Outros",
+      "status": "Em análise",
+      "risk_score": 97.3,
+      "amount": 77539.78,
+      "device_info": "iPhone 14 Pro — iOS 17.2",
+      "ip_address": "175.185.30.175",
+      "location": "Lisboa, PT",
+      "created_at": "2024-05-13T19:29:00",
+      "user": {
+        "id": 7,
+        "name": "Rafael Souza",
+        "email": "rafael.souza@email.com",
+        "document": "171.146.777-39",
+        "phone": "(11) 95741-2307",
+        "risk_level": "MEDIUM"
+      },
+      "transactions": [
+        {
+          "id": 9,
+          "transaction_code": "TX000300",
+          "tx_type": "Cartão Débito",
+          "amount": 15764.39,
+          "status": "Aprovada",
+          "risk_score": 71.2,
+          "created_at": "2024-05-12T00:29:00"
+        },
+        {
+          "id": 10,
+          "transaction_code": "TX000301",
+          "tx_type": "Boleto",
+          "amount": 20179.78,
+          "status": "Bloqueada",
+          "risk_score": 57.1,
+          "created_at": "2024-05-11T14:29:00"
+        }
+      ]
+    },
+    "4": {
+      "id": 4,
+      "alert_code": "#1228",
+      "fraud_type": "Fraude Transacional",
+      "status": "Em análise",
+      "risk_score": 65.7,
+      "amount": 41108.27,
+      "device_info": "Motorola Edge 40 — Android 13",
+      "ip_address": "249.129.196.46",
+      "location": "Lisboa, PT",
+      "created_at": "2024-05-25T20:21:00",
+      "user": {
+        "id": 5,
+        "name": "Pedro Ferreira",
+        "email": "pedro.ferreira@email.com",
+        "document": "467.967.452-87",
+        "phone": "(11) 95333-1711",
+        "risk_level": "CRITICAL"
+      },
+      "transactions": [
+        {
+          "id": 11,
+          "transaction_code": "TX000400",
+          "tx_type": "Cartão Débito",
+          "amount": 28498.35,
+          "status": "Bloqueada",
+          "risk_score": 56.6,
+          "created_at": "2024-05-24T21:21:00"
+        },
+        {
+          "id": 12,
+          "transaction_code": "TX000401",
+          "tx_type": "Cartão Crédito",
+          "amount": 39309.37,
+          "status": "Pendente",
+          "risk_score": 65.6,
+          "created_at": "2024-05-24T17:21:00"
+        },
+        {
+          "id": 13,
+          "transaction_code": "TX000402",
+          "tx_type": "Cartão Débito",
+          "amount": 23711.99,
+          "status": "Pendente",
+          "risk_score": 24.4,
+          "created_at": "2024-05-24T16:21:00"
+        },
+        {
+          "id": 14,
+          "transaction_code": "TX000403",
+          "tx_type": "PIX",
+          "amount": 40939.33,
+          "status": "Aprovada",
+          "risk_score": 67.2,
+          "created_at": "2024-05-24T01:21:00"
+        },
+        {
+          "id": 15,
+          "transaction_code": "TX000404",
+          "tx_type": "PIX",
+          "amount": 12317.64,
+          "status": "Bloqueada",
+          "risk_score": 62.0,
+          "created_at": "2024-05-25T16:21:00"
+        }
+      ]
+    },
+    "5": {
+      "id": 5,
+      "alert_code": "#1229",
+      "fraud_type": "Outros",
+      "status": "Encerrado",
+      "risk_score": 51.7,
+      "amount": 33965.29,
+      "device_info": "Samsung Galaxy S23 — Android 14",
+      "ip_address": "139.245.200.237",
+      "location": "Lisboa, PT",
+      "created_at": "2024-05-28T20:19:00",
+      "user": {
+        "id": 2,
+        "name": "Maria Santos",
+        "email": "maria.santos@email.com",
+        "document": "303.833.765-99",
+        "phone": "(11) 99928-7873",
+        "risk_level": "MEDIUM"
+      },
+      "transactions": [
+        {
+          "id": 16,
+          "transaction_code": "TX000500",
+          "tx_type": "Cartão Crédito",
+          "amount": 20042.68,
+          "status": "Aprovada",
+          "risk_score": 65.8,
+          "created_at": "2024-05-26T18:19:00"
+        },
+        {
+          "id": 17,
+          "transaction_code": "TX000501",
+          "tx_type": "TED",
+          "amount": 40225.08,
+          "status": "Pendente",
+          "risk_score": 54.0,
+          "created_at": "2024-05-27T15:19:00"
+        },
+        {
+          "id": 18,
+          "transaction_code": "TX000502",
+          "tx_type": "TED",
+          "amount": 40090.69,
+          "status": "Pendente",
+          "risk_score": 55.1,
+          "created_at": "2024-05-26T09:19:00"
+        }
+      ]
+    },
+    "6": {
+      "id": 6,
+      "alert_code": "#1230",
+      "fraud_type": "Fraude Transacional",
+      "status": "Novo",
+      "risk_score": 94.8,
+      "amount": 79145.61,
+      "device_info": "Motorola Edge 40 — Android 13",
+      "ip_address": "62.15.62.225",
+      "location": "Lisboa, PT",
+      "created_at": "2024-05-20T10:31:00",
+      "user": {
+        "id": 1,
+        "name": "João Silva",
+        "email": "joão.silva@email.com",
+        "document": "532.132.130-21",
+        "phone": "(11) 94582-4811",
+        "risk_level": "LOW"
+      },
+      "transactions": [
+        {
+          "id": 19,
+          "transaction_code": "TX000600",
+          "tx_type": "Cartão Crédito",
+          "amount": 44870.68,
+          "status": "Pendente",
+          "risk_score": 83.2,
+          "created_at": "2024-05-17T11:31:00"
+        },
+        {
+          "id": 20,
+          "transaction_code": "TX000601",
+          "tx_type": "Cartão Débito",
+          "amount": 24281.39,
+          "status": "Aprovada",
+          "risk_score": 33.3,
+          "created_at": "2024-05-18T22:31:00"
+        },
+        {
+          "id": 21,
+          "transaction_code": "TX000602",
+          "tx_type": "Boleto",
+          "amount": 16053.51,
+          "status": "Pendente",
+          "risk_score": 16.8,
+          "created_at": "2024-05-18T23:31:00"
+        },
+        {
+          "id": 22,
+          "transaction_code": "TX000603",
+          "tx_type": "TED",
+          "amount": 3305.02,
+          "status": "Bloqueada",
+          "risk_score": 38.1,
+          "created_at": "2024-05-19T14:31:00"
+        },
+        {
+          "id": 23,
+          "transaction_code": "TX000604",
+          "tx_type": "Cartão Crédito",
+          "amount": 19534.89,
+          "status": "Pendente",
+          "risk_score": 90.4,
+          "created_at": "2024-05-19T07:31:00"
+        }
+      ]
+    },
+    "7": {
+      "id": 7,
+      "alert_code": "#1231",
+      "fraud_type": "Fraude Transacional",
+      "status": "Encerrado",
+      "risk_score": 85.2,
+      "amount": 11991.04,
+      "device_info": "MacBook Pro — Chrome 121",
+      "ip_address": "243.141.43.68",
+      "location": "Lisboa, PT",
+      "created_at": "2024-05-03T23:31:00",
+      "user": {
+        "id": 2,
+        "name": "Maria Santos",
+        "email": "maria.santos@email.com",
+        "document": "303.833.765-99",
+        "phone": "(11) 99928-7873",
+        "risk_level": "MEDIUM"
+      },
+      "transactions": [
+        {
+          "id": 24,
+          "transaction_code": "TX000700",
+          "tx_type": "Boleto",
+          "amount": 37698.41,
+          "status": "Bloqueada",
+          "risk_score": 55.7,
+          "created_at": "2024-05-02T01:31:00"
+        },
+        {
+          "id": 25,
+          "transaction_code": "TX000701",
+          "tx_type": "Boleto",
+          "amount": 21848.22,
+          "status": "Aprovada",
+          "risk_score": 43.1,
+          "created_at": "2024-05-02T18:31:00"
+        }
+      ]
+    },
+    "8": {
+      "id": 8,
+      "alert_code": "#1232",
+      "fraud_type": "Outros",
+      "status": "Encerrado",
+      "risk_score": 80.7,
+      "amount": 64308.93,
+      "device_info": "MacBook Pro — Chrome 121",
+      "ip_address": "172.167.96.113",
+      "location": "Lisboa, PT",
+      "created_at": "2024-05-14T06:59:00",
+      "user": {
+        "id": 10,
+        "name": "Camila Rocha",
+        "email": "camila.rocha@email.com",
+        "document": "573.488.376-91",
+        "phone": "(11) 94598-6313",
+        "risk_level": "LOW"
+      },
+      "transactions": [
+        {
+          "id": 26,
+          "transaction_code": "TX000800",
+          "tx_type": "PIX",
+          "amount": 45355.75,
+          "status": "Pendente",
+          "risk_score": 58.0,
+          "created_at": "2024-05-11T09:59:00"
+        },
+        {
+          "id": 27,
+          "transaction_code": "TX000801",
+          "tx_type": "TED",
+          "amount": 43355.88,
+          "status": "Aprovada",
+          "risk_score": 14.3,
+          "created_at": "2024-05-11T23:59:00"
+        },
+        {
+          "id": 28,
+          "transaction_code": "TX000802",
+          "tx_type": "Boleto",
+          "amount": 16941.28,
+          "status": "Bloqueada",
+          "risk_score": 33.7,
+          "created_at": "2024-05-11T19:59:00"
+        }
+      ]
+    },
+    "9": {
+      "id": 9,
+      "alert_code": "#1233",
+      "fraud_type": "Fraude Transacional",
+      "status": "Em análise",
+      "risk_score": 41.2,
+      "amount": 50075.98,
+      "device_info": "Windows 11 — Edge 120",
+      "ip_address": "57.2.19.182",
+      "location": "Madri, ES",
+      "created_at": "2024-05-04T07:14:00",
+      "user": {
+        "id": 8,
+        "name": "Juliana Mendes",
+        "email": "juliana.mendes@email.com",
+        "document": "203.489.384-68",
+        "phone": "(11) 96977-3664",
+        "risk_level": "HIGH"
+      },
+      "transactions": [
+        {
+          "id": 29,
+          "transaction_code": "TX000900",
+          "tx_type": "Cartão Débito",
+          "amount": 2699.07,
+          "status": "Bloqueada",
+          "risk_score": 29.1,
+          "created_at": "2024-05-04T04:14:00"
+        },
+        {
+          "id": 30,
+          "transaction_code": "TX000901",
+          "tx_type": "TED",
+          "amount": 41977.52,
+          "status": "Pendente",
+          "risk_score": 23.0,
+          "created_at": "2024-05-02T23:14:00"
+        },
+        {
+          "id": 31,
+          "transaction_code": "TX000902",
+          "tx_type": "Cartão Débito",
+          "amount": 47393.08,
+          "status": "Bloqueada",
+          "risk_score": 69.5,
+          "created_at": "2024-05-03T16:14:00"
+        },
+        {
+          "id": 32,
+          "transaction_code": "TX000903",
+          "tx_type": "TED",
+          "amount": 48239.57,
+          "status": "Aprovada",
+          "risk_score": 59.2,
+          "created_at": "2024-05-03T16:14:00"
+        },
+        {
+          "id": 33,
+          "transaction_code": "TX000904",
+          "tx_type": "PIX",
+          "amount": 29645.68,
+          "status": "Pendente",
+          "risk_score": 30.6,
+          "created_at": "2024-05-03T05:14:00"
+        }
+      ]
+    },
+    "10": {
+      "id": 10,
+      "alert_code": "#1234",
+      "fraud_type": "Fraude Transacional",
+      "status": "Em análise",
+      "risk_score": 44.2,
+      "amount": 21801.41,
+      "device_info": "MacBook Pro — Chrome 121",
+      "ip_address": "55.139.34.186",
+      "location": "Lisboa, PT",
+      "created_at": "2024-05-08T02:57:00",
+      "user": {
+        "id": 1,
+        "name": "João Silva",
+        "email": "joão.silva@email.com",
+        "document": "532.132.130-21",
+        "phone": "(11) 94582-4811",
+        "risk_level": "LOW"
+      },
+      "transactions": [
+        {
+          "id": 34,
+          "transaction_code": "TX001000",
+          "tx_type": "Cartão Débito",
+          "amount": 21476.06,
+          "status": "Bloqueada",
+          "risk_score": 15.9,
+          "created_at": "2024-05-06T05:57:00"
+        },
+        {
+          "id": 35,
+          "transaction_code": "TX001001",
+          "tx_type": "PIX",
+          "amount": 21732.82,
+          "status": "Bloqueada",
+          "risk_score": 64.0,
+          "created_at": "2024-05-05T11:57:00"
+        }
+      ]
+    },
+    "11": {
+      "id": 11,
+      "alert_code": "#1235",
+      "fraud_type": "Comportamento Atípico",
+      "status": "Em análise",
+      "risk_score": 51.2,
+      "amount": 9175.31,
+      "device_info": "MacBook Pro — Chrome 121",
+      "ip_address": "91.109.106.120",
+      "location": "Madri, ES",
+      "created_at": "2024-05-16T07:50:00",
+      "user": {
+        "id": 10,
+        "name": "Camila Rocha",
+        "email": "camila.rocha@email.com",
+        "document": "573.488.376-91",
+        "phone": "(11) 94598-6313",
+        "risk_level": "LOW"
+      },
+      "transactions": [
+        {
+          "id": 36,
+          "transaction_code": "TX001100",
+          "tx_type": "Boleto",
+          "amount": 30834.03,
+          "status": "Pendente",
+          "risk_score": 75.8,
+          "created_at": "2024-05-13T12:50:00"
+        },
+        {
+          "id": 37,
+          "transaction_code": "TX001101",
+          "tx_type": "Boleto",
+          "amount": 42600.49,
+          "status": "Aprovada",
+          "risk_score": 33.7,
+          "created_at": "2024-05-14T20:50:00"
+        },
+        {
+          "id": 38,
+          "transaction_code": "TX001102",
+          "tx_type": "Boleto",
+          "amount": 1532.13,
+          "status": "Bloqueada",
+          "risk_score": 25.5,
+          "created_at": "2024-05-14T06:50:00"
+        }
+      ]
+    },
+    "12": {
+      "id": 12,
+      "alert_code": "#1236",
+      "fraud_type": "Fraude Transacional",
+      "status": "Novo",
+      "risk_score": 63.8,
+      "amount": 30867.58,
+      "device_info": "iPhone 14 Pro — iOS 17.2",
+      "ip_address": "64.50.49.138",
+      "location": "Miami, US",
+      "created_at": "2024-05-22T20:41:00",
+      "user": {
+        "id": 1,
+        "name": "João Silva",
+        "email": "joão.silva@email.com",
+        "document": "532.132.130-21",
+        "phone": "(11) 94582-4811",
+        "risk_level": "LOW"
+      },
+      "transactions": [
+        {
+          "id": 39,
+          "transaction_code": "TX001200",
+          "tx_type": "Cartão Débito",
+          "amount": 35089.07,
+          "status": "Bloqueada",
+          "risk_score": 57.2,
+          "created_at": "2024-05-21T08:41:00"
+        },
+        {
+          "id": 40,
+          "transaction_code": "TX001201",
+          "tx_type": "Cartão Crédito",
+          "amount": 24480.03,
+          "status": "Aprovada",
+          "risk_score": 68.7,
+          "created_at": "2024-05-21T13:41:00"
+        },
+        {
+          "id": 41,
+          "transaction_code": "TX001202",
+          "tx_type": "Boleto",
+          "amount": 11157.66,
+          "status": "Pendente",
+          "risk_score": 30.7,
+          "created_at": "2024-05-22T08:41:00"
+        },
+        {
+          "id": 42,
+          "transaction_code": "TX001203",
+          "tx_type": "Cartão Débito",
+          "amount": 17253.49,
+          "status": "Pendente",
+          "risk_score": 56.8,
+          "created_at": "2024-05-19T21:41:00"
+        }
+      ]
+    },
+    "13": {
+      "id": 13,
+      "alert_code": "#1237",
+      "fraud_type": "Comportamento Atípico",
+      "status": "Novo",
+      "risk_score": 91.6,
+      "amount": 7246.95,
+      "device_info": "Windows 11 — Edge 120",
+      "ip_address": "26.13.167.139",
+      "location": "São Paulo, BR",
+      "created_at": "2024-05-14T05:17:00",
+      "user": {
+        "id": 3,
+        "name": "Carlos Oliveira",
+        "email": "carlos.oliveira@email.com",
+        "document": "703.384.928-10",
+        "phone": "(11) 93615-7924",
+        "risk_level": "HIGH"
+      },
+      "transactions": [
+        {
+          "id": 43,
+          "transaction_code": "TX001300",
+          "tx_type": "TED",
+          "amount": 6120.73,
+          "status": "Aprovada",
+          "risk_score": 36.8,
+          "created_at": "2024-05-12T20:17:00"
+        },
+        {
+          "id": 44,
+          "transaction_code": "TX001301",
+          "tx_type": "Cartão Crédito",
+          "amount": 13897.33,
+          "status": "Pendente",
+          "risk_score": 93.0,
+          "created_at": "2024-05-13T01:17:00"
+        },
+        {
+          "id": 45,
+          "transaction_code": "TX001302",
+          "tx_type": "Boleto",
+          "amount": 11451.41,
+          "status": "Aprovada",
+          "risk_score": 35.7,
+          "created_at": "2024-05-13T04:17:00"
+        },
+        {
+          "id": 46,
+          "transaction_code": "TX001303",
+          "tx_type": "PIX",
+          "amount": 27712.61,
+          "status": "Pendente",
+          "risk_score": 90.2,
+          "created_at": "2024-05-13T23:17:00"
+        }
+      ]
+    },
+    "14": {
+      "id": 14,
+      "alert_code": "#1238",
+      "fraud_type": "Comportamento Atípico",
+      "status": "Em análise",
+      "risk_score": 68.4,
+      "amount": 77886.21,
+      "device_info": "iPhone 14 Pro — iOS 17.2",
+      "ip_address": "43.98.1.253",
+      "location": "Miami, US",
+      "created_at": "2024-05-30T07:10:00",
+      "user": {
+        "id": 2,
+        "name": "Maria Santos",
+        "email": "maria.santos@email.com",
+        "document": "303.833.765-99",
+        "phone": "(11) 99928-7873",
+        "risk_level": "MEDIUM"
+      },
+      "transactions": [
+        {
+          "id": 47,
+          "transaction_code": "TX001400",
+          "tx_type": "Cartão Crédito",
+          "amount": 22079.39,
+          "status": "Aprovada",
+          "risk_score": 92.1,
+          "created_at": "2024-05-27T18:10:00"
+        },
+        {
+          "id": 48,
+          "transaction_code": "TX001401",
+          "tx_type": "Cartão Crédito",
+          "amount": 24638.15,
+          "status": "Pendente",
+          "risk_score": 63.5,
+          "created_at": "2024-05-29T22:10:00"
+        },
+        {
+          "id": 49,
+          "transaction_code": "TX001402",
+          "tx_type": "PIX",
+          "amount": 49696.51,
+          "status": "Aprovada",
+          "risk_score": 57.4,
+          "created_at": "2024-05-28T16:10:00"
+        },
+        {
+          "id": 50,
+          "transaction_code": "TX001403",
+          "tx_type": "Cartão Crédito",
+          "amount": 45434.37,
+          "status": "Bloqueada",
+          "risk_score": 83.1,
+          "created_at": "2024-05-28T06:10:00"
+        }
+      ]
+    },
+    "15": {
+      "id": 15,
+      "alert_code": "#1239",
+      "fraud_type": "Comportamento Atípico",
+      "status": "Encerrado",
+      "risk_score": 96.5,
+      "amount": 89590.33,
+      "device_info": "Windows 11 — Edge 120",
+      "ip_address": "170.184.125.40",
+      "location": "Rio de Janeiro, BR",
+      "created_at": "2024-05-30T14:18:00",
+      "user": {
+        "id": 5,
+        "name": "Pedro Ferreira",
+        "email": "pedro.ferreira@email.com",
+        "document": "467.967.452-87",
+        "phone": "(11) 95333-1711",
+        "risk_level": "CRITICAL"
+      },
+      "transactions": [
+        {
+          "id": 51,
+          "transaction_code": "TX001500",
+          "tx_type": "TED",
+          "amount": 31313.2,
+          "status": "Bloqueada",
+          "risk_score": 66.1,
+          "created_at": "2024-05-30T01:18:00"
+        },
+        {
+          "id": 52,
+          "transaction_code": "TX001501",
+          "tx_type": "PIX",
+          "amount": 7910.98,
+          "status": "Bloqueada",
+          "risk_score": 48.3,
+          "created_at": "2024-05-27T15:18:00"
+        }
+      ]
+    },
+    "16": {
+      "id": 16,
+      "alert_code": "#1240",
+      "fraud_type": "Outros",
+      "status": "Novo",
+      "risk_score": 84.1,
+      "amount": 5616.29,
+      "device_info": "Windows 11 — Edge 120",
+      "ip_address": "123.129.236.219",
+      "location": "Lisboa, PT",
+      "created_at": "2024-05-07T01:37:00",
+      "user": {
+        "id": 5,
+        "name": "Pedro Ferreira",
+        "email": "pedro.ferreira@email.com",
+        "document": "467.967.452-87",
+        "phone": "(11) 95333-1711",
+        "risk_level": "CRITICAL"
+      },
+      "transactions": [
+        {
+          "id": 53,
+          "transaction_code": "TX001600",
+          "tx_type": "Boleto",
+          "amount": 35377.1,
+          "status": "Pendente",
+          "risk_score": 83.1,
+          "created_at": "2024-05-05T19:37:00"
+        },
+        {
+          "id": 54,
+          "transaction_code": "TX001601",
+          "tx_type": "Cartão Crédito",
+          "amount": 5827.34,
+          "status": "Aprovada",
+          "risk_score": 65.0,
+          "created_at": "2024-05-05T23:37:00"
+        }
+      ]
+    },
+    "17": {
+      "id": 17,
+      "alert_code": "#1241",
+      "fraud_type": "Lavagem de Dinheiro",
+      "status": "Novo",
+      "risk_score": 75.1,
+      "amount": 60931.52,
+      "device_info": "Samsung Galaxy S23 — Android 14",
+      "ip_address": "104.31.242.228",
+      "location": "Lisboa, PT",
+      "created_at": "2024-05-02T16:05:00",
+      "user": {
+        "id": 3,
+        "name": "Carlos Oliveira",
+        "email": "carlos.oliveira@email.com",
+        "document": "703.384.928-10",
+        "phone": "(11) 93615-7924",
+        "risk_level": "HIGH"
+      },
+      "transactions": [
+        {
+          "id": 55,
+          "transaction_code": "TX001700",
+          "tx_type": "Boleto",
+          "amount": 29792.7,
+          "status": "Pendente",
+          "risk_score": 88.3,
+          "created_at": "2024-05-01T18:05:00"
+        },
+        {
+          "id": 56,
+          "transaction_code": "TX001701",
+          "tx_type": "Cartão Crédito",
+          "amount": 47139.54,
+          "status": "Pendente",
+          "risk_score": 55.9,
+          "created_at": "2024-05-01T01:05:00"
+        }
+      ]
+    },
+    "18": {
+      "id": 18,
+      "alert_code": "#1242",
+      "fraud_type": "Outros",
+      "status": "Novo",
+      "risk_score": 64.7,
+      "amount": 52738.67,
+      "device_info": "Windows 11 — Edge 120",
+      "ip_address": "81.240.67.53",
+      "location": "Madri, ES",
+      "created_at": "2024-05-19T19:02:00",
+      "user": {
+        "id": 4,
+        "name": "Ana Costa",
+        "email": "ana.costa@email.com",
+        "document": "259.320.881-53",
+        "phone": "(11) 92674-2519",
+        "risk_level": "CRITICAL"
+      },
+      "transactions": [
+        {
+          "id": 57,
+          "transaction_code": "TX001800",
+          "tx_type": "Boleto",
+          "amount": 30225.31,
+          "status": "Aprovada",
+          "risk_score": 17.8,
+          "created_at": "2024-05-17T11:02:00"
+        },
+        {
+          "id": 58,
+          "transaction_code": "TX001801",
+          "tx_type": "Cartão Débito",
+          "amount": 2107.56,
+          "status": "Aprovada",
+          "risk_score": 50.0,
+          "created_at": "2024-05-18T08:02:00"
+        }
+      ]
+    },
+    "19": {
+      "id": 19,
+      "alert_code": "#1243",
+      "fraud_type": "Comportamento Atípico",
+      "status": "Novo",
+      "risk_score": 79.6,
+      "amount": 27349.74,
+      "device_info": "Motorola Edge 40 — Android 13",
+      "ip_address": "238.193.240.19",
+      "location": "São Paulo, BR",
+      "created_at": "2024-05-11T07:16:00",
+      "user": {
+        "id": 12,
+        "name": "Larissa Nunes",
+        "email": "larissa.nunes@email.com",
+        "document": "680.997.835-50",
+        "phone": "(11) 94483-9179",
+        "risk_level": "CRITICAL"
+      },
+      "transactions": [
+        {
+          "id": 59,
+          "transaction_code": "TX001900",
+          "tx_type": "PIX",
+          "amount": 23553.52,
+          "status": "Bloqueada",
+          "risk_score": 38.3,
+          "created_at": "2024-05-08T16:16:00"
+        },
+        {
+          "id": 60,
+          "transaction_code": "TX001901",
+          "tx_type": "Cartão Crédito",
+          "amount": 14482.07,
+          "status": "Bloqueada",
+          "risk_score": 79.2,
+          "created_at": "2024-05-09T02:16:00"
+        },
+        {
+          "id": 61,
+          "transaction_code": "TX001902",
+          "tx_type": "Boleto",
+          "amount": 12694.7,
+          "status": "Aprovada",
+          "risk_score": 92.5,
+          "created_at": "2024-05-10T19:16:00"
+        },
+        {
+          "id": 62,
+          "transaction_code": "TX001903",
+          "tx_type": "Cartão Crédito",
+          "amount": 20721.05,
+          "status": "Aprovada",
+          "risk_score": 54.1,
+          "created_at": "2024-05-08T09:16:00"
+        },
+        {
+          "id": 63,
+          "transaction_code": "TX001904",
+          "tx_type": "PIX",
+          "amount": 10257.56,
+          "status": "Pendente",
+          "risk_score": 21.1,
+          "created_at": "2024-05-08T22:16:00"
+        }
+      ]
+    },
+    "20": {
+      "id": 20,
+      "alert_code": "#1244",
+      "fraud_type": "Fraude Transacional",
+      "status": "Encerrado",
+      "risk_score": 52.6,
+      "amount": 24235.44,
+      "device_info": "Motorola Edge 40 — Android 13",
+      "ip_address": "226.18.226.63",
+      "location": "Curitiba, BR",
+      "created_at": "2024-05-20T18:06:00",
+      "user": {
+        "id": 8,
+        "name": "Juliana Mendes",
+        "email": "juliana.mendes@email.com",
+        "document": "203.489.384-68",
+        "phone": "(11) 96977-3664",
+        "risk_level": "HIGH"
+      },
+      "transactions": [
+        {
+          "id": 64,
+          "transaction_code": "TX002000",
+          "tx_type": "Cartão Débito",
+          "amount": 39985.76,
+          "status": "Pendente",
+          "risk_score": 23.5,
+          "created_at": "2024-05-20T14:06:00"
+        },
+        {
+          "id": 65,
+          "transaction_code": "TX002001",
+          "tx_type": "PIX",
+          "amount": 11312.56,
+          "status": "Aprovada",
+          "risk_score": 49.2,
+          "created_at": "2024-05-18T13:06:00"
+        }
+      ]
+    },
+    "21": {
+      "id": 21,
+      "alert_code": "#1245",
+      "fraud_type": "Outros",
+      "status": "Encerrado",
+      "risk_score": 57.8,
+      "amount": 88554.87,
+      "device_info": "Windows 11 — Edge 120",
+      "ip_address": "3.171.210.142",
+      "location": "Curitiba, BR",
+      "created_at": "2024-05-06T14:53:00",
+      "user": {
+        "id": 5,
+        "name": "Pedro Ferreira",
+        "email": "pedro.ferreira@email.com",
+        "document": "467.967.452-87",
+        "phone": "(11) 95333-1711",
+        "risk_level": "CRITICAL"
+      },
+      "transactions": [
+        {
+          "id": 66,
+          "transaction_code": "TX002100",
+          "tx_type": "Boleto",
+          "amount": 20832.97,
+          "status": "Bloqueada",
+          "risk_score": 93.3,
+          "created_at": "2024-05-03T20:53:00"
+        },
+        {
+          "id": 67,
+          "transaction_code": "TX002101",
+          "tx_type": "Cartão Crédito",
+          "amount": 9611.46,
+          "status": "Pendente",
+          "risk_score": 53.2,
+          "created_at": "2024-05-05T19:53:00"
+        },
+        {
+          "id": 68,
+          "transaction_code": "TX002102",
+          "tx_type": "Boleto",
+          "amount": 46718.99,
+          "status": "Pendente",
+          "risk_score": 32.7,
+          "created_at": "2024-05-04T08:53:00"
+        },
+        {
+          "id": 69,
+          "transaction_code": "TX002103",
+          "tx_type": "TED",
+          "amount": 22382.71,
+          "status": "Bloqueada",
+          "risk_score": 39.3,
+          "created_at": "2024-05-03T23:53:00"
+        }
+      ]
+    },
+    "22": {
+      "id": 22,
+      "alert_code": "#1246",
+      "fraud_type": "Fraude Transacional",
+      "status": "Novo",
+      "risk_score": 83.8,
+      "amount": 14412.59,
+      "device_info": "Motorola Edge 40 — Android 13",
+      "ip_address": "155.54.184.88",
+      "location": "Rio de Janeiro, BR",
+      "created_at": "2024-05-04T04:16:00",
+      "user": {
+        "id": 11,
+        "name": "Bruno Martins",
+        "email": "bruno.martins@email.com",
+        "document": "941.132.924-50",
+        "phone": "(11) 97572-5386",
+        "risk_level": "LOW"
+      },
+      "transactions": [
+        {
+          "id": 70,
+          "transaction_code": "TX002200",
+          "tx_type": "TED",
+          "amount": 28632.7,
+          "status": "Aprovada",
+          "risk_score": 82.8,
+          "created_at": "2024-05-03T03:16:00"
+        },
+        {
+          "id": 71,
+          "transaction_code": "TX002201",
+          "tx_type": "Cartão Crédito",
+          "amount": 19365.33,
+          "status": "Pendente",
+          "risk_score": 77.4,
+          "created_at": "2024-05-01T15:16:00"
+        },
+        {
+          "id": 72,
+          "transaction_code": "TX002202",
+          "tx_type": "Cartão Débito",
+          "amount": 48271.14,
+          "status": "Bloqueada",
+          "risk_score": 83.9,
+          "created_at": "2024-05-03T11:16:00"
+        },
+        {
+          "id": 73,
+          "transaction_code": "TX002203",
+          "tx_type": "PIX",
+          "amount": 36149.95,
+          "status": "Bloqueada",
+          "risk_score": 84.0,
+          "created_at": "2024-05-01T17:16:00"
+        }
+      ]
+    },
+    "23": {
+      "id": 23,
+      "alert_code": "#1247",
+      "fraud_type": "Comportamento Atípico",
+      "status": "Em análise",
+      "risk_score": 93.4,
+      "amount": 76226.28,
+      "device_info": "iPhone 14 Pro — iOS 17.2",
+      "ip_address": "163.109.213.71",
+      "location": "São Paulo, BR",
+      "created_at": "2024-05-21T08:32:00",
+      "user": {
+        "id": 11,
+        "name": "Bruno Martins",
+        "email": "bruno.martins@email.com",
+        "document": "941.132.924-50",
+        "phone": "(11) 97572-5386",
+        "risk_level": "LOW"
+      },
+      "transactions": [
+        {
+          "id": 74,
+          "transaction_code": "TX002300",
+          "tx_type": "Cartão Débito",
+          "amount": 34665.96,
+          "status": "Pendente",
+          "risk_score": 16.8,
+          "created_at": "2024-05-19T12:32:00"
+        },
+        {
+          "id": 75,
+          "transaction_code": "TX002301",
+          "tx_type": "Cartão Débito",
+          "amount": 1891.37,
+          "status": "Aprovada",
+          "risk_score": 30.0,
+          "created_at": "2024-05-18T17:32:00"
+        },
+        {
+          "id": 76,
+          "transaction_code": "TX002302",
+          "tx_type": "PIX",
+          "amount": 38042.45,
+          "status": "Pendente",
+          "risk_score": 84.2,
+          "created_at": "2024-05-19T00:32:00"
+        },
+        {
+          "id": 77,
+          "transaction_code": "TX002303",
+          "tx_type": "PIX",
+          "amount": 16286.3,
+          "status": "Aprovada",
+          "risk_score": 34.9,
+          "created_at": "2024-05-21T04:32:00"
+        }
+      ]
+    },
+    "24": {
+      "id": 24,
+      "alert_code": "#1248",
+      "fraud_type": "Cadastro Suspeito",
+      "status": "Novo",
+      "risk_score": 83.7,
+      "amount": 49875.4,
+      "device_info": "MacBook Pro — Chrome 121",
+      "ip_address": "144.3.29.20",
+      "location": "Madri, ES",
+      "created_at": "2024-05-11T04:40:00",
+      "user": {
+        "id": 1,
+        "name": "João Silva",
+        "email": "joão.silva@email.com",
+        "document": "532.132.130-21",
+        "phone": "(11) 94582-4811",
+        "risk_level": "LOW"
+      },
+      "transactions": [
+        {
+          "id": 78,
+          "transaction_code": "TX002400",
+          "tx_type": "Cartão Crédito",
+          "amount": 28339.81,
+          "status": "Aprovada",
+          "risk_score": 24.4,
+          "created_at": "2024-05-08T08:40:00"
+        },
+        {
+          "id": 79,
+          "transaction_code": "TX002401",
+          "tx_type": "Cartão Crédito",
+          "amount": 45650.17,
+          "status": "Aprovada",
+          "risk_score": 29.7,
+          "created_at": "2024-05-09T21:40:00"
+        },
+        {
+          "id": 80,
+          "transaction_code": "TX002402",
+          "tx_type": "Cartão Crédito",
+          "amount": 45070.35,
+          "status": "Pendente",
+          "risk_score": 56.5,
+          "created_at": "2024-05-11T02:40:00"
+        }
+      ]
+    },
+    "25": {
+      "id": 25,
+      "alert_code": "#1249",
+      "fraud_type": "Cadastro Suspeito",
+      "status": "Encerrado",
+      "risk_score": 72.6,
+      "amount": 38965.91,
+      "device_info": "iPhone 14 Pro — iOS 17.2",
+      "ip_address": "79.94.231.239",
+      "location": "São Paulo, BR",
+      "created_at": "2024-05-18T01:53:00",
+      "user": {
+        "id": 3,
+        "name": "Carlos Oliveira",
+        "email": "carlos.oliveira@email.com",
+        "document": "703.384.928-10",
+        "phone": "(11) 93615-7924",
+        "risk_level": "HIGH"
+      },
+      "transactions": [
+        {
+          "id": 81,
+          "transaction_code": "TX002500",
+          "tx_type": "Boleto",
+          "amount": 22896.11,
+          "status": "Bloqueada",
+          "risk_score": 26.9,
+          "created_at": "2024-05-15T18:53:00"
+        },
+        {
+          "id": 82,
+          "transaction_code": "TX002501",
+          "tx_type": "Cartão Crédito",
+          "amount": 28638.94,
+          "status": "Pendente",
+          "risk_score": 35.1,
+          "created_at": "2024-05-16T18:53:00"
+        },
+        {
+          "id": 83,
+          "transaction_code": "TX002502",
+          "tx_type": "Boleto",
+          "amount": 504.09,
+          "status": "Pendente",
+          "risk_score": 76.2,
+          "created_at": "2024-05-15T22:53:00"
+        },
+        {
+          "id": 84,
+          "transaction_code": "TX002503",
+          "tx_type": "Cartão Débito",
+          "amount": 40116.4,
+          "status": "Aprovada",
+          "risk_score": 64.1,
+          "created_at": "2024-05-16T19:53:00"
+        }
+      ]
+    }
+  },
+  "investigationDetails": {
+    "1": {
+      "id": 1,
+      "investigation_code": "INV-2024-0001",
+      "status": "Arquivada",
+      "analyst": "Carlos Mendes",
+      "findings": "Padrão de comportamento suspeito identificado. Múltiplas transações em curto período.",
+      "ai_summary": null,
+      "risk_score": 84.0,
+      "priority": "LOW",
+      "timeline": [
+        {
+          "time": "2024-05-15T01:16:00",
+          "event": "Transação de alto valor detectada",
+          "type": "warning"
+        },
+        {
+          "time": "2024-05-15T03:16:00",
+          "event": "Múltiplas tentativas de login identificadas",
+          "type": "danger"
+        },
+        {
+          "time": "2024-05-15T04:16:00",
+          "event": "Alerta gerado automaticamente pelo sistema",
+          "type": "alert"
+        },
+        {
+          "time": "2024-05-15T04:46:00",
+          "event": "Encaminhado para equipe de investigação",
+          "type": "info"
+        }
+      ],
+      "created_at": "2026-06-11T13:07:04.284075",
+      "alert": {
+        "id": 1,
+        "alert_code": "#1225",
+        "fraud_type": "Lavagem de Dinheiro",
+        "status": "Novo",
+        "risk_score": 84.0,
+        "amount": 48738.47,
+        "device_info": "Windows 11 — Edge 120",
+        "ip_address": "110.230.150.103",
+        "location": "Curitiba, BR",
+        "created_at": "2024-05-15T04:16:00",
+        "user": {
+          "name": "Bruno Martins",
+          "email": "bruno.martins@email.com",
+          "document": "941.132.924-50",
+          "phone": "(11) 97572-5386"
+        }
+      }
+    },
+    "2": {
+      "id": 2,
+      "investigation_code": "INV-2024-0002",
+      "status": "Arquivada",
+      "analyst": "Ana Lima",
+      "findings": "Padrão de comportamento suspeito identificado. Múltiplas transações em curto período.",
+      "ai_summary": null,
+      "risk_score": 90.8,
+      "priority": "HIGH",
+      "timeline": [
+        {
+          "time": "2024-05-05T13:31:00",
+          "event": "Transação de alto valor detectada",
+          "type": "warning"
+        },
+        {
+          "time": "2024-05-05T15:31:00",
+          "event": "Múltiplas tentativas de login identificadas",
+          "type": "danger"
+        },
+        {
+          "time": "2024-05-05T16:31:00",
+          "event": "Alerta gerado automaticamente pelo sistema",
+          "type": "alert"
+        },
+        {
+          "time": "2024-05-05T17:01:00",
+          "event": "Encaminhado para equipe de investigação",
+          "type": "info"
+        }
+      ],
+      "created_at": "2026-06-11T13:07:04.285588",
+      "alert": {
+        "id": 2,
+        "alert_code": "#1226",
+        "fraud_type": "Fraude Transacional",
+        "status": "Novo",
+        "risk_score": 90.8,
+        "amount": 14179.3,
+        "device_info": "Samsung Galaxy S23 — Android 14",
+        "ip_address": "203.175.109.153",
+        "location": "São Paulo, BR",
+        "created_at": "2024-05-05T16:31:00",
+        "user": {
+          "name": "Ana Costa",
+          "email": "ana.costa@email.com",
+          "document": "259.320.881-53",
+          "phone": "(11) 92674-2519"
+        }
+      }
+    },
+    "3": {
+      "id": 3,
+      "investigation_code": "INV-2024-0003",
+      "status": "Concluída",
+      "analyst": "Ana Lima",
+      "findings": "Padrão de comportamento suspeito identificado. Múltiplas transações em curto período.",
+      "ai_summary": null,
+      "risk_score": 97.3,
+      "priority": "HIGH",
+      "timeline": [
+        {
+          "time": "2024-05-13T16:29:00",
+          "event": "Transação de alto valor detectada",
+          "type": "warning"
+        },
+        {
+          "time": "2024-05-13T18:29:00",
+          "event": "Múltiplas tentativas de login identificadas",
+          "type": "danger"
+        },
+        {
+          "time": "2024-05-13T19:29:00",
+          "event": "Alerta gerado automaticamente pelo sistema",
+          "type": "alert"
+        },
+        {
+          "time": "2024-05-13T19:59:00",
+          "event": "Encaminhado para equipe de investigação",
+          "type": "info"
+        }
+      ],
+      "created_at": "2026-06-11T13:07:04.286602",
+      "alert": {
+        "id": 3,
+        "alert_code": "#1227",
+        "fraud_type": "Outros",
+        "status": "Em análise",
+        "risk_score": 97.3,
+        "amount": 77539.78,
+        "device_info": "iPhone 14 Pro — iOS 17.2",
+        "ip_address": "175.185.30.175",
+        "location": "Lisboa, PT",
+        "created_at": "2024-05-13T19:29:00",
+        "user": {
+          "name": "Rafael Souza",
+          "email": "rafael.souza@email.com",
+          "document": "171.146.777-39",
+          "phone": "(11) 95741-2307"
+        }
+      }
+    },
+    "4": {
+      "id": 4,
+      "investigation_code": "INV-2024-0004",
+      "status": "Arquivada",
+      "analyst": "Carlos Mendes",
+      "findings": "Padrão de comportamento suspeito identificado. Múltiplas transações em curto período.",
+      "ai_summary": null,
+      "risk_score": 65.7,
+      "priority": "LOW",
+      "timeline": [
+        {
+          "time": "2024-05-25T17:21:00",
+          "event": "Transação de alto valor detectada",
+          "type": "warning"
+        },
+        {
+          "time": "2024-05-25T19:21:00",
+          "event": "Múltiplas tentativas de login identificadas",
+          "type": "danger"
+        },
+        {
+          "time": "2024-05-25T20:21:00",
+          "event": "Alerta gerado automaticamente pelo sistema",
+          "type": "alert"
+        },
+        {
+          "time": "2024-05-25T20:51:00",
+          "event": "Encaminhado para equipe de investigação",
+          "type": "info"
+        }
+      ],
+      "created_at": "2026-06-11T13:07:04.287603",
+      "alert": {
+        "id": 4,
+        "alert_code": "#1228",
+        "fraud_type": "Fraude Transacional",
+        "status": "Em análise",
+        "risk_score": 65.7,
+        "amount": 41108.27,
+        "device_info": "Motorola Edge 40 — Android 13",
+        "ip_address": "249.129.196.46",
+        "location": "Lisboa, PT",
+        "created_at": "2024-05-25T20:21:00",
+        "user": {
+          "name": "Pedro Ferreira",
+          "email": "pedro.ferreira@email.com",
+          "document": "467.967.452-87",
+          "phone": "(11) 95333-1711"
+        }
+      }
+    },
+    "5": {
+      "id": 5,
+      "investigation_code": "INV-2024-0005",
+      "status": "Concluída",
+      "analyst": "Fernanda Costa",
+      "findings": "Padrão de comportamento suspeito identificado. Múltiplas transações em curto período.",
+      "ai_summary": null,
+      "risk_score": 51.7,
+      "priority": "CRITICAL",
+      "timeline": [
+        {
+          "time": "2024-05-28T17:19:00",
+          "event": "Transação de alto valor detectada",
+          "type": "warning"
+        },
+        {
+          "time": "2024-05-28T19:19:00",
+          "event": "Múltiplas tentativas de login identificadas",
+          "type": "danger"
+        },
+        {
+          "time": "2024-05-28T20:19:00",
+          "event": "Alerta gerado automaticamente pelo sistema",
+          "type": "alert"
+        },
+        {
+          "time": "2024-05-28T20:49:00",
+          "event": "Encaminhado para equipe de investigação",
+          "type": "info"
+        }
+      ],
+      "created_at": "2026-06-11T13:07:04.288605",
+      "alert": {
+        "id": 5,
+        "alert_code": "#1229",
+        "fraud_type": "Outros",
+        "status": "Encerrado",
+        "risk_score": 51.7,
+        "amount": 33965.29,
+        "device_info": "Samsung Galaxy S23 — Android 14",
+        "ip_address": "139.245.200.237",
+        "location": "Lisboa, PT",
+        "created_at": "2024-05-28T20:19:00",
+        "user": {
+          "name": "Maria Santos",
+          "email": "maria.santos@email.com",
+          "document": "303.833.765-99",
+          "phone": "(11) 99928-7873"
+        }
+      }
+    },
+    "6": {
+      "id": 6,
+      "investigation_code": "INV-2024-0006",
+      "status": "Em andamento",
+      "analyst": "Carlos Mendes",
+      "findings": "Padrão de comportamento suspeito identificado. Múltiplas transações em curto período.",
+      "ai_summary": null,
+      "risk_score": 94.8,
+      "priority": "MEDIUM",
+      "timeline": [
+        {
+          "time": "2024-05-20T07:31:00",
+          "event": "Transação de alto valor detectada",
+          "type": "warning"
+        },
+        {
+          "time": "2024-05-20T09:31:00",
+          "event": "Múltiplas tentativas de login identificadas",
+          "type": "danger"
+        },
+        {
+          "time": "2024-05-20T10:31:00",
+          "event": "Alerta gerado automaticamente pelo sistema",
+          "type": "alert"
+        },
+        {
+          "time": "2024-05-20T11:01:00",
+          "event": "Encaminhado para equipe de investigação",
+          "type": "info"
+        }
+      ],
+      "created_at": "2026-06-11T13:07:04.290647",
+      "alert": {
+        "id": 6,
+        "alert_code": "#1230",
+        "fraud_type": "Fraude Transacional",
+        "status": "Novo",
+        "risk_score": 94.8,
+        "amount": 79145.61,
+        "device_info": "Motorola Edge 40 — Android 13",
+        "ip_address": "62.15.62.225",
+        "location": "Lisboa, PT",
+        "created_at": "2024-05-20T10:31:00",
+        "user": {
+          "name": "João Silva",
+          "email": "joão.silva@email.com",
+          "document": "532.132.130-21",
+          "phone": "(11) 94582-4811"
+        }
+      }
+    },
+    "7": {
+      "id": 7,
+      "investigation_code": "INV-2024-0007",
+      "status": "Arquivada",
+      "analyst": "Fernanda Costa",
+      "findings": "Padrão de comportamento suspeito identificado. Múltiplas transações em curto período.",
+      "ai_summary": null,
+      "risk_score": 85.2,
+      "priority": "HIGH",
+      "timeline": [
+        {
+          "time": "2024-05-03T20:31:00",
+          "event": "Transação de alto valor detectada",
+          "type": "warning"
+        },
+        {
+          "time": "2024-05-03T22:31:00",
+          "event": "Múltiplas tentativas de login identificadas",
+          "type": "danger"
+        },
+        {
+          "time": "2024-05-03T23:31:00",
+          "event": "Alerta gerado automaticamente pelo sistema",
+          "type": "alert"
+        },
+        {
+          "time": "2024-05-04T00:01:00",
+          "event": "Encaminhado para equipe de investigação",
+          "type": "info"
+        }
+      ],
+      "created_at": "2026-06-11T13:07:04.291669",
+      "alert": {
+        "id": 7,
+        "alert_code": "#1231",
+        "fraud_type": "Fraude Transacional",
+        "status": "Encerrado",
+        "risk_score": 85.2,
+        "amount": 11991.04,
+        "device_info": "MacBook Pro — Chrome 121",
+        "ip_address": "243.141.43.68",
+        "location": "Lisboa, PT",
+        "created_at": "2024-05-03T23:31:00",
+        "user": {
+          "name": "Maria Santos",
+          "email": "maria.santos@email.com",
+          "document": "303.833.765-99",
+          "phone": "(11) 99928-7873"
+        }
+      }
+    },
+    "8": {
+      "id": 8,
+      "investigation_code": "INV-2024-0008",
+      "status": "Em andamento",
+      "analyst": "Fernanda Costa",
+      "findings": "Padrão de comportamento suspeito identificado. Múltiplas transações em curto período.",
+      "ai_summary": null,
+      "risk_score": 80.7,
+      "priority": "CRITICAL",
+      "timeline": [
+        {
+          "time": "2024-05-14T03:59:00",
+          "event": "Transação de alto valor detectada",
+          "type": "warning"
+        },
+        {
+          "time": "2024-05-14T05:59:00",
+          "event": "Múltiplas tentativas de login identificadas",
+          "type": "danger"
+        },
+        {
+          "time": "2024-05-14T06:59:00",
+          "event": "Alerta gerado automaticamente pelo sistema",
+          "type": "alert"
+        },
+        {
+          "time": "2024-05-14T07:29:00",
+          "event": "Encaminhado para equipe de investigação",
+          "type": "info"
+        }
+      ],
+      "created_at": "2026-06-11T13:07:04.293663",
+      "alert": {
+        "id": 8,
+        "alert_code": "#1232",
+        "fraud_type": "Outros",
+        "status": "Encerrado",
+        "risk_score": 80.7,
+        "amount": 64308.93,
+        "device_info": "MacBook Pro — Chrome 121",
+        "ip_address": "172.167.96.113",
+        "location": "Lisboa, PT",
+        "created_at": "2024-05-14T06:59:00",
+        "user": {
+          "name": "Camila Rocha",
+          "email": "camila.rocha@email.com",
+          "document": "573.488.376-91",
+          "phone": "(11) 94598-6313"
+        }
+      }
+    },
+    "9": {
+      "id": 9,
+      "investigation_code": "INV-2024-0009",
+      "status": "Concluída",
+      "analyst": "Fernanda Costa",
+      "findings": "Padrão de comportamento suspeito identificado. Múltiplas transações em curto período.",
+      "ai_summary": null,
+      "risk_score": 41.2,
+      "priority": "LOW",
+      "timeline": [
+        {
+          "time": "2024-05-04T04:14:00",
+          "event": "Transação de alto valor detectada",
+          "type": "warning"
+        },
+        {
+          "time": "2024-05-04T06:14:00",
+          "event": "Múltiplas tentativas de login identificadas",
+          "type": "danger"
+        },
+        {
+          "time": "2024-05-04T07:14:00",
+          "event": "Alerta gerado automaticamente pelo sistema",
+          "type": "alert"
+        },
+        {
+          "time": "2024-05-04T07:44:00",
+          "event": "Encaminhado para equipe de investigação",
+          "type": "info"
+        }
+      ],
+      "created_at": "2026-06-11T13:07:04.294635",
+      "alert": {
+        "id": 9,
+        "alert_code": "#1233",
+        "fraud_type": "Fraude Transacional",
+        "status": "Em análise",
+        "risk_score": 41.2,
+        "amount": 50075.98,
+        "device_info": "Windows 11 — Edge 120",
+        "ip_address": "57.2.19.182",
+        "location": "Madri, ES",
+        "created_at": "2024-05-04T07:14:00",
+        "user": {
+          "name": "Juliana Mendes",
+          "email": "juliana.mendes@email.com",
+          "document": "203.489.384-68",
+          "phone": "(11) 96977-3664"
+        }
+      }
+    },
+    "10": {
+      "id": 10,
+      "investigation_code": "INV-2024-0010",
+      "status": "Concluída",
+      "analyst": "Ana Lima",
+      "findings": "Padrão de comportamento suspeito identificado. Múltiplas transações em curto período.",
+      "ai_summary": null,
+      "risk_score": 44.2,
+      "priority": "MEDIUM",
+      "timeline": [
+        {
+          "time": "2024-05-07T23:57:00",
+          "event": "Transação de alto valor detectada",
+          "type": "warning"
+        },
+        {
+          "time": "2024-05-08T01:57:00",
+          "event": "Múltiplas tentativas de login identificadas",
+          "type": "danger"
+        },
+        {
+          "time": "2024-05-08T02:57:00",
+          "event": "Alerta gerado automaticamente pelo sistema",
+          "type": "alert"
+        },
+        {
+          "time": "2024-05-08T03:27:00",
+          "event": "Encaminhado para equipe de investigação",
+          "type": "info"
+        }
+      ],
+      "created_at": "2026-06-11T13:07:04.298687",
+      "alert": {
+        "id": 10,
+        "alert_code": "#1234",
+        "fraud_type": "Fraude Transacional",
+        "status": "Em análise",
+        "risk_score": 44.2,
+        "amount": 21801.41,
+        "device_info": "MacBook Pro — Chrome 121",
+        "ip_address": "55.139.34.186",
+        "location": "Lisboa, PT",
+        "created_at": "2024-05-08T02:57:00",
+        "user": {
+          "name": "João Silva",
+          "email": "joão.silva@email.com",
+          "document": "532.132.130-21",
+          "phone": "(11) 94582-4811"
+        }
+      }
+    },
+    "11": {
+      "id": 11,
+      "investigation_code": "INV-2024-0011",
+      "status": "Em andamento",
+      "analyst": "Rafael Torres",
+      "findings": "Padrão de comportamento suspeito identificado. Múltiplas transações em curto período.",
+      "ai_summary": null,
+      "risk_score": 51.2,
+      "priority": "HIGH",
+      "timeline": [
+        {
+          "time": "2024-05-16T04:50:00",
+          "event": "Transação de alto valor detectada",
+          "type": "warning"
+        },
+        {
+          "time": "2024-05-16T06:50:00",
+          "event": "Múltiplas tentativas de login identificadas",
+          "type": "danger"
+        },
+        {
+          "time": "2024-05-16T07:50:00",
+          "event": "Alerta gerado automaticamente pelo sistema",
+          "type": "alert"
+        },
+        {
+          "time": "2024-05-16T08:20:00",
+          "event": "Encaminhado para equipe de investigação",
+          "type": "info"
+        }
+      ],
+      "created_at": "2026-06-11T13:07:04.300704",
+      "alert": {
+        "id": 11,
+        "alert_code": "#1235",
+        "fraud_type": "Comportamento Atípico",
+        "status": "Em análise",
+        "risk_score": 51.2,
+        "amount": 9175.31,
+        "device_info": "MacBook Pro — Chrome 121",
+        "ip_address": "91.109.106.120",
+        "location": "Madri, ES",
+        "created_at": "2024-05-16T07:50:00",
+        "user": {
+          "name": "Camila Rocha",
+          "email": "camila.rocha@email.com",
+          "document": "573.488.376-91",
+          "phone": "(11) 94598-6313"
+        }
+      }
+    },
+    "12": {
+      "id": 12,
+      "investigation_code": "INV-2024-0012",
+      "status": "Em andamento",
+      "analyst": "Rafael Torres",
+      "findings": "Padrão de comportamento suspeito identificado. Múltiplas transações em curto período.",
+      "ai_summary": null,
+      "risk_score": 63.8,
+      "priority": "LOW",
+      "timeline": [
+        {
+          "time": "2024-05-22T17:41:00",
+          "event": "Transação de alto valor detectada",
+          "type": "warning"
+        },
+        {
+          "time": "2024-05-22T19:41:00",
+          "event": "Múltiplas tentativas de login identificadas",
+          "type": "danger"
+        },
+        {
+          "time": "2024-05-22T20:41:00",
+          "event": "Alerta gerado automaticamente pelo sistema",
+          "type": "alert"
+        },
+        {
+          "time": "2024-05-22T21:11:00",
+          "event": "Encaminhado para equipe de investigação",
+          "type": "info"
+        }
+      ],
+      "created_at": "2026-06-11T13:07:04.300704",
+      "alert": {
+        "id": 12,
+        "alert_code": "#1236",
+        "fraud_type": "Fraude Transacional",
+        "status": "Novo",
+        "risk_score": 63.8,
+        "amount": 30867.58,
+        "device_info": "iPhone 14 Pro — iOS 17.2",
+        "ip_address": "64.50.49.138",
+        "location": "Miami, US",
+        "created_at": "2024-05-22T20:41:00",
+        "user": {
+          "name": "João Silva",
+          "email": "joão.silva@email.com",
+          "document": "532.132.130-21",
+          "phone": "(11) 94582-4811"
+        }
+      }
+    },
+    "13": {
+      "id": 13,
+      "investigation_code": "INV-2024-0013",
+      "status": "Concluída",
+      "analyst": "Ana Lima",
+      "findings": "Padrão de comportamento suspeito identificado. Múltiplas transações em curto período.",
+      "ai_summary": null,
+      "risk_score": 91.6,
+      "priority": "CRITICAL",
+      "timeline": [
+        {
+          "time": "2024-05-14T02:17:00",
+          "event": "Transação de alto valor detectada",
+          "type": "warning"
+        },
+        {
+          "time": "2024-05-14T04:17:00",
+          "event": "Múltiplas tentativas de login identificadas",
+          "type": "danger"
+        },
+        {
+          "time": "2024-05-14T05:17:00",
+          "event": "Alerta gerado automaticamente pelo sistema",
+          "type": "alert"
+        },
+        {
+          "time": "2024-05-14T05:47:00",
+          "event": "Encaminhado para equipe de investigação",
+          "type": "info"
+        }
+      ],
+      "created_at": "2026-06-11T13:07:04.302715",
+      "alert": {
+        "id": 13,
+        "alert_code": "#1237",
+        "fraud_type": "Comportamento Atípico",
+        "status": "Novo",
+        "risk_score": 91.6,
+        "amount": 7246.95,
+        "device_info": "Windows 11 — Edge 120",
+        "ip_address": "26.13.167.139",
+        "location": "São Paulo, BR",
+        "created_at": "2024-05-14T05:17:00",
+        "user": {
+          "name": "Carlos Oliveira",
+          "email": "carlos.oliveira@email.com",
+          "document": "703.384.928-10",
+          "phone": "(11) 93615-7924"
+        }
+      }
+    },
+    "14": {
+      "id": 14,
+      "investigation_code": "INV-2024-0014",
+      "status": "Concluída",
+      "analyst": "Fernanda Costa",
+      "findings": "Padrão de comportamento suspeito identificado. Múltiplas transações em curto período.",
+      "ai_summary": null,
+      "risk_score": 68.4,
+      "priority": "CRITICAL",
+      "timeline": [
+        {
+          "time": "2024-05-30T04:10:00",
+          "event": "Transação de alto valor detectada",
+          "type": "warning"
+        },
+        {
+          "time": "2024-05-30T06:10:00",
+          "event": "Múltiplas tentativas de login identificadas",
+          "type": "danger"
+        },
+        {
+          "time": "2024-05-30T07:10:00",
+          "event": "Alerta gerado automaticamente pelo sistema",
+          "type": "alert"
+        },
+        {
+          "time": "2024-05-30T07:40:00",
+          "event": "Encaminhado para equipe de investigação",
+          "type": "info"
+        }
+      ],
+      "created_at": "2026-06-11T13:07:04.304730",
+      "alert": {
+        "id": 14,
+        "alert_code": "#1238",
+        "fraud_type": "Comportamento Atípico",
+        "status": "Em análise",
+        "risk_score": 68.4,
+        "amount": 77886.21,
+        "device_info": "iPhone 14 Pro — iOS 17.2",
+        "ip_address": "43.98.1.253",
+        "location": "Miami, US",
+        "created_at": "2024-05-30T07:10:00",
+        "user": {
+          "name": "Maria Santos",
+          "email": "maria.santos@email.com",
+          "document": "303.833.765-99",
+          "phone": "(11) 99928-7873"
+        }
+      }
+    },
+    "15": {
+      "id": 15,
+      "investigation_code": "INV-2024-0015",
+      "status": "Arquivada",
+      "analyst": "Fernanda Costa",
+      "findings": "Padrão de comportamento suspeito identificado. Múltiplas transações em curto período.",
+      "ai_summary": null,
+      "risk_score": 96.5,
+      "priority": "LOW",
+      "timeline": [
+        {
+          "time": "2024-05-30T11:18:00",
+          "event": "Transação de alto valor detectada",
+          "type": "warning"
+        },
+        {
+          "time": "2024-05-30T13:18:00",
+          "event": "Múltiplas tentativas de login identificadas",
+          "type": "danger"
+        },
+        {
+          "time": "2024-05-30T14:18:00",
+          "event": "Alerta gerado automaticamente pelo sistema",
+          "type": "alert"
+        },
+        {
+          "time": "2024-05-30T14:48:00",
+          "event": "Encaminhado para equipe de investigação",
+          "type": "info"
+        }
+      ],
+      "created_at": "2026-06-11T13:07:04.304730",
+      "alert": {
+        "id": 15,
+        "alert_code": "#1239",
+        "fraud_type": "Comportamento Atípico",
+        "status": "Encerrado",
+        "risk_score": 96.5,
+        "amount": 89590.33,
+        "device_info": "Windows 11 — Edge 120",
+        "ip_address": "170.184.125.40",
+        "location": "Rio de Janeiro, BR",
+        "created_at": "2024-05-30T14:18:00",
+        "user": {
+          "name": "Pedro Ferreira",
+          "email": "pedro.ferreira@email.com",
+          "document": "467.967.452-87",
+          "phone": "(11) 95333-1711"
+        }
+      }
+    }
+  },
+  "reports": {
+    "1": {
+      "alert_id": 1,
+      "summary": "PARECER INVESTIGATIVO AUTOMATIZADO\n\nAlerta: #1225 | Tipo: Lavagem de Dinheiro | Score: 84.0/100\n\nANÁLISE:\nA análise do cliente Bruno Martins revela estruturação de valores consistente com técnicas de layering. As movimentações de R$ 48,738.47 apresentam fragmentação característica de operações de lavagem. Recomenda-se comunicação ao COAF caso confirmada a suspeita.\n\nNÍVEL DE RISCO: ALTO\nSituação: Análise prioritária recomendada.\n\nRECOMENDAÇÃO:\nSuspensão temporária das operações de alto valor. Solicitação de documentação complementar ao cliente. Monitoramento intensivo por 72 horas. Revisão dos limites operacionais.",
+      "risk_level": "ALTO",
+      "recommendation": "Suspensão temporária das operações de alto valor. Solicitação de documentação complementar ao cliente. Monitoramento intensivo por 72 horas. Revisão dos limites operacionais.",
+      "generated_at": "2026-06-11T13:07:04.425307"
+    },
+    "2": {
+      "alert_id": 2,
+      "summary": "PARECER INVESTIGATIVO AUTOMATIZADO\n\nAlerta: #1226 | Tipo: Fraude Transacional | Score: 90.8/100\n\nANÁLISE:\nIdentificamos padrões atípicos nas transações do cliente Ana Costa. O volume transacionado de R$ 14,179.30 diverge significativamente do perfil histórico. Múltiplas operações em janela temporal reduzida sugerem uso automatizado ou acesso não autorizado à conta.\n\nNÍVEL DE RISCO: CRÍTICO\nSituação: Ação imediata recomendada.\n\nRECOMENDAÇÃO:\nBLOQUEIO PREVENTIVO IMEDIATO da conta. Contato com o cliente para verificação de identidade. Registro do caso no sistema de prevenção a fraudes. Comunicação à área jurídica se confirmado.",
+      "risk_level": "CRÍTICO",
+      "recommendation": "BLOQUEIO PREVENTIVO IMEDIATO da conta. Contato com o cliente para verificação de identidade. Registro do caso no sistema de prevenção a fraudes. Comunicação à área jurídica se confirmado.",
+      "generated_at": "2026-06-11T13:07:04.426723"
+    },
+    "3": {
+      "alert_id": 3,
+      "summary": "PARECER INVESTIGATIVO AUTOMATIZADO\n\nAlerta: #1227 | Tipo: Outros | Score: 97.3/100\n\nANÁLISE:\nA análise do alerta para o cliente Rafael Souza identificou indicadores de risco não categorizados. Recomenda-se investigação manual aprofundada para classificação adequada do caso.\n\nNÍVEL DE RISCO: CRÍTICO\nSituação: Ação imediata recomendada.\n\nRECOMENDAÇÃO:\nBLOQUEIO PREVENTIVO IMEDIATO da conta. Contato com o cliente para verificação de identidade. Registro do caso no sistema de prevenção a fraudes. Comunicação à área jurídica se confirmado.",
+      "risk_level": "CRÍTICO",
+      "recommendation": "BLOQUEIO PREVENTIVO IMEDIATO da conta. Contato com o cliente para verificação de identidade. Registro do caso no sistema de prevenção a fraudes. Comunicação à área jurídica se confirmado.",
+      "generated_at": "2026-06-11T13:07:04.430743"
+    },
+    "4": {
+      "alert_id": 4,
+      "summary": "PARECER INVESTIGATIVO AUTOMATIZADO\n\nAlerta: #1228 | Tipo: Fraude Transacional | Score: 65.7/100\n\nANÁLISE:\nIdentificamos padrões atípicos nas transações do cliente Pedro Ferreira. O volume transacionado de R$ 41,108.27 diverge significativamente do perfil histórico. Múltiplas operações em janela temporal reduzida sugerem uso automatizado ou acesso não autorizado à conta.\n\nNÍVEL DE RISCO: MÉDIO\nSituação: Monitoramento contínuo recomendado.\n\nRECOMENDAÇÃO:\nAcompanhamento reforçado nas próximas transações. Validação adicional para operações acima de R$ 5.000. Notificação interna para equipe de risco.",
+      "risk_level": "MÉDIO",
+      "recommendation": "Acompanhamento reforçado nas próximas transações. Validação adicional para operações acima de R$ 5.000. Notificação interna para equipe de risco.",
+      "generated_at": "2026-06-11T13:07:04.432755"
+    },
+    "5": {
+      "alert_id": 5,
+      "summary": "PARECER INVESTIGATIVO AUTOMATIZADO\n\nAlerta: #1229 | Tipo: Outros | Score: 51.7/100\n\nANÁLISE:\nA análise do alerta para o cliente Maria Santos identificou indicadores de risco não categorizados. Recomenda-se investigação manual aprofundada para classificação adequada do caso.\n\nNÍVEL DE RISCO: MÉDIO\nSituação: Monitoramento contínuo recomendado.\n\nRECOMENDAÇÃO:\nAcompanhamento reforçado nas próximas transações. Validação adicional para operações acima de R$ 5.000. Notificação interna para equipe de risco.",
+      "risk_level": "MÉDIO",
+      "recommendation": "Acompanhamento reforçado nas próximas transações. Validação adicional para operações acima de R$ 5.000. Notificação interna para equipe de risco.",
+      "generated_at": "2026-06-11T13:07:04.432755"
+    },
+    "6": {
+      "alert_id": 6,
+      "summary": "PARECER INVESTIGATIVO AUTOMATIZADO\n\nAlerta: #1230 | Tipo: Fraude Transacional | Score: 94.8/100\n\nANÁLISE:\nIdentificamos padrões atípicos nas transações do cliente João Silva. O volume transacionado de R$ 79,145.61 diverge significativamente do perfil histórico. Múltiplas operações em janela temporal reduzida sugerem uso automatizado ou acesso não autorizado à conta.\n\nNÍVEL DE RISCO: CRÍTICO\nSituação: Ação imediata recomendada.\n\nRECOMENDAÇÃO:\nBLOQUEIO PREVENTIVO IMEDIATO da conta. Contato com o cliente para verificação de identidade. Registro do caso no sistema de prevenção a fraudes. Comunicação à área jurídica se confirmado.",
+      "risk_level": "CRÍTICO",
+      "recommendation": "BLOQUEIO PREVENTIVO IMEDIATO da conta. Contato com o cliente para verificação de identidade. Registro do caso no sistema de prevenção a fraudes. Comunicação à área jurídica se confirmado.",
+      "generated_at": "2026-06-11T13:07:04.434764"
+    },
+    "7": {
+      "alert_id": 7,
+      "summary": "PARECER INVESTIGATIVO AUTOMATIZADO\n\nAlerta: #1231 | Tipo: Fraude Transacional | Score: 85.2/100\n\nANÁLISE:\nIdentificamos padrões atípicos nas transações do cliente Maria Santos. O volume transacionado de R$ 11,991.04 diverge significativamente do perfil histórico. Múltiplas operações em janela temporal reduzida sugerem uso automatizado ou acesso não autorizado à conta.\n\nNÍVEL DE RISCO: CRÍTICO\nSituação: Ação imediata recomendada.\n\nRECOMENDAÇÃO:\nBLOQUEIO PREVENTIVO IMEDIATO da conta. Contato com o cliente para verificação de identidade. Registro do caso no sistema de prevenção a fraudes. Comunicação à área jurídica se confirmado.",
+      "risk_level": "CRÍTICO",
+      "recommendation": "BLOQUEIO PREVENTIVO IMEDIATO da conta. Contato com o cliente para verificação de identidade. Registro do caso no sistema de prevenção a fraudes. Comunicação à área jurídica se confirmado.",
+      "generated_at": "2026-06-11T13:07:04.436772"
+    },
+    "8": {
+      "alert_id": 8,
+      "summary": "PARECER INVESTIGATIVO AUTOMATIZADO\n\nAlerta: #1232 | Tipo: Outros | Score: 80.7/100\n\nANÁLISE:\nA análise do alerta para o cliente Camila Rocha identificou indicadores de risco não categorizados. Recomenda-se investigação manual aprofundada para classificação adequada do caso.\n\nNÍVEL DE RISCO: ALTO\nSituação: Análise prioritária recomendada.\n\nRECOMENDAÇÃO:\nSuspensão temporária das operações de alto valor. Solicitação de documentação complementar ao cliente. Monitoramento intensivo por 72 horas. Revisão dos limites operacionais.",
+      "risk_level": "ALTO",
+      "recommendation": "Suspensão temporária das operações de alto valor. Solicitação de documentação complementar ao cliente. Monitoramento intensivo por 72 horas. Revisão dos limites operacionais.",
+      "generated_at": "2026-06-11T13:07:04.438786"
+    },
+    "9": {
+      "alert_id": 9,
+      "summary": "PARECER INVESTIGATIVO AUTOMATIZADO\n\nAlerta: #1233 | Tipo: Fraude Transacional | Score: 41.2/100\n\nANÁLISE:\nIdentificamos padrões atípicos nas transações do cliente Juliana Mendes. O volume transacionado de R$ 50,075.98 diverge significativamente do perfil histórico. Múltiplas operações em janela temporal reduzida sugerem uso automatizado ou acesso não autorizado à conta.\n\nNÍVEL DE RISCO: BAIXO\nSituação: Acompanhamento padrão recomendado.\n\nRECOMENDAÇÃO:\nManter monitoramento padrão. Registrar ocorrência para análise de padrões futuros. Nenhuma ação restritiva imediata necessária.",
+      "risk_level": "BAIXO",
+      "recommendation": "Manter monitoramento padrão. Registrar ocorrência para análise de padrões futuros. Nenhuma ação restritiva imediata necessária.",
+      "generated_at": "2026-06-11T13:07:04.440803"
+    },
+    "10": {
+      "alert_id": 10,
+      "summary": "PARECER INVESTIGATIVO AUTOMATIZADO\n\nAlerta: #1234 | Tipo: Fraude Transacional | Score: 44.2/100\n\nANÁLISE:\nIdentificamos padrões atípicos nas transações do cliente João Silva. O volume transacionado de R$ 21,801.41 diverge significativamente do perfil histórico. Múltiplas operações em janela temporal reduzida sugerem uso automatizado ou acesso não autorizado à conta.\n\nNÍVEL DE RISCO: BAIXO\nSituação: Acompanhamento padrão recomendado.\n\nRECOMENDAÇÃO:\nManter monitoramento padrão. Registrar ocorrência para análise de padrões futuros. Nenhuma ação restritiva imediata necessária.",
+      "risk_level": "BAIXO",
+      "recommendation": "Manter monitoramento padrão. Registrar ocorrência para análise de padrões futuros. Nenhuma ação restritiva imediata necessária.",
+      "generated_at": "2026-06-11T13:07:04.442117"
+    },
+    "11": {
+      "alert_id": 11,
+      "summary": "PARECER INVESTIGATIVO AUTOMATIZADO\n\nAlerta: #1235 | Tipo: Comportamento Atípico | Score: 51.2/100\n\nANÁLISE:\nO comportamento transacional de Camila Rocha apresenta anomalias estatisticamente significativas. Operações realizadas em horários e localizações incompatíveis com o histórico do cliente. Dispositivos não reconhecidos e geolocalização inconsistente detectados.\n\nNÍVEL DE RISCO: MÉDIO\nSituação: Monitoramento contínuo recomendado.\n\nRECOMENDAÇÃO:\nAcompanhamento reforçado nas próximas transações. Validação adicional para operações acima de R$ 5.000. Notificação interna para equipe de risco.",
+      "risk_level": "MÉDIO",
+      "recommendation": "Acompanhamento reforçado nas próximas transações. Validação adicional para operações acima de R$ 5.000. Notificação interna para equipe de risco.",
+      "generated_at": "2026-06-11T13:07:04.443138"
+    },
+    "12": {
+      "alert_id": 12,
+      "summary": "PARECER INVESTIGATIVO AUTOMATIZADO\n\nAlerta: #1236 | Tipo: Fraude Transacional | Score: 63.8/100\n\nANÁLISE:\nIdentificamos padrões atípicos nas transações do cliente João Silva. O volume transacionado de R$ 30,867.58 diverge significativamente do perfil histórico. Múltiplas operações em janela temporal reduzida sugerem uso automatizado ou acesso não autorizado à conta.\n\nNÍVEL DE RISCO: MÉDIO\nSituação: Monitoramento contínuo recomendado.\n\nRECOMENDAÇÃO:\nAcompanhamento reforçado nas próximas transações. Validação adicional para operações acima de R$ 5.000. Notificação interna para equipe de risco.",
+      "risk_level": "MÉDIO",
+      "recommendation": "Acompanhamento reforçado nas próximas transações. Validação adicional para operações acima de R$ 5.000. Notificação interna para equipe de risco.",
+      "generated_at": "2026-06-11T13:07:04.444034"
+    },
+    "13": {
+      "alert_id": 13,
+      "summary": "PARECER INVESTIGATIVO AUTOMATIZADO\n\nAlerta: #1237 | Tipo: Comportamento Atípico | Score: 91.6/100\n\nANÁLISE:\nO comportamento transacional de Carlos Oliveira apresenta anomalias estatisticamente significativas. Operações realizadas em horários e localizações incompatíveis com o histórico do cliente. Dispositivos não reconhecidos e geolocalização inconsistente detectados.\n\nNÍVEL DE RISCO: CRÍTICO\nSituação: Ação imediata recomendada.\n\nRECOMENDAÇÃO:\nBLOQUEIO PREVENTIVO IMEDIATO da conta. Contato com o cliente para verificação de identidade. Registro do caso no sistema de prevenção a fraudes. Comunicação à área jurídica se confirmado.",
+      "risk_level": "CRÍTICO",
+      "recommendation": "BLOQUEIO PREVENTIVO IMEDIATO da conta. Contato com o cliente para verificação de identidade. Registro do caso no sistema de prevenção a fraudes. Comunicação à área jurídica se confirmado.",
+      "generated_at": "2026-06-11T13:07:04.448086"
+    },
+    "14": {
+      "alert_id": 14,
+      "summary": "PARECER INVESTIGATIVO AUTOMATIZADO\n\nAlerta: #1238 | Tipo: Comportamento Atípico | Score: 68.4/100\n\nANÁLISE:\nO comportamento transacional de Maria Santos apresenta anomalias estatisticamente significativas. Operações realizadas em horários e localizações incompatíveis com o histórico do cliente. Dispositivos não reconhecidos e geolocalização inconsistente detectados.\n\nNÍVEL DE RISCO: MÉDIO\nSituação: Monitoramento contínuo recomendado.\n\nRECOMENDAÇÃO:\nAcompanhamento reforçado nas próximas transações. Validação adicional para operações acima de R$ 5.000. Notificação interna para equipe de risco.",
+      "risk_level": "MÉDIO",
+      "recommendation": "Acompanhamento reforçado nas próximas transações. Validação adicional para operações acima de R$ 5.000. Notificação interna para equipe de risco.",
+      "generated_at": "2026-06-11T13:07:04.450099"
+    },
+    "15": {
+      "alert_id": 15,
+      "summary": "PARECER INVESTIGATIVO AUTOMATIZADO\n\nAlerta: #1239 | Tipo: Comportamento Atípico | Score: 96.5/100\n\nANÁLISE:\nO comportamento transacional de Pedro Ferreira apresenta anomalias estatisticamente significativas. Operações realizadas em horários e localizações incompatíveis com o histórico do cliente. Dispositivos não reconhecidos e geolocalização inconsistente detectados.\n\nNÍVEL DE RISCO: CRÍTICO\nSituação: Ação imediata recomendada.\n\nRECOMENDAÇÃO:\nBLOQUEIO PREVENTIVO IMEDIATO da conta. Contato com o cliente para verificação de identidade. Registro do caso no sistema de prevenção a fraudes. Comunicação à área jurídica se confirmado.",
+      "risk_level": "CRÍTICO",
+      "recommendation": "BLOQUEIO PREVENTIVO IMEDIATO da conta. Contato com o cliente para verificação de identidade. Registro do caso no sistema de prevenção a fraudes. Comunicação à área jurídica se confirmado.",
+      "generated_at": "2026-06-11T13:07:04.450099"
+    },
+    "16": {
+      "alert_id": 16,
+      "summary": "PARECER INVESTIGATIVO AUTOMATIZADO\n\nAlerta: #1240 | Tipo: Outros | Score: 84.1/100\n\nANÁLISE:\nA análise do alerta para o cliente Pedro Ferreira identificou indicadores de risco não categorizados. Recomenda-se investigação manual aprofundada para classificação adequada do caso.\n\nNÍVEL DE RISCO: ALTO\nSituação: Análise prioritária recomendada.\n\nRECOMENDAÇÃO:\nSuspensão temporária das operações de alto valor. Solicitação de documentação complementar ao cliente. Monitoramento intensivo por 72 horas. Revisão dos limites operacionais.",
+      "risk_level": "ALTO",
+      "recommendation": "Suspensão temporária das operações de alto valor. Solicitação de documentação complementar ao cliente. Monitoramento intensivo por 72 horas. Revisão dos limites operacionais.",
+      "generated_at": "2026-06-11T13:07:04.452112"
+    },
+    "17": {
+      "alert_id": 17,
+      "summary": "PARECER INVESTIGATIVO AUTOMATIZADO\n\nAlerta: #1241 | Tipo: Lavagem de Dinheiro | Score: 75.1/100\n\nANÁLISE:\nA análise do cliente Carlos Oliveira revela estruturação de valores consistente com técnicas de layering. As movimentações de R$ 60,931.52 apresentam fragmentação característica de operações de lavagem. Recomenda-se comunicação ao COAF caso confirmada a suspeita.\n\nNÍVEL DE RISCO: ALTO\nSituação: Análise prioritária recomendada.\n\nRECOMENDAÇÃO:\nSuspensão temporária das operações de alto valor. Solicitação de documentação complementar ao cliente. Monitoramento intensivo por 72 horas. Revisão dos limites operacionais.",
+      "risk_level": "ALTO",
+      "recommendation": "Suspensão temporária das operações de alto valor. Solicitação de documentação complementar ao cliente. Monitoramento intensivo por 72 horas. Revisão dos limites operacionais.",
+      "generated_at": "2026-06-11T13:07:04.454123"
+    },
+    "18": {
+      "alert_id": 18,
+      "summary": "PARECER INVESTIGATIVO AUTOMATIZADO\n\nAlerta: #1242 | Tipo: Outros | Score: 64.7/100\n\nANÁLISE:\nA análise do alerta para o cliente Ana Costa identificou indicadores de risco não categorizados. Recomenda-se investigação manual aprofundada para classificação adequada do caso.\n\nNÍVEL DE RISCO: MÉDIO\nSituação: Monitoramento contínuo recomendado.\n\nRECOMENDAÇÃO:\nAcompanhamento reforçado nas próximas transações. Validação adicional para operações acima de R$ 5.000. Notificação interna para equipe de risco.",
+      "risk_level": "MÉDIO",
+      "recommendation": "Acompanhamento reforçado nas próximas transações. Validação adicional para operações acima de R$ 5.000. Notificação interna para equipe de risco.",
+      "generated_at": "2026-06-11T13:07:04.454123"
+    },
+    "19": {
+      "alert_id": 19,
+      "summary": "PARECER INVESTIGATIVO AUTOMATIZADO\n\nAlerta: #1243 | Tipo: Comportamento Atípico | Score: 79.6/100\n\nANÁLISE:\nO comportamento transacional de Larissa Nunes apresenta anomalias estatisticamente significativas. Operações realizadas em horários e localizações incompatíveis com o histórico do cliente. Dispositivos não reconhecidos e geolocalização inconsistente detectados.\n\nNÍVEL DE RISCO: ALTO\nSituação: Análise prioritária recomendada.\n\nRECOMENDAÇÃO:\nSuspensão temporária das operações de alto valor. Solicitação de documentação complementar ao cliente. Monitoramento intensivo por 72 horas. Revisão dos limites operacionais.",
+      "risk_level": "ALTO",
+      "recommendation": "Suspensão temporária das operações de alto valor. Solicitação de documentação complementar ao cliente. Monitoramento intensivo por 72 horas. Revisão dos limites operacionais.",
+      "generated_at": "2026-06-11T13:07:04.456133"
+    },
+    "20": {
+      "alert_id": 20,
+      "summary": "PARECER INVESTIGATIVO AUTOMATIZADO\n\nAlerta: #1244 | Tipo: Fraude Transacional | Score: 52.6/100\n\nANÁLISE:\nIdentificamos padrões atípicos nas transações do cliente Juliana Mendes. O volume transacionado de R$ 24,235.44 diverge significativamente do perfil histórico. Múltiplas operações em janela temporal reduzida sugerem uso automatizado ou acesso não autorizado à conta.\n\nNÍVEL DE RISCO: MÉDIO\nSituação: Monitoramento contínuo recomendado.\n\nRECOMENDAÇÃO:\nAcompanhamento reforçado nas próximas transações. Validação adicional para operações acima de R$ 5.000. Notificação interna para equipe de risco.",
+      "risk_level": "MÉDIO",
+      "recommendation": "Acompanhamento reforçado nas próximas transações. Validação adicional para operações acima de R$ 5.000. Notificação interna para equipe de risco.",
+      "generated_at": "2026-06-11T13:07:04.458145"
+    },
+    "21": {
+      "alert_id": 21,
+      "summary": "PARECER INVESTIGATIVO AUTOMATIZADO\n\nAlerta: #1245 | Tipo: Outros | Score: 57.8/100\n\nANÁLISE:\nA análise do alerta para o cliente Pedro Ferreira identificou indicadores de risco não categorizados. Recomenda-se investigação manual aprofundada para classificação adequada do caso.\n\nNÍVEL DE RISCO: MÉDIO\nSituação: Monitoramento contínuo recomendado.\n\nRECOMENDAÇÃO:\nAcompanhamento reforçado nas próximas transações. Validação adicional para operações acima de R$ 5.000. Notificação interna para equipe de risco.",
+      "risk_level": "MÉDIO",
+      "recommendation": "Acompanhamento reforçado nas próximas transações. Validação adicional para operações acima de R$ 5.000. Notificação interna para equipe de risco.",
+      "generated_at": "2026-06-11T13:07:04.459756"
+    },
+    "22": {
+      "alert_id": 22,
+      "summary": "PARECER INVESTIGATIVO AUTOMATIZADO\n\nAlerta: #1246 | Tipo: Fraude Transacional | Score: 83.8/100\n\nANÁLISE:\nIdentificamos padrões atípicos nas transações do cliente Bruno Martins. O volume transacionado de R$ 14,412.59 diverge significativamente do perfil histórico. Múltiplas operações em janela temporal reduzida sugerem uso automatizado ou acesso não autorizado à conta.\n\nNÍVEL DE RISCO: ALTO\nSituação: Análise prioritária recomendada.\n\nRECOMENDAÇÃO:\nSuspensão temporária das operações de alto valor. Solicitação de documentação complementar ao cliente. Monitoramento intensivo por 72 horas. Revisão dos limites operacionais.",
+      "risk_level": "ALTO",
+      "recommendation": "Suspensão temporária das operações de alto valor. Solicitação de documentação complementar ao cliente. Monitoramento intensivo por 72 horas. Revisão dos limites operacionais.",
+      "generated_at": "2026-06-11T13:07:04.460756"
+    },
+    "23": {
+      "alert_id": 23,
+      "summary": "PARECER INVESTIGATIVO AUTOMATIZADO\n\nAlerta: #1247 | Tipo: Comportamento Atípico | Score: 93.4/100\n\nANÁLISE:\nO comportamento transacional de Bruno Martins apresenta anomalias estatisticamente significativas. Operações realizadas em horários e localizações incompatíveis com o histórico do cliente. Dispositivos não reconhecidos e geolocalização inconsistente detectados.\n\nNÍVEL DE RISCO: CRÍTICO\nSituação: Ação imediata recomendada.\n\nRECOMENDAÇÃO:\nBLOQUEIO PREVENTIVO IMEDIATO da conta. Contato com o cliente para verificação de identidade. Registro do caso no sistema de prevenção a fraudes. Comunicação à área jurídica se confirmado.",
+      "risk_level": "CRÍTICO",
+      "recommendation": "BLOQUEIO PREVENTIVO IMEDIATO da conta. Contato com o cliente para verificação de identidade. Registro do caso no sistema de prevenção a fraudes. Comunicação à área jurídica se confirmado.",
+      "generated_at": "2026-06-11T13:07:04.462758"
+    },
+    "24": {
+      "alert_id": 24,
+      "summary": "PARECER INVESTIGATIVO AUTOMATIZADO\n\nAlerta: #1248 | Tipo: Cadastro Suspeito | Score: 83.7/100\n\nANÁLISE:\nOs dados cadastrais do cliente João Silva apresentam inconsistências relevantes. Documentos com indícios de adulteração e informações conflitantes entre diferentes fontes de verificação. Score biométrico abaixo do limiar de confiança estabelecido.\n\nNÍVEL DE RISCO: ALTO\nSituação: Análise prioritária recomendada.\n\nRECOMENDAÇÃO:\nSuspensão temporária das operações de alto valor. Solicitação de documentação complementar ao cliente. Monitoramento intensivo por 72 horas. Revisão dos limites operacionais.",
+      "risk_level": "ALTO",
+      "recommendation": "Suspensão temporária das operações de alto valor. Solicitação de documentação complementar ao cliente. Monitoramento intensivo por 72 horas. Revisão dos limites operacionais.",
+      "generated_at": "2026-06-11T13:07:04.464759"
+    },
+    "25": {
+      "alert_id": 25,
+      "summary": "PARECER INVESTIGATIVO AUTOMATIZADO\n\nAlerta: #1249 | Tipo: Cadastro Suspeito | Score: 72.6/100\n\nANÁLISE:\nOs dados cadastrais do cliente Carlos Oliveira apresentam inconsistências relevantes. Documentos com indícios de adulteração e informações conflitantes entre diferentes fontes de verificação. Score biométrico abaixo do limiar de confiança estabelecido.\n\nNÍVEL DE RISCO: ALTO\nSituação: Análise prioritária recomendada.\n\nRECOMENDAÇÃO:\nSuspensão temporária das operações de alto valor. Solicitação de documentação complementar ao cliente. Monitoramento intensivo por 72 horas. Revisão dos limites operacionais.",
+      "risk_level": "ALTO",
+      "recommendation": "Suspensão temporária das operações de alto valor. Solicitação de documentação complementar ao cliente. Monitoramento intensivo por 72 horas. Revisão dos limites operacionais.",
+      "generated_at": "2026-06-11T13:07:04.465758"
+    }
+  }
+}
