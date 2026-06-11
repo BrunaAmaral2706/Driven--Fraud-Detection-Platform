@@ -1,6 +1,6 @@
 # Driven Fraud Detection Platform
 
-Enterprise anti-fraud platform for real-time risk monitoring, investigative analytics, and financial crime operations.
+Plataforma web de monitoramento e investigação antifraude, com dashboard operacional, APIs REST e dados de demonstração.
 
 [![Python](https://img.shields.io/badge/Python-3.11+-3776AB?logo=python&logoColor=white)]()
 [![React](https://img.shields.io/badge/React-18-61DAFB?logo=react&logoColor=black)]()
@@ -11,149 +11,244 @@ Enterprise anti-fraud platform for real-time risk monitoring, investigative anal
 
 ## Overview
 
-Full-stack platform combining transactional monitoring, behavioral risk analysis, investigative workflows, and an ML-ready scoring layer — built with production-oriented architecture for fraud prevention and risk analytics teams.
+Aplicação full-stack para visualização e triagem de alertas, investigações, transações, clientes e regras antifraude. O frontend consome APIs REST do backend FastAPI; os dados exibidos vêm do banco populado automaticamente por seed na inicialização.
 
-| Module | Description |
+| Módulo | O que faz na prática |
 |---|---|
-| Executive Dashboard | KPIs (API), alert distribution pie chart, recent alerts table, date-range filter |
-| Alert Center | Fraud-type analytical summary + compact operational triage table |
-| Investigations | Investigative console with status KPIs, priority and analyst assignment |
-| Transactions | Volume KPIs, channel/type charts, dense transaction feed table |
-| Clients | Risk distribution map and monitored customer profiles |
-| Rules Engine | Active rules KPIs, trigger analytics, technical rules catalog |
-| AI Reports | Investigative summaries via `generate-report` endpoint (LLM-ready) |
-
-> Documentação institucional completa em português nas seções abaixo. Índice técnico: [docs/README.md](./docs/README.md).
+| Dashboard | KPIs, gráfico de alertas por tipo e tabela de alertas recentes |
+| Alertas | Resumo por tipo de fraude e fila de triagem em tabela |
+| Investigações | Listagem operacional de casos com status, prioridade e analista |
+| Transações | KPIs, gráficos por canal/tipo e feed transacional em tabela |
+| Clientes | Mapa de risco e perfis com nível de exposição |
+| Regras | KPIs, gráficos de disparos e catálogo de regras |
 
 ---
 
 ## Sobre o Projeto
 
-A **Driven Fraud Detection Platform** é uma aplicação full-stack de prevenção à fraude que simula o funcionamento de uma central operacional corporativa. O sistema integra monitoramento transacional, triagem de alertas, gestão investigativa e governança de regras antifraude em uma única interface web.
+A **Driven Fraud Detection Platform** é um sistema de demonstração que simula o fluxo de uma central antifraude corporativa. Foi construído com **React 18** no frontend e **FastAPI** no backend, comunicando-se via APIs versionadas em `/api/v1`.
 
-A plataforma foi construída com arquitetura modular (**React 18 + FastAPI**), consumindo APIs REST versionadas (`/api/v1`) e persistindo dados em banco relacional (SQLite em desenvolvimento, PostgreSQL em produção). O ambiente de demonstração é populado automaticamente via seed com cenários realistas de maio/2024.
+O ambiente local utiliza **SQLite** por padrão (`sqlite:///./fraud.db`), configurado em `config/.env.example`. O `docker-compose.yml` oferece opção com PostgreSQL, mas o fluxo principal documentado é desenvolvimento local com seed automático.
 
-| Capacidade | Implementação no sistema |
+| Recurso | Implementação real |
 |---|---|
-| Monitoramento antifraude | Feed transacional com score de risco, status operacional e canais (PIX, TED, App Mobile, ATM) |
-| Central de alertas | Fila de triagem com resumo analítico por tipo de fraude e tabela operacional compacta |
-| Gestão investigativa | Central investigativa com workflow por status, prioridade e vínculo com alertas |
-| Análise de clientes | Perfis monitorados com nível de risco, contagem de alertas e transações |
-| Motor de regras | Catálogo de 10 regras com severidade, disparos e categorias (Transacional, Comportamento, Cadastro, Lavagem de Dinheiro) |
-| Dashboards executivos | KPIs estratégicos, distribuição de alertas por tipo, série temporal e alertas recentes |
-| Score de risco | Classificação visual por faixas (≥85 crítico, ≥70 alto, ≥50 médio) em alertas, transações e investigações |
-| Analytics e visualização | Gráficos Recharts (pizza, barras, linha) e indicadores com filtro por período |
+| Dashboard operacional | KPIs via `GET /api/v1/dashboard/metrics` |
+| Filtro de período | `DateRangeFilter` no navbar — aplicado ao dashboard |
+| Central de alertas | Resumo analítico por tipo + tabela de triagem |
+| Investigações | Tabela com status (Em andamento, Concluída, Arquivada) |
+| Transações | Gráficos Recharts + tabela compacta |
+| Clientes | Perfis com nível de risco e contagem de alertas/transações |
+| Regras | Listagem com severidade, status e disparos |
+| Score visual | Badge colorido por faixa de risco (componente `ScoreBadge`) |
+| Parecer automatizado | Endpoint `POST /alerts/{id}/generate-report` com texto baseado em regras |
+| Dados de demo | Seed em `seed_service.py` — período base maio/2024 |
 
-O frontend adota o design system **Driven** (TailwindCSS), com navegação lateral entre os módulos Dashboard, Alertas, Investigações, Transações, Clientes e Regras. A camada de detalhe de alertas suporta geração de parecer investigativo via endpoint de IA (`POST /api/v1/alerts/{id}/generate-report`), preparada para integração com modelos generativos.
+A pasta `ml-pipeline/` contém apenas documentação e estrutura preparada para evoluções futuras de scoring analítico. **Não há modelo treinado nem inferência em execução.**
 
 ---
 
 ## O Problema
 
-Operações financeiras de médio e grande porte enfrentam um volume crescente de transações e eventos que não podem ser analisados manualmente com eficiência. Sem uma central unificada, equipes de prevenção à fraude perdem visibilidade sobre padrões suspeitos, demoram na priorização de casos críticos e fragmentam a investigação entre planilhas, e-mails e ferramentas desconectadas.
+Equipes de prevenção à fraude precisam consolidar alertas, transações e investigações em um único painel, com visibilidade de risco e priorização de casos. Planilhas e ferramentas desconectadas dificultam a triagem e aumentam o tempo de resposta.
 
-A plataforma endereça esse cenário com base nos fluxos reais implementados nas telas do sistema:
+Esta plataforma demonstra como organizar esse fluxo em uma interface única:
 
-| Dor operacional | Como a plataforma responde |
+| Necessidade | Como o projeto responde hoje |
 |---|---|
-| Excesso de transações sem triagem | Feed transacional com 88+ operações monitoradas, score, canal e status (Aprovada, Bloqueada, Pendente) |
-| Baixa visibilidade sobre concentração de fraudes | Resumo analítico por categoria (Lavagem de Dinheiro, Cadastro Suspeito, Fraude Transacional, Comportamento Atípico, Outros) com volume, score médio e percentual |
-| Demora na investigação | 15 casos investigativos com código, analista responsável, prioridade (LOW → CRITICAL) e timeline de eventos |
-| Dificuldade de priorizar alertas | Score de risco numérico, alertas críticos (score ≥ 80) e filtros por status (Novo, Em análise, Encerrado) |
-| Falta de controle sobre clientes suspeitos | 12 perfis com classificação de risco (LOW, MEDIUM, HIGH, CRITICAL) e correlação alertas × transações |
-| Regras antifraude sem governança | Motor de regras com severidade, status ativo/inativo e métricas de disparos por regra |
-| Monitoramento sem recorte temporal | Filtro de período no navbar (padrão: maio/2024) aplicado ao dashboard executivo |
-
-O impacto operacional esperado é a redução do tempo de triagem, a identificação antecipada de exposição financeira em alertas de alto valor e a consolidação do workflow investigativo em um único painel — reduzindo perdas potenciais e aumentando a rastreabilidade das decisões de risco.
+| Ver volume de alertas e casos críticos | Dashboard com KPIs e alertas recentes |
+| Entender concentração por tipo de fraude | Resumo analítico na tela de Alertas |
+| Acompanhar investigações | Listagem com status, prioridade e analista |
+| Monitorar transações | Feed com score, canal, tipo e status |
+| Avaliar exposição por cliente | Perfis com nível de risco e histórico |
+| Consultar regras e disparos | Catálogo com severidade e contagem |
 
 ---
 
-## Dashboard Online
-
-Acesse a versão publicada da plataforma:
+## Projeto Online
 
 **https://node-js-react-e-java-script-moderno-eight.vercel.app**
 
 ---
 
-## Funcionalidades da Plataforma
+## Funcionalidades Implementadas
 
-Funcionalidades derivadas dos módulos e rotas implementados no frontend (`App.jsx`) e backend (`/api/v1`):
+Rotas definidas em `frontend/src/App.jsx`:
 
-| Módulo | Rota | Funcionalidades |
+| Tela | Rota | Funcionalidade |
 |---|---|---|
-| Dashboard executivo | `/` | Total de alertas, alertas críticos, score médio de risco, transações suspeitas, gráfico de alertas por tipo (API), série temporal (demo v1.0), tabela de alertas recentes |
-| Gestão de alertas | `/alertas` | KPIs de triagem, resumo por tipo de fraude (clicável), fila operacional com score, valor, localização e status |
-| Detalhe de alerta | `/alertas/:id` | Dados do cliente, dispositivo, IP, localização, valor e geração de parecer investigativo |
-| Central investigativa | `/investigacoes` | Tabela operacional por status (Em andamento, Concluída, Arquivada), prioridade, analista e score |
-| Detalhe investigativo | `/investigacoes/:id` | Timeline de eventos, achados, resumo de IA e dados do alerta vinculado |
-| Feed transacional | `/transacoes` | Volume monitorado, score médio, transações bloqueadas, gráficos por canal e tipo, feed em tabela densa |
-| Monitoramento de clientes | `/clientes` | Mapa de risco por nível, perfis com medidor de risco, alertas e transações por cadastro |
-| Motor de regras antifraude | `/regras` | KPIs de regras ativas e disparos, top regras por volume de disparo, catálogo técnico por severidade |
+| Dashboard | `/` | 4 KPIs, pizza por tipo de fraude (API), gráfico de linha (dados fixos no frontend), 5 alertas recentes |
+| Alertas | `/alertas` | KPIs, resumo por categoria (clicável), tabela com filtros e busca |
+| Detalhe do alerta | `/alertas/:id` | Dados do cliente, dispositivo, transações vinculadas, botão de parecer |
+| Investigações | `/investigacoes` | KPIs por status, tabela operacional, busca |
+| Detalhe da investigação | `/investigacoes/:id` | Timeline (JSON do seed), achados, alerta vinculado |
+| Transações | `/transacoes` | KPIs de volume, gráficos, tabela de transações |
+| Clientes | `/clientes` | Mapa de risco, filtros, cards de perfil |
+| Regras | `/regras` | KPIs, gráfico de disparos, tabela de regras |
 
-**Capacidades transversais:**
+**Comportamentos reais:**
 
-- Score de risco em alertas, transações e investigações
-- Indicadores operacionais e KPIs estratégicos no dashboard
-- Filtros por período (data início/fim) no navbar
-- Classificação de severidade e prioridade em regras e casos
-- Workflow investigativo com encadeamento alerta → investigação → timeline
-- Monitoramento comportamental via regras de categoria Comportamento e tipos de fraude atípicos
-- Gestão de severidade (LOW, MEDIUM, HIGH, CRITICAL) no motor de regras
-- Triagem operacional com busca textual e filtros por status e tipo
+- Filtro de status e tipo de fraude na listagem de alertas (API)
+- Filtro de período no dashboard (parâmetros `date_from` / `date_to`)
+- Busca textual client-side em Alertas, Investigações, Clientes e Regras
+- Score de risco exibido em alertas, transações e investigações
+- Paginação básica via `skip` / `limit` nas APIs (frontend usa `limit` fixo)
+
+**Limitações atuais (v1.0):**
+
+- Gráfico de linha do dashboard usa série estática no frontend, não vem da API
+- Sparklines nos cards de KPI também são ilustrativos
+- Filtro de período não se aplica às telas de listagem
+- Parecer do endpoint `generate-report` é gerado por regras/templates, sem LLM
+- Sem autenticação ou controle de acesso
+- Regras são somente leitura (sem CRUD)
+- `ml-pipeline/` é estrutura documental, sem código de modelo
 
 ---
 
-## Impacto Operacional Simulado
+## Dados de Demonstração
 
-Métricas do ambiente de demonstração (seed automático — período base: **maio/2024**):
+Populados automaticamente por `backend/app/services/seed_service.py`:
 
-| Indicador | Volume simulado | Contexto operacional |
+| Entidade | Quantidade |
+|---|---|
+| Alertas | 25 |
+| Transações | ~88 |
+| Investigações | 15 |
+| Clientes | 12 |
+| Regras antifraude | 10 |
+
+Período padrão do filtro: **01/05/2024 — 31/05/2024** (`frontend/src/config/demoPeriod.js`).
+
+Tipos de fraude no seed: Fraude Transacional, Lavagem de Dinheiro, Cadastro Suspeito, Comportamento Atípico, Outros.
+
+---
+
+## Tech Stack
+
+| Camada | Tecnologia |
+|---|---|
+| Frontend | React 18, Vite 5, TailwindCSS, Recharts, Axios, React Router 6 |
+| Backend | Python 3.11, FastAPI, Uvicorn, SQLAlchemy 2, Pydantic v2 |
+| Banco (dev padrão) | SQLite (`fraud.db`) |
+| Banco (Docker opcional) | PostgreSQL 16 via `docker-compose.yml` |
+
+---
+
+## API Reference
+
+Base: `/api/v1`
+
+| Método | Endpoint | Descrição |
 |---|---|---|
-| **Volume financeiro monitorado** | **R$ 1,2M+** | Soma agregada de valores em alertas e transações exibida nas telas de Triagem e Feed Transacional |
-| **Alertas na fila** | **25** | Alertas com score, status e tipo de fraude para triagem prioritária |
-| **Alertas críticos** | **Score ≥ 80** | Destacados no dashboard executivo e na fila com codificação visual de risco |
-| **Transações monitoradas** | **88** | Operações PIX, TED, Boleto e cartão com status Aprovada, Bloqueada ou Pendente |
-| **Investigações abertas** | **15** | Casos com analista, prioridade e vínculo ao alerta de origem |
-| **Clientes monitorados** | **12** | Perfis com nível de risco e histórico de alertas/transações |
-| **Regras antifraude** | **10** | Regras ativas e inativas com contagem de disparos por categoria |
-| **Score médio de risco** | **Calculado em tempo real** | Agregado via API `GET /api/v1/dashboard/metrics` conforme período selecionado |
+| `GET` | `/dashboard/metrics` | KPIs do dashboard (`date_from`, `date_to` opcionais) |
+| `GET` | `/alerts/` | Lista alertas (`status`, `fraud_type`, `skip`, `limit`) |
+| `GET` | `/alerts/{id}` | Detalhe do alerta com transações |
+| `POST` | `/alerts/{id}/generate-report` | Parecer investigativo baseado em regras |
+| `GET` | `/investigations/` | Lista investigações |
+| `GET` | `/investigations/{id}` | Detalhe com timeline |
+| `GET` | `/transactions/` | Lista transações |
+| `GET` | `/clients/` | Lista clientes com contadores |
+| `GET` | `/rules/` | Lista regras antifraude |
+| `GET` | `/health` | Health check simples |
+| `GET` | `/docs` | Swagger UI |
+
+---
+
+## Estrutura do Projeto
 
 ```
-┌──────────────────────────────────────────────────────────────────┐
-│  AMBIENTE DE DEMONSTRAÇÃO — PREVENÇÃO À FRAUDE                   │
-├──────────────────────────────────────────────────────────────────┤
-│  R$ 1,2M+  volume monitorado  │  25 alertas  │  88 transações   │
-│  15 investigações             │  12 clientes │  10 regras        │
-│  Score de risco · Triagem · Workflow investigativo · Analytics   │
-└──────────────────────────────────────────────────────────────────┘
+Driven-Fraud-Detection-Platform/
+├── frontend/           # React SPA (páginas, componentes, layouts)
+├── backend/            # FastAPI (api, models, services, seed)
+├── ml-pipeline/        # Estrutura documental (sem implementação ativa)
+├── screenshots/        # Capturas reais das telas
+├── architecture/       # Diagramas técnicos
+├── docs/               # Roadmap e índice
+├── scripts/            # start-dev.ps1
+├── config/             # .env.example, Dockerfiles
+└── docker-compose.yml  # Stack opcional com PostgreSQL
 ```
+
+---
+
+## Quick Start
+
+**1. Backend**
+
+```bash
+cd backend
+python -m venv venv && venv\Scripts\activate    # Windows
+pip install -r requirements.txt
+cp ../config/.env.example .env
+uvicorn app.main:app --reload --port 8000
+```
+
+**2. Frontend**
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+| Serviço | URL |
+|---|---|
+| Frontend | http://localhost:5173 |
+| API | http://localhost:8000 |
+| Swagger | http://localhost:8000/docs |
+
+**Windows:** `.\scripts\start-dev.ps1`
+
+> O backend precisa estar rodando para os dados aparecerem no frontend.
+
+---
+
+## Capturas da Plataforma
+
+Screenshots reais em `./screenshots/`:
+
+### Dashboard
+
+![Dashboard](./screenshots/overwir.png)
+
+### Alertas
+
+![Alertas](./screenshots/alertas.png)
+
+### Investigações
+
+![Investigações](./screenshots/investigações.png)
+
+### Transações
+
+![Transações](./screenshots/transações.png)
+
+### Clientes
+
+![Clientes](./screenshots/clientes.png)
+
+### Regras
+
+![Regras](./screenshots/regras.png)
 
 ---
 
 ## Competências Demonstradas
 
-Stack e práticas evidenciadas no repositório:
-
 | Área | Evidência no projeto |
 |---|---|
-| **Fraud Analytics** | Resumo por tipo de fraude, score de risco e indicadores de concentração |
-| **Risk Monitoring** | Dashboard com alertas críticos, transações suspeitas e classificação por faixa |
-| **React** | SPA com React 18, React Router 6 e componentes reutilizáveis |
-| **JavaScript** | Frontend ES modules com Vite 5 e Axios |
-| **Data Visualization** | Recharts — gráficos de pizza, barras e linha nas telas operacionais |
-| **Dashboard Design** | KPIs, sparklines e tabelas executivas no módulo Dashboard |
-| **Investigative Workflow** | Central investigativa, timeline de eventos e parecer por alerta |
-| **Anti-Fraud Rules Engine** | CRUD de regras com severidade, categorias e métricas de disparos |
-| **Transaction Monitoring** | Feed transacional com canal, tipo, score e status operacional |
-| **UI/UX Analytics** | Layout compacto enterprise, densidade operacional e design system Driven |
-| **Business Intelligence** | Agregações por tipo, status, canal e categoria com filtros temporais |
-| **KPI Monitoring** | Métricas em tempo real via `dashboard_service.py` |
-| **Risk Analysis** | Níveis LOW → CRITICAL em clientes, prioridades em investigações e severidade em regras |
-| **Operational Analytics** | Tabelas densas estilo SOC em Alertas, Investigações, Transações e Regras |
-| **Git & GitHub** | Versionamento, estrutura enterprise e documentação técnica |
-
-**Backend complementar:** Python 3.11, FastAPI, SQLAlchemy 2, Pydantic v2, estrutura `ml-pipeline/` para scoring e inferência.
+| React | SPA com 8 rotas e componentes reutilizáveis |
+| JavaScript | Frontend com Vite, Axios e Recharts |
+| Python | Backend FastAPI com serviços e seed |
+| FastAPI | 6 módulos de API REST documentados no Swagger |
+| SQLAlchemy | Modelos, queries e agregações no dashboard |
+| APIs REST | Contratos JSON com filtros e paginação |
+| Dashboard Design | KPIs, gráficos e tabelas executivas |
+| Data Visualization | Gráficos de pizza, barras e indicadores |
+| Fraud Analytics | Resumo por tipo de fraude e score de risco |
+| Risk Monitoring | Classificação visual e alertas críticos |
+| Operational Analytics | Tabelas compactas de triagem e investigação |
+| Git & GitHub | Versionamento e documentação do repositório |
 
 ---
 
@@ -161,7 +256,7 @@ Stack e práticas evidenciadas no repositório:
 
 ### Bruna Amaral
 
-**Fraud Analytics | Data Analytics | Prevenção à Fraude | Monitoramento de Risco | Python | SQL | Power BI**
+Fraud Analytics · Data Analytics · Prevenção à Fraude · Monitoramento de Risco · Python · SQL · Power BI
 
 Profissional com experiência em prevenção à fraude, análise operacional, monitoramento transacional e automação de processos.
 
@@ -172,180 +267,13 @@ Profissional com experiência em prevenção à fraude, análise operacional, mo
 
 ---
 
-## Platform Preview
+## Documentação Complementar
 
-Capturas reais da plataforma em execução — arquivos em `./screenshots/`.
-
-### Executive Overview
-
-![Overview](./screenshots/overwir.png)
-
-### Alerts Center
-
-![Alerts](./screenshots/alertas.png)
-
-### Transactions
-
-![Transactions](./screenshots/transações.png)
-
----
-
-## Capturas da Plataforma
-
-Previews dos módulos reais da aplicação — arquivos em `./screenshots/`.
-
-### Dashboard Executivo
-
-Visão consolidada com KPIs, distribuição de alertas por tipo, série temporal e alertas recentes.
-
-![Dashboard](./screenshots/overwir.png)
-
-### Central de Alertas
-
-Fila de triagem com resumo analítico por categoria de fraude e tabela operacional compacta.
-
-![Alertas](./screenshots/alertas.png)
-
-### Central Investigativa
-
-Gestão de casos com score, prioridade, status do workflow e encadeamento com alertas.
-
-![Investigações](./screenshots/investigações.png)
-
-### Feed Transacional
-
-Monitoramento de volume, gráficos por canal e tipo, e feed em tabela densa.
-
-![Transações](./screenshots/transações.png)
-
-### Monitoramento de Clientes
-
-Mapa de risco e perfis com nível de exposição, alertas e transações por cadastro.
-
-![Clientes](./screenshots/clientes.png)
-
-### Motor de Regras Antifraude
-
-KPIs de disparos, analytics por categoria e catálogo técnico de regras.
-
-![Regras](./screenshots/regras.png)
-
----
-
-## Architecture
-
-```
-┌─────────────────────────────────────────────────────────────┐
-│  Frontend — React 18 · Vite · TailwindCSS · Recharts        │
-│  Dashboard │ Alerts │ Investigations │ Transactions │ Clients │ Rules │
-└────────────────────────────┬────────────────────────────────┘
-                             │ REST /api/v1
-┌────────────────────────────▼────────────────────────────────┐
-│  Backend — FastAPI · Pydantic · SQLAlchemy                  │
-└────────────────────────────┬────────────────────────────────┘
-         ┌───────────────────┼───────────────────┐
-         ▼                   ▼                   ▼
-   ML Pipeline          PostgreSQL          Observability
-   scoring · inference  SQLite · seed       health · logs
-```
-
-Detailed documentation: **[ARCHITECTURE.md](./ARCHITECTURE.md)**
-
----
-
-## Tech Stack
-
-| Layer | Technology |
+| Documento | Conteúdo |
 |---|---|
-| Frontend | React 18, Vite 5, TailwindCSS, Recharts |
-| Backend | Python 3.11, FastAPI, Uvicorn |
-| Database | PostgreSQL / SQLite, SQLAlchemy 2 |
-| Validation | Pydantic v2 |
-| ML | Modular pipeline (`ml-pipeline/`) |
-| DevOps | Docker Compose |
-
----
-
-## API Reference
-
-| Endpoint | Description |
-|---|---|
-| `GET /api/v1/dashboard/metrics` | Executive KPIs |
-| `GET /api/v1/alerts/` | Fraud alerts |
-| `GET /api/v1/alerts/{id}` | Alert detail |
-| `POST /api/v1/alerts/{id}/generate-report` | AI investigative report |
-| `GET /api/v1/investigations/` | Investigation cases |
-| `GET /api/v1/transactions/` | Monitored transactions |
-| `GET /api/v1/clients/` | Customer profiles |
-| `GET /api/v1/rules/` | Anti-fraud rules |
-| `GET /health` | Health check |
-| `GET /docs` | Swagger UI |
-
----
-
-## Project Structure
-
-```
-Driven-Fraud-Detection-Platform/
-├── frontend/          # React SPA
-├── backend/           # FastAPI REST API
-├── ml-pipeline/       # Scoring, inference, monitoring
-├── screenshots/       # Platform captures (manual)
-├── architecture/      # Technical diagrams
-├── docs/              # Product documentation
-├── scripts/           # Development scripts
-├── config/            # Environment templates
-├── tests/             # Test suites
-├── docker-compose.yml
-└── ARCHITECTURE.md
-```
-
----
-
-## Quick Start
-
-**Backend**
-
-```bash
-cd backend
-python -m venv venv && venv\Scripts\activate    # Windows
-pip install -r requirements.txt
-cp ../config/.env.example .env
-uvicorn app.main:app --reload --port 8000
-```
-
-**Frontend**
-
-```bash
-cd frontend
-npm install
-npm run dev
-```
-
-| Service | URL |
-|---|---|
-| Frontend | http://localhost:5173 |
-| API | http://localhost:8000 |
-| Swagger | http://localhost:8000/docs |
-
-**Docker Compose:** `docker-compose up -d`
-
-**Windows script:** `.\scripts\start-dev.ps1`
-
----
-
-## Documentation
-
-| Document | Description |
-|---|---|
-| [docs/README.md](./docs/README.md) | Índice central da documentação |
-| [ARCHITECTURE.md](./ARCHITECTURE.md) | Arquitetura técnica enterprise |
-| [docs/roadmap.md](./docs/roadmap.md) | Roadmap v1.0 / v1.1 / v2.0 |
-| [architecture/system-overview.md](./architecture/system-overview.md) | Componentes e módulos |
-| [architecture/data-flow.md](./architecture/data-flow.md) | Fluxos por tela e API |
-| [architecture/ml-pipeline.md](./architecture/ml-pipeline.md) | ML atual vs. planejado |
-| [ml-pipeline/README.md](./ml-pipeline/README.md) | Estrutura do pipeline ML |
-| [screenshots/README.md](./screenshots/README.md) | Capturas de tela do README |
+| [docs/README.md](./docs/README.md) | Índice da documentação |
+| [docs/roadmap.md](./docs/roadmap.md) | Roadmap e limitações conhecidas |
+| [ARCHITECTURE.md](./ARCHITECTURE.md) | Detalhes técnicos da arquitetura |
 
 ---
 
