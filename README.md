@@ -24,6 +24,129 @@ Aplicação full-stack para visualização e triagem de alertas, investigações
 
 ---
 
+## Architecture
+
+Visão arquitetural da **Driven Fraud Detection Platform** — organizada em camadas modulares, fluxo operacional antifraude e estrutura analítica inspirada em **Medallion Architecture** e **Lakehouse**, refletindo apenas o que está implementado ou preparado no repositório.
+
+### Architecture Overview
+
+```mermaid
+%%{init: {'theme': 'dark', 'themeVariables': { 'primaryColor': '#1e293b', 'primaryTextColor': '#e2e8f0', 'primaryBorderColor': '#475569', 'lineColor': '#64748b', 'secondaryColor': '#0f172a', 'tertiaryColor': '#1e3a5f'}}}%%
+flowchart LR
+    subgraph USERS[" "]
+        U["Analysts & Operators<br/>Web Browser"]
+    end
+
+    subgraph FRONTEND["Frontend — React SPA"]
+        direction TB
+        SPA["React 18 · Vite · TailwindCSS"]
+        UI["Dashboard · Alertas · Investigações<br/>Transações · Clientes · Regras"]
+        MOCK["Mock Fallback<br/>Vercel demo layer"]
+        SPA --> UI
+        UI -.-> MOCK
+    end
+
+    subgraph BACKEND["Backend — FastAPI"]
+        direction TB
+        API["REST API /api/v1"]
+        SVC["Dashboard · Alerts · Investigations<br/>Transactions · Clients · Rules"]
+        RPT["Rule-based Report Service"]
+        API --> SVC
+        SVC --> RPT
+    end
+
+    subgraph OPS["Operational Domains"]
+        direction TB
+        RM["Risk Monitoring"]
+        FA["Fraud Analytics"]
+        TM["Transaction Monitoring"]
+        OW["Operational Workflow"]
+    end
+
+    subgraph DATA["Lakehouse / Operational Data Store"]
+        direction TB
+        ODS["SQLite fraud.db<br/>PostgreSQL optional"]
+        SEED["Seed Service<br/>seed_service.py"]
+        ODS --- SEED
+    end
+
+    subgraph FUTURE["Future ML Layer — Prepared Only"]
+        ML["ml-pipeline/<br/>Scoring Preparation Layer<br/>No active inference"]
+    end
+
+    U -->|HTTPS| SPA
+    UI -->|REST JSON| API
+    SVC --> ODS
+    SVC --> RM
+    SVC --> FA
+    SVC --> TM
+    SVC --> OW
+    ODS -.->|future integration| ML
+
+    classDef frontend fill:#1e3a5f,stroke:#60a5fa,color:#e2e8f0
+    classDef backend fill:#134e4a,stroke:#2dd4bf,color:#e2e8f0
+    classDef data fill:#422006,stroke:#fbbf24,color:#fef3c7
+    classDef ops fill:#312e81,stroke:#a78bfa,color:#e2e8f0
+    classDef future fill:#1f2937,stroke:#6b7280,color:#9ca3af
+    class SPA,UI,MOCK frontend
+    class API,SVC,RPT backend
+    class ODS,SEED data
+    class RM,FA,TM,OW ops
+    class ML future
+```
+
+| Camada | Componente real | Papel |
+|---|---|---|
+| **Frontend** | `frontend/` — React SPA | Dashboards operacionais, triagem e visualização de risco |
+| **Backend** | `backend/` — FastAPI | APIs REST, serviços de domínio e parecer por regras |
+| **Data Store** | SQLite (`fraud.db`) / PostgreSQL opcional | Armazenamento operacional e base dos dashboards |
+| **Seed** | `seed_service.py` | População automática de dados de demonstração |
+| **ML (preparado)** | `ml-pipeline/` | Estrutura documental para scoring futuro — **sem modelo ativo** |
+
+### Medallion Architecture
+
+Conceito arquitetural aplicado à organização analítica dos dados de demonstração — **estrutura lógica do projeto**, não um pipeline distribuído em produção.
+
+```mermaid
+%%{init: {'theme': 'dark', 'themeVariables': { 'primaryColor': '#1e293b', 'lineColor': '#64748b'}}}%%
+flowchart TB
+    RAW["Raw Layer<br/>Fontes de demo · eventos simulados"]
+    BRONZE["Bronze<br/>Entidades normalizadas<br/>Users · Alerts · Transactions"]
+    SILVER["Silver<br/>Regras · investigações · joins operacionais"]
+    GOLD["Gold Analytics<br/>KPIs · agregações · dashboards"]
+
+    RAW --> BRONZE --> SILVER --> GOLD
+
+    classDef raw fill:#1c1917,stroke:#78716c,color:#e7e5e4
+    classDef bronze fill:#451a03,stroke:#d97706,color:#fef3c7
+    classDef silver fill:#1e3a5f,stroke:#3b82f6,color:#dbeafe
+    classDef gold fill:#422006,stroke:#fbbf24,color:#fef3c7
+    class RAW raw
+    class BRONZE bronze
+    class SILVER silver
+    class GOLD gold
+```
+
+| Camada | Implementação no projeto |
+|---|---|
+| **Raw** | Dados gerados pelo seed (maio/2024) — transações, alertas, clientes |
+| **Bronze** | Modelos SQLAlchemy — tabelas normalizadas no banco |
+| **Silver** | Serviços de API com filtros, status e vínculos entre entidades |
+| **Gold** | Métricas do dashboard, resumos por tipo de fraude e KPIs operacionais |
+
+### Lakehouse / Operational Data Store
+
+Centraliza o armazenamento operacional utilizado pelos dashboards e APIs:
+
+- **SQLite** — ambiente padrão de desenvolvimento (`fraud.db`)
+- **PostgreSQL** — opção via `docker-compose.yml`
+- **Integração** — backend FastAPI lê/escreve via SQLAlchemy; frontend consome agregações via REST
+- **Deploy estático** — no Vercel, o frontend usa **mock fallback** local quando a API não está disponível
+
+> A nomenclatura *Lakehouse* descreve a **organização analítica e centralização de dados operacionais** do projeto, não uma plataforma cloud externa.
+
+---
+
 ## Sobre o Projeto
 
 A **Driven Fraud Detection Platform** é um sistema de demonstração que simula o fluxo de uma central antifraude corporativa. Foi construído com **React 18** no frontend e **FastAPI** no backend, comunicando-se via APIs versionadas em `/api/v1`.
