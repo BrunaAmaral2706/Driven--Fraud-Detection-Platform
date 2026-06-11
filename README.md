@@ -381,4 +381,20 @@ Profissional com experiência em prevenção à fraude, análise operacional, mo
 
 ## License
 
-MIT — see [LICENSE](./LICENSE).
+Portfolio project — developed for technical demonstration of fraud analytics workflows, operational monitoring and investigation triage in an enterprise-style analytics environment.
+
+**Driven Fraud Detection Platform** · Fraud Analytics · Risk Monitoring · Operational Dashboards · Transaction Monitoring · Investigative Workflow · Medallion-inspired Analytics Architecture · Python ETL · REST APIs · React SPA
+
+This repository is a professional showcase of full-stack analytics engineering applied to fraud prevention use cases: structured data layers, operational data store, dashboard KPIs, alert triage and case management — built as a realistic demonstration platform, not a production financial system.
+
+| | |
+|---|---|
+| **License** | [MIT License](./LICENSE) |
+| **Usage** | Free to use, modify and distribute with attribution |
+| **Scope** | Demo data and educational portfolio purposes |
+
+Copyright (c) 2024–2026 Driven Fraud Detection Platform. See [LICENSE](./LICENSE) for full terms.
+
+---
+
+If this project aligns with the type of analytics and operational engineering you value, consider starring the repository.
