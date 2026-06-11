@@ -30,7 +30,9 @@ Visão arquitetural da **Driven Fraud Detection Platform** — organizada em cam
 
 ### Architecture Overview
 
-![Driven Fraud Detection Platform — Enterprise Architecture](./architecture/architecture-overview.svg)
+<p align="center">
+  <img src="./architecture/architecture-overview.svg" alt="Driven Fraud Detection Platform — Enterprise Architecture" width="720"/>
+</p>
 
 | Zona | Componentes reais |
 |---|---|
