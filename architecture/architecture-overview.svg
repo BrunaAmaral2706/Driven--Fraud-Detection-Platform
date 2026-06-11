@@ -1,11 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 240" role="img" aria-label="Driven Fraud Detection Platform Architecture">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 268" role="img" aria-label="Driven Fraud Detection Platform Architecture">
   <defs>
     <style>
       .bg { fill: #121212; }
       .panel { fill: #3a3a3a; fill-opacity: 0.45; stroke: #6b6b6b; stroke-width: 1; }
       .title { fill: #f5f5f5; font: 600 13px Inter, 'Segoe UI', Arial, sans-serif; }
       .node { fill: #0a0a0a; stroke: #d4d4d4; stroke-width: 1; }
-      .txt { fill: #fafafa; font: 500 11px Inter, 'Segoe UI', Arial, sans-serif; }
+      .txt { fill: #fafafa; font: 500 10px Inter, 'Segoe UI', Arial, sans-serif; }
       .db { fill: #f0f0f0; stroke: #bdbdbd; stroke-width: 1; }
       .dbt { fill: #111; font: 600 10px Inter, Arial, sans-serif; }
       .future { fill: #1a1a1a; stroke: #888; stroke-width: 1; stroke-dasharray: 4 3; }
@@ -16,61 +16,68 @@
     <marker id="b" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#aaa"/></marker>
   </defs>
 
-  <rect class="bg" width="820" height="240"/>
+  <rect class="bg" width="820" height="268"/>
 
-  <!-- Data Pipeline (top-left, compact) -->
-  <rect class="panel" x="12" y="10" width="158" height="112" rx="4"/>
+  <!-- Data Pipeline -->
+  <rect class="panel" x="12" y="10" width="158" height="148" rx="4"/>
   <text class="title" x="91" y="28" text-anchor="middle">Data Pipeline</text>
 
-  <rect class="node" x="40" y="40" width="102" height="20" rx="2"/>
-  <text class="txt" x="91" y="54" text-anchor="middle">Raw Layer</text>
-  <rect class="node" x="40" y="64" width="102" height="20" rx="2"/>
-  <text class="txt" x="91" y="78" text-anchor="middle">Bronze</text>
-  <rect class="node" x="40" y="88" width="102" height="20" rx="2"/>
-  <text class="txt" x="91" y="102" text-anchor="middle">Silver</text>
-  <rect class="node" x="40" y="112" width="102" height="20" rx="2"/>
-  <text class="txt" x="91" y="126" text-anchor="middle">Gold Analytics</text>
+  <rect class="node" x="40" y="38" width="102" height="18" rx="2"/>
+  <text class="txt" x="91" y="51" text-anchor="middle">Raw Data</text>
+  <rect class="node" x="40" y="60" width="102" height="18" rx="2"/>
+  <text class="txt" x="91" y="73" text-anchor="middle">Python ETL</text>
+  <rect class="node" x="40" y="82" width="102" height="18" rx="2"/>
+  <text class="txt" x="91" y="95" text-anchor="middle">Bronze</text>
+  <rect class="node" x="40" y="104" width="102" height="18" rx="2"/>
+  <text class="txt" x="91" y="117" text-anchor="middle">Silver</text>
+  <rect class="node" x="40" y="126" width="102" height="18" rx="2"/>
+  <text class="txt" x="91" y="139" text-anchor="middle">Gold JSON</text>
 
-  <path class="arr" d="M91 60 L91 64 M91 84 L91 88 M91 108 L91 112"/>
+  <path class="arr" d="M91 56 L91 60 M91 78 L91 82 M91 100 L91 104 M91 122 L91 126"/>
 
-  <!-- FastAPI Backend (center, stepped below pipeline) -->
-  <rect class="panel" x="138" y="44" width="252" height="184" rx="4"/>
-  <text class="title" x="264" y="62" text-anchor="middle">FastAPI Backend</text>
-
-  <rect class="node" x="162" y="78" width="68" height="20" rx="2"/>
-  <text class="txt" x="196" y="92" text-anchor="middle" font-size="10">Demo Seed</text>
+  <!-- FastAPI Backend -->
+  <rect class="panel" x="138" y="44" width="252" height="200" rx="4"/>
+  <text class="title" x="264" y="62" text-anchor="middle">FastAPI REST API</text>
 
   <ellipse class="db" cx="264" cy="118" rx="48" ry="9"/>
   <rect class="db" x="216" y="118" width="96" height="40" rx="2"/>
   <ellipse class="db" cx="264" cy="158" rx="48" ry="9"/>
-  <text class="dbt" x="264" y="138" text-anchor="middle">dataStore</text>
-  <text class="dbt" x="264" y="150" text-anchor="middle" font-size="8" fill="#555">Lakehouse / ODS</text>
+  <text class="dbt" x="264" y="136" text-anchor="middle">dataStore</text>
+  <text class="dbt" x="264" y="148" text-anchor="middle" font-size="8" fill="#555">Lakehouse / ODS</text>
 
-  <rect class="future" x="216" y="172" width="96" height="20" rx="2"/>
-  <text class="txt" x="264" y="186" text-anchor="middle" font-size="10">Future ML Layer</text>
+  <rect class="future" x="216" y="172" width="96" height="18" rx="2"/>
+  <text class="txt" x="264" y="185" text-anchor="middle">Future Analytics Layer</text>
 
-  <rect class="node" x="216" y="200" width="96" height="20" rx="2"/>
-  <text class="txt" x="264" y="214" text-anchor="middle" font-size="10">REST Endpoints</text>
+  <rect class="node" x="216" y="198" width="96" height="18" rx="2"/>
+  <text class="txt" x="264" y="211" text-anchor="middle">REST Endpoints</text>
 
-  <path class="arr" d="M142 122 C160 122 190 128 216 135"/>
-  <path class="arr" d="M196 98 L220 115"/>
+  <rect class="node" x="216" y="222" width="96" height="18" rx="2"/>
+  <text class="txt" x="264" y="235" text-anchor="middle" font-size="9">Dashboard Services</text>
+
+  <path class="arr" d="M142 135 C160 135 190 132 216 135"/>
   <path class="arrd" d="M264 158 L264 172"/>
-  <path class="arr" d="M264 192 L264 200"/>
+  <path class="arr" d="M264 190 L264 198 M264 216 L264 222"/>
 
-  <!-- React SPA (right) -->
-  <rect class="panel" x="408" y="44" width="188" height="184" rx="4"/>
-  <text class="title" x="502" y="62" text-anchor="middle">React SPA</text>
+  <!-- React SPA -->
+  <rect class="panel" x="408" y="44" width="200" height="200" rx="4"/>
+  <text class="title" x="508" y="62" text-anchor="middle">React SPA</text>
 
-  <rect class="node" x="446" y="112" width="112" height="24" rx="2"/>
-  <text class="txt" x="502" y="128" text-anchor="middle">Dashboards</text>
+  <rect class="node" x="446" y="108" width="124" height="22" rx="2"/>
+  <text class="txt" x="508" y="123" text-anchor="middle">Dashboard Layer</text>
 
-  <rect class="node" x="518" y="84" width="68" height="20" rx="2"/>
-  <text class="txt" x="552" y="98" text-anchor="middle" font-size="10">Risk Monitoring</text>
+  <rect class="node" x="528" y="82" width="72" height="18" rx="2"/>
+  <text class="txt" x="564" y="95" text-anchor="middle" font-size="9">Risk Monitoring</text>
+  <rect class="node" x="528" y="138" width="72" height="18" rx="2"/>
+  <text class="txt" x="564" y="151" text-anchor="middle" font-size="9">Fraud Analytics</text>
+  <rect class="node" x="446" y="164" width="60" height="18" rx="2"/>
+  <text class="txt" x="476" y="177" text-anchor="middle" font-size="8">Alertas</text>
+  <rect class="node" x="512" y="164" width="60" height="18" rx="2"/>
+  <text class="txt" x="542" y="177" text-anchor="middle" font-size="8">Investiga??es</text>
+  <rect class="node" x="446" y="188" width="60" height="18" rx="2"/>
+  <text class="txt" x="476" y="201" text-anchor="middle" font-size="8">Transa??es</text>
+  <rect class="node" x="512" y="188" width="60" height="18" rx="2"/>
+  <text class="txt" x="542" y="201" text-anchor="middle" font-size="8">Clientes ? Regras</text>
 
-  <rect class="node" x="518" y="144" width="68" height="20" rx="2"/>
-  <text class="txt" x="552" y="158" text-anchor="middle" font-size="10">Fraud Analytics</text>
-
-  <path class="arr" d="M312 210 C360 210 400 170 446 124"/>
-  <path class="arr" d="M502 112 L538 104"/>
-  <path class="arr" d="M502 136 L538 154"/>
+  <path class="arr" d="M312 228 C360 220 400 180 446 119"/>
+  <path class="arr" d="M508 108 L552 100 M508 130 L552 147"/>
 </svg>

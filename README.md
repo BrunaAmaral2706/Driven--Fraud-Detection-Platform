@@ -24,9 +24,9 @@ Aplicação full-stack para visualização e triagem de alertas, investigações
 
 ---
 
-## Architecture
+## Enterprise Architecture
 
-Visão arquitetural da **Driven Fraud Detection Platform** — organizada em camadas modulares, fluxo operacional antifraude e estrutura analítica inspirada em **Medallion Architecture** e **Lakehouse**, refletindo apenas o que está implementado ou preparado no repositório.
+Arquitetura analítica e operacional da plataforma — inspirada em **Medallion Architecture**, **Lakehouse** e fluxo **ETL**, descrevendo somente o que está implementado no repositório (demo local + deploy estático do frontend).
 
 ### Architecture Overview
 
@@ -34,61 +34,90 @@ Visão arquitetural da **Driven Fraud Detection Platform** — organizada em cam
   <img src="./architecture/architecture-overview.svg" alt="Driven Fraud Detection Platform — Enterprise Architecture" width="720"/>
 </p>
 
-| Zona | Componentes reais |
-|---|---|
-| **Data Pipeline** | Medallion lógico: Demo Seed → Bronze → Silver → Gold Analytics |
-| **FastAPI Backend** | `seed_service.py` · Lakehouse/ODS · REST `/api/v1` · ML preparado (sem inferência) |
-| **React SPA** | Dashboards operacionais · Risk Monitoring · Fraud Analytics · Transaction Monitoring |
+```mermaid
+%%{init: {'theme': 'dark', 'themeVariables': { 'primaryColor': '#1e293b', 'lineColor': '#64748b'}}}%%
+flowchart LR
+    RAW["Raw Data<br/>Demo seed sources"]
+    ETL["Python ETL<br/>seed_service.py"]
+    BRZ["Bronze<br/>SQLAlchemy models"]
+    SLV["Silver<br/>API services & joins"]
+    GLD["Gold JSON Analytics<br/>KPIs & metrics"]
+    API["FastAPI REST API<br/>/api/v1"]
+    UI["React Dashboard<br/>Operational SPA"]
 
-| Camada | Componente real | Papel |
-|---|---|---|
-| **Frontend** | `frontend/` — React SPA | Dashboards operacionais, triagem e visualização de risco |
-| **Backend** | `backend/` — FastAPI | APIs REST, serviços de domínio e parecer por regras |
-| **Data Store** | SQLite (`fraud.db`) / PostgreSQL opcional | Armazenamento operacional e base dos dashboards |
-| **Seed** | `seed_service.py` | População automática de dados de demonstração |
-| **ML (preparado)** | `ml-pipeline/` | Estrutura documental para scoring futuro — **sem modelo ativo** |
+    RAW --> ETL --> BRZ --> SLV --> GLD --> API --> UI
+
+    subgraph STORE["Lakehouse / Operational Data Store"]
+        DB[("SQLite / PostgreSQL<br/>fraud.db")]
+    end
+
+    subgraph FUTURE["Future Analytics Layer — prepared only"]
+        ML["ml-pipeline/<br/>No active inference"]
+    end
+
+    BRZ --> DB
+    SLV --> DB
+    GLD --> API
+    DB -.-> ML
+```
+
+### Fluxo analítico
+
+| Etapa | O que acontece no projeto |
+|---|---|
+| **Raw Data** | Eventos simulados gerados em `seed_service.py` (alertas, transações, clientes — maio/2024) |
+| **Python ETL** | `seed_service.py` transforma e persiste entidades via SQLAlchemy na inicialização do backend |
+| **Bronze** | Tabelas normalizadas: `User`, `FraudAlert`, `Transaction`, `Investigation`, `FraudRule` |
+| **Silver** | Serviços de domínio com filtros, vínculos e regras operacionais (`dashboard_service`, routers REST) |
+| **Gold JSON Analytics** | Agregações e KPIs serializados em JSON (`/dashboard/metrics`, listagens paginadas) |
+| **FastAPI REST API** | 6 módulos REST + parecer por regras (`generate-report`) — sem IA |
+| **React Dashboard** | SPA com monitoramento operacional, triagem e visualização de risco |
 
 ### Medallion Architecture
 
-Conceito arquitetural aplicado à organização analítica dos dados de demonstração — **estrutura lógica do projeto**, não um pipeline distribuído em produção.
+Estrutura **lógica** de organização analítica — não é um pipeline distribuído em produção.
 
 ```mermaid
-%%{init: {'theme': 'dark', 'themeVariables': { 'primaryColor': '#1e293b', 'lineColor': '#64748b'}}}%%
+%%{init: {'theme': 'dark', 'themeVariables': { 'lineColor': '#64748b'}}}%%
 flowchart TB
-    RAW["Raw Layer<br/>Fontes de demo · eventos simulados"]
-    BRONZE["Bronze<br/>Entidades normalizadas<br/>Users · Alerts · Transactions"]
-    SILVER["Silver<br/>Regras · investigações · joins operacionais"]
-    GOLD["Gold Analytics<br/>KPIs · agregações · dashboards"]
+    R["Raw Data"] --> B["Bronze"] --> S["Silver"] --> G["Gold JSON"]
 
-    RAW --> BRONZE --> SILVER --> GOLD
-
-    classDef raw fill:#1c1917,stroke:#78716c,color:#e7e5e4
-    classDef bronze fill:#451a03,stroke:#d97706,color:#fef3c7
-    classDef silver fill:#1e3a5f,stroke:#3b82f6,color:#dbeafe
-    classDef gold fill:#422006,stroke:#fbbf24,color:#fef3c7
-    class RAW raw
-    class BRONZE bronze
-    class SILVER silver
-    class GOLD gold
+    classDef layer fill:#1e293b,stroke:#64748b,color:#e2e8f0
+    class R,B,S,G layer
 ```
 
-| Camada | Implementação no projeto |
+| Camada | Implementação real |
 |---|---|
-| **Raw** | Dados gerados pelo seed (maio/2024) — transações, alertas, clientes |
-| **Bronze** | Modelos SQLAlchemy — tabelas normalizadas no banco |
-| **Silver** | Serviços de API com filtros, status e vínculos entre entidades |
-| **Gold** | Métricas do dashboard, resumos por tipo de fraude e KPIs operacionais |
+| **Raw** | Geração programática de dados de demo no seed |
+| **Bronze** | Persistência relacional normalizada (SQLite/PostgreSQL) |
+| **Silver** | Camada de serviços com filtros, status e relacionamentos |
+| **Gold JSON** | Respostas JSON com KPIs, métricas e dados para dashboards |
 
 ### Lakehouse / Operational Data Store
 
-Centraliza o armazenamento operacional utilizado pelos dashboards e APIs:
+Centralização analítica e armazenamento operacional:
 
-- **SQLite** — ambiente padrão de desenvolvimento (`fraud.db`)
+- **SQLite** (`fraud.db`) — padrão em desenvolvimento
 - **PostgreSQL** — opção via `docker-compose.yml`
-- **Integração** — backend FastAPI lê/escreve via SQLAlchemy; frontend consome agregações via REST
-- **Deploy estático** — no Vercel, o frontend usa **mock fallback** local quando a API não está disponível
+- **Integração** — ETL Python → banco → APIs REST → React
+- **Vercel** — frontend com mock fallback (`frontend/src/mocks/`) quando a API não está online
 
-> A nomenclatura *Lakehouse* descreve a **organização analítica e centralização de dados operacionais** do projeto, não uma plataforma cloud externa.
+> *Lakehouse* aqui descreve o **conceito de store operacional unificado** para analytics e dashboards — não uma plataforma cloud externa.
+
+### Camadas operacionais (frontend)
+
+| Domínio | Módulo React | Função |
+|---|---|---|
+| **Dashboard Layer** | `/` | KPIs, gráficos e alertas recentes |
+| **Fraud Analytics** | `/alertas` | Resumo por tipo de fraude e triagem |
+| **Investigative Workflow** | `/investigacoes` | Casos, status e analistas |
+| **Transaction Monitoring** | `/transacoes` | Feed transacional e gráficos |
+| **Risk Monitoring** | `/clientes` | Mapa de risco e perfis |
+| **Operational Rules** | `/regras` | Catálogo de regras e disparos |
+
+### Future Analytics Layer
+
+A pasta `ml-pipeline/` contém **apenas estrutura preparada** para evolução futura de scoring analítico. Não há modelo treinado, inferência, LLM ou IA generativa em execução.
 
 ---
 
@@ -197,10 +226,13 @@ Tipos de fraude no seed: Fraude Transacional, Lavagem de Dinheiro, Cadastro Susp
 
 | Camada | Tecnologia |
 |---|---|
-| Frontend | React 18, Vite 5, TailwindCSS, Recharts, Axios, React Router 6 |
-| Backend | Python 3.11, FastAPI, Uvicorn, SQLAlchemy 2, Pydantic v2 |
-| Banco (dev padrão) | SQLite (`fraud.db`) |
-| Banco (Docker opcional) | PostgreSQL 16 via `docker-compose.yml` |
+| **Data Pipeline** | Python ETL (`seed_service.py`), SQLAlchemy ORM, serialização JSON (`json` stdlib) |
+| **Analytics Layer** | Medallion Architecture (camadas lógicas), Gold JSON via respostas REST |
+| **Operational Store** | SQLite (`fraud.db`) · PostgreSQL 16 opcional · conceito Lakehouse/ODS |
+| **API Layer** | FastAPI 0.110, Uvicorn, Pydantic v2, OpenAPI/Swagger (`/docs`) |
+| **Frontend** | React 18, Vite 5, TailwindCSS, Recharts, Axios, React Router 6 |
+| **Demo Deploy** | Vercel (SPA estática) + mock fallback local (`frontend/src/mocks/`) |
+| **Future Analytics** | `ml-pipeline/` — estrutura documental, sem modelo ativo |
 
 ---
 
