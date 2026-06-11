@@ -1,10 +1,11 @@
 import { createContext, useContext, useState } from 'react'
+import { DEMO_DATE_START, DEMO_DATE_END } from '../config/demoPeriod.js'
 
 const DateRangeContext = createContext(null)
 
 export function DateRangeProvider({ children }) {
-  const [startDate, setStartDate] = useState('')
-  const [endDate, setEndDate] = useState('')
+  const [startDate, setStartDate] = useState(DEMO_DATE_START)
+  const [endDate, setEndDate] = useState(DEMO_DATE_END)
 
   return (
     <DateRangeContext.Provider value={{ startDate, endDate, setStartDate, setEndDate }}>

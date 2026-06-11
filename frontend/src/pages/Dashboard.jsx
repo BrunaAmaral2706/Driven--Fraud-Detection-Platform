@@ -11,6 +11,7 @@ import {
 import { dashboardAPI } from '../services/api.js'
 import { useDateRange } from '../context/DateRangeContext.jsx'
 import { formatDateBR } from '../utils/dateRange.js'
+import { DEMO_PERIOD_LABEL } from '../config/demoPeriod.js'
 import ScoreBadge from '../components/ScoreBadge.jsx'
 import StatusBadge from '../components/StatusBadge.jsx'
 import LoadingSpinner from '../components/LoadingSpinner.jsx'
@@ -100,7 +101,7 @@ export default function Dashboard() {
         <p className="text-xs text-driven-muted font-medium">
           Período: {startDate && endDate
             ? `${formatDateBR(startDate)} — ${formatDateBR(endDate)}`
-            : 'Todos os registros'}
+            : DEMO_PERIOD_LABEL}
         </p>
         <Activity size={14} className="text-driven-muted" />
       </div>
