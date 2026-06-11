@@ -41,7 +41,35 @@ export default {
       borderRadius: {
         'xl': '12px',
         '2xl': '16px',
-      }
+      },
+      animation: {
+        'fade-in': 'fadeIn 0.4s ease-out forwards',
+        'fade-in-up': 'fadeInUp 0.45s ease-out forwards',
+        'shimmer': 'shimmer 1.5s ease-in-out infinite',
+        'pulse-soft': 'pulseSoft 2s ease-in-out infinite',
+      },
+      keyframes: {
+        fadeIn: {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
+        fadeInUp: {
+          '0%': { opacity: '0', transform: 'translateY(8px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+        shimmer: {
+          '0%': { backgroundPosition: '-200% 0' },
+          '100%': { backgroundPosition: '200% 0' },
+        },
+        pulseSoft: {
+          '0%, 100%': { opacity: '1' },
+          '50%': { opacity: '0.7' },
+        },
+      },
+      transitionDuration: {
+        '250': '250ms',
+        '350': '350ms',
+      },
     },
   },
   plugins: [],

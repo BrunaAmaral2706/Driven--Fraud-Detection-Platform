@@ -1,7 +1,8 @@
 import { useState, useEffect, useMemo } from 'react'
 import { Users, Search } from 'lucide-react'
 import { clientsAPI } from '../services/api.js'
-import LoadingSpinner from '../components/LoadingSpinner.jsx'
+import AnimatedCounter from '../components/AnimatedCounter.jsx'
+import { KpiSkeleton } from '../components/TableSkeleton.jsx'
 import EmptyState from '../components/EmptyState.jsx'
 
 const RISK_LEVELS = ['Todos', 'LOW', 'MEDIUM', 'HIGH', 'CRITICAL']
@@ -30,7 +31,7 @@ function RiskMeter({ level }) {
         <span className={`font-semibold ${colors.text}`}>{RISK_LABELS[level] || level}</span>
       </div>
       <div className="h-1.5 bg-driven-border-light rounded-full overflow-hidden">
-        <div className={`h-full rounded-full ${colors.bar}`} style={{ width: `${pct}%` }} />
+        <div className={`h-full rounded-full transition-all duration-700 ease-out ${colors.bar}`} style={{ width: `${pct}%` }} />
       </div>
     </div>
   )
@@ -39,7 +40,7 @@ function RiskMeter({ level }) {
 function ClientAvatar({ name }) {
   const initials = (name || '?').split(' ').slice(0, 2).map(w => w[0]).join('').toUpperCase()
   return (
-    <div className="w-10 h-10 rounded-full bg-driven-gold-pale border border-driven-gold/30 flex items-center justify-center text-sm font-bold text-driven-gold flex-none">
+    <div className="w-10 h-10 rounded-full bg-driven-gold-pale border border-driven-gold/30 flex items-center justify-center text-sm font-bold text-driven-gold flex-none transition-transform duration-300 group-hover:scale-105">
       {initials}
     </div>
   )
@@ -51,6 +52,7 @@ export default function Clients() {
   const [loading, setLoading] = useState(true)
   const [search, setSearch] = useState('')
   const [riskFilter, setRiskFilter] = useState('Todos')
+  const [selectedCard, setSelectedCard] = useState(null)
 
   useEffect(() => {
     clientsAPI.list({ limit: 50 })
@@ -76,9 +78,17 @@ export default function Clients() {
     return Object.entries(counts).map(([level, count]) => ({ level, count, pct: (count / max) * 100 }))
   }, [items])
 
+  if (loading) {
+    return (
+      <div className="space-y-5 page-enter">
+        <KpiSkeleton count={4} />
+      </div>
+    )
+  }
+
   return (
-    <div className="space-y-5">
-      <div className="card p-5">
+    <div className="space-y-5 page-enter">
+      <div className="card-interactive p-5">
         <div className="flex items-center gap-2 mb-4">
           <Users size={14} className="text-driven-gold" />
           <span className="text-sm font-semibold text-driven-text">Mapa de Risco — Clientes</span>
@@ -87,20 +97,28 @@ export default function Clients() {
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
           {riskDistribution.map(({ level, count, pct }) => {
             const colors = RISK_COLORS[level]
+            const active = riskFilter === level
             return (
-              <div key={level} className={`rounded-lg p-3 ${colors.bg}`}>
+              <button
+                type="button"
+                key={level}
+                onClick={() => setRiskFilter(active ? 'Todos' : level)}
+                className={`rounded-lg p-3 text-left transition-all duration-200 hover:scale-[1.02] hover:shadow-card-hover ${colors.bg} ${active ? 'ring-2 ring-driven-gold/40 shadow-sm' : ''}`}
+              >
                 <p className={`text-xs font-semibold ${colors.text}`}>{RISK_LABELS[level]}</p>
-                <p className="text-2xl font-display font-bold text-driven-text mt-1">{count}</p>
+                <p className="text-2xl font-display font-bold text-driven-text mt-1 tabular-nums">
+                  <AnimatedCounter value={count} />
+                </p>
                 <div className="h-1 bg-white/60 rounded-full mt-2 overflow-hidden">
-                  <div className={`h-full rounded-full ${colors.bar}`} style={{ width: `${pct}%` }} />
+                  <div className={`h-full rounded-full transition-all duration-700 ease-out ${colors.bar}`} style={{ width: `${pct}%` }} />
                 </div>
-              </div>
+              </button>
             )
           })}
         </div>
       </div>
 
-      <div className="card p-4">
+      <div className="card-interactive p-4">
         <div className="flex flex-wrap gap-3 items-center justify-between">
           <span className="text-sm font-semibold text-driven-text">Perfis Monitorados</span>
           <div className="flex flex-wrap gap-2 items-center">
@@ -110,19 +128,16 @@ export default function Clients() {
                 value={search}
                 onChange={e => setSearch(e.target.value)}
                 placeholder="Buscar nome, e-mail ou CPF..."
-                className="pl-8 pr-3 py-1.5 text-xs border border-driven-border rounded-lg bg-driven-cream focus:outline-none focus:border-driven-gold/60 w-52"
+                className="pl-8 pr-3 py-1.5 text-xs border border-driven-border rounded-lg bg-driven-cream input-interactive w-52"
               />
             </div>
             <div className="flex gap-1">
               {RISK_LEVELS.map(level => (
                 <button
+                  type="button"
                   key={level}
                   onClick={() => setRiskFilter(level)}
-                  className={`text-xs px-2.5 py-1.5 rounded-lg font-medium transition-colors ${
-                    riskFilter === level
-                      ? 'bg-driven-gold text-white'
-                      : 'bg-driven-cream border border-driven-border text-driven-text-secondary hover:bg-driven-border-light'
-                  }`}
+                  className={`text-xs px-2.5 py-1.5 rounded-lg font-medium btn-filter ${riskFilter === level ? 'btn-filter-active' : 'btn-filter-idle'}`}
                 >
                   {level === 'Todos' ? 'Todos' : RISK_LABELS[level]}
                 </button>
@@ -132,16 +147,19 @@ export default function Clients() {
         </div>
       </div>
 
-      {loading ? (
-        <LoadingSpinner text="Carregando clientes..." />
-      ) : filtered.length === 0 ? (
+      {filtered.length === 0 ? (
         <EmptyState title="Nenhum cliente encontrado" description="Tente ajustar os filtros." />
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
           {filtered.map(c => {
             const colors = RISK_COLORS[c.risk_level] || RISK_COLORS.LOW
+            const isSelected = selectedCard === c.id
             return (
-              <div key={c.id} className={`card p-4 border-t-4 ${colors.border}`}>
+              <div
+                key={c.id}
+                onClick={() => setSelectedCard(isSelected ? null : c.id)}
+                className={`card-interactive p-4 border-t-4 ${colors.border} cursor-pointer group ${isSelected ? 'ring-2 ring-driven-gold/30 shadow-card-hover' : ''}`}
+              >
                 <div className="flex items-start gap-3 mb-4">
                   <ClientAvatar name={c.name} />
                   <div className="min-w-0 flex-1">
@@ -149,18 +167,22 @@ export default function Clients() {
                     <p className="text-xs text-driven-text-secondary truncate">{c.email}</p>
                     <p className="font-mono text-[10px] text-driven-muted mt-0.5">{c.document || '—'}</p>
                   </div>
-                  <span className={`text-[10px] font-semibold px-2 py-0.5 rounded-full ${colors.bg} ${colors.text}`}>
+                  <span className={`text-[10px] font-semibold px-2 py-0.5 rounded-full transition-colors ${colors.bg} ${colors.text}`}>
                     {c.is_active ? 'Ativo' : 'Inativo'}
                   </span>
                 </div>
                 <RiskMeter level={c.risk_level} />
                 <div className="grid grid-cols-2 gap-3 mt-4 pt-3 border-t border-driven-border-light">
                   <div className="text-center">
-                    <p className="text-lg font-bold text-driven-text">{c.alerts_count}</p>
+                    <p className="text-lg font-bold text-driven-text tabular-nums">
+                      <AnimatedCounter value={c.alerts_count} />
+                    </p>
                     <p className="text-[10px] text-driven-muted">Alertas</p>
                   </div>
                   <div className="text-center">
-                    <p className="text-lg font-bold text-driven-text">{c.transactions_count}</p>
+                    <p className="text-lg font-bold text-driven-text tabular-nums">
+                      <AnimatedCounter value={c.transactions_count} />
+                    </p>
                     <p className="text-[10px] text-driven-muted">Transações</p>
                   </div>
                 </div>

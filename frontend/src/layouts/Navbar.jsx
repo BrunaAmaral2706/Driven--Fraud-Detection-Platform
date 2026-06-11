@@ -29,16 +29,16 @@ export default function Navbar() {
           <input
             type="text"
             placeholder="Buscar alertas, clientes..."
-            className="w-full pl-9 pr-4 py-1.5 text-sm bg-driven-cream border border-driven-border rounded-lg focus:outline-none focus:border-driven-gold/60 focus:ring-2 focus:ring-driven-gold/10 placeholder:text-driven-muted transition-all"
+            className="w-full pl-9 pr-4 py-1.5 text-sm bg-driven-cream border border-driven-border rounded-lg input-interactive placeholder:text-driven-muted"
           />
         </div>
       </div>
 
       <div className="ml-auto flex items-center gap-2">
-        <button className="p-2 hover:bg-driven-border-light rounded-lg transition-colors text-driven-muted hover:text-driven-text">
+        <button type="button" className="btn-icon">
           <HelpCircle size={16} />
         </button>
-        <button className="relative p-2 hover:bg-driven-border-light rounded-lg transition-colors text-driven-muted hover:text-driven-text">
+        <button type="button" className="btn-icon relative">
           <Bell size={16} />
           <span className="absolute top-1.5 right-1.5 w-1.5 h-1.5 bg-driven-danger rounded-full" />
         </button>

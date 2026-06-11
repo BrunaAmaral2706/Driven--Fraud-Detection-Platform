@@ -3,8 +3,10 @@ import { Link } from 'react-router-dom'
 import { Search, ClipboardList, ChevronRight, AlertTriangle, Activity, CheckCircle2 } from 'lucide-react'
 import { investigationsAPI } from '../services/api.js'
 import ScoreBadge from '../components/ScoreBadge.jsx'
-import LoadingSpinner from '../components/LoadingSpinner.jsx'
+import AnimatedCounter from '../components/AnimatedCounter.jsx'
+import TableSkeleton from '../components/TableSkeleton.jsx'
 import EmptyState from '../components/EmptyState.jsx'
+import { useTableSort } from '../hooks/useTableSort.js'
 
 const STATUS_FILTERS = ['Todas', 'Em andamento', 'Concluída', 'Arquivada']
 
@@ -20,8 +22,6 @@ const PRIORITY_STYLES = {
   MEDIUM: { accent: 'border-l-driven-gold', tag: 'text-driven-gold bg-driven-gold/10 border-driven-gold/20' },
   LOW: { accent: 'border-l-driven-success', tag: 'text-driven-success bg-driven-success/10 border-driven-success/20' },
 }
-
-const TABLE_COLS = ['Caso', 'Cliente', 'Tipo de Fraude', 'Score', 'Prioridade', 'Status', 'Analista', 'Data', '']
 
 function PriorityTag({ priority }) {
   const s = PRIORITY_STYLES[priority] || PRIORITY_STYLES.MEDIUM
@@ -55,6 +55,7 @@ export default function Investigations() {
   const [loading, setLoading] = useState(true)
   const [search, setSearch] = useState('')
   const [statusFilter, setStatusFilter] = useState('Todas')
+  const [selectedRow, setSelectedRow] = useState(null)
 
   useEffect(() => {
     investigationsAPI.list({ limit: 50 })
@@ -80,6 +81,8 @@ export default function Investigations() {
     return matchSearch && matchStatus
   }), [items, search, statusFilter])
 
+  const { sorted: sortedFiltered, toggleSort, sortIndicator } = useTableSort(filtered, 'created_at', 'desc')
+
   const statusCounts = useMemo(() => {
     const base = search
       ? items.filter(i =>
@@ -98,19 +101,21 @@ export default function Investigations() {
   }, [items, search])
 
   return (
-    <div className="space-y-3">
-      <div className="card px-3 py-2 flex flex-wrap items-stretch divide-x divide-driven-border-light shadow-sm">
+    <div className="space-y-3 page-enter">
+      <div className="card-interactive px-3 py-2 flex flex-wrap items-stretch divide-x divide-driven-border-light shadow-sm">
         {[
           { icon: ClipboardList, label: 'Total', value: total, color: 'text-driven-text' },
           { icon: Activity, label: 'Em andamento', value: metrics.andamento, color: 'text-driven-warning' },
           { icon: CheckCircle2, label: 'Concluídas', value: metrics.concluidas, color: 'text-driven-success' },
           { icon: AlertTriangle, label: 'Críticas', value: metrics.criticas, color: 'text-driven-danger' },
         ].map(({ icon: Icon, label, value, color }) => (
-          <div key={label} className="flex items-center gap-2 px-3 first:pl-0 last:pr-0 min-w-[120px] flex-1">
+          <div key={label} className="flex items-center gap-2 px-3 first:pl-0 last:pr-0 min-w-[120px] flex-1 transition-transform duration-200 hover:scale-[1.02]">
             <Icon size={12} className={color} />
             <div className="leading-tight">
               <p className="text-[10px] uppercase tracking-wide text-driven-muted font-medium">{label}</p>
-              <p className={`text-sm font-display font-bold tabular-nums ${color}`}>{value}</p>
+              <p className={`text-sm font-display font-bold tabular-nums ${color}`}>
+                <AnimatedCounter value={value} />
+              </p>
             </div>
           </div>
         ))}
@@ -130,19 +135,16 @@ export default function Investigations() {
                 value={search}
                 onChange={e => setSearch(e.target.value)}
                 placeholder="Buscar caso, alerta, cliente..."
-                className="pl-6 pr-2 py-1 text-[11px] border border-driven-border rounded-md bg-white focus:outline-none focus:border-driven-gold/60 w-48"
+                className="pl-6 pr-2 py-1 text-[11px] border border-driven-border rounded-md bg-white input-interactive w-48"
               />
             </div>
             <div className="flex gap-0.5">
               {STATUS_FILTERS.map(s => (
                 <button
+                  type="button"
                   key={s}
                   onClick={() => setStatusFilter(s)}
-                  className={`text-[10px] px-2 py-1 rounded-md font-semibold transition-colors flex items-center gap-1 ${
-                    statusFilter === s
-                      ? 'bg-driven-gold text-white shadow-sm'
-                      : 'bg-white border border-driven-border text-driven-text-secondary hover:bg-driven-cream'
-                  }`}
+                  className={`btn-filter flex items-center gap-1 ${statusFilter === s ? 'btn-filter-active' : 'btn-filter-idle'}`}
                 >
                   {s}
                   <span className={`tabular-nums ${statusFilter === s ? 'text-white/80' : 'text-driven-muted'}`}>
@@ -155,7 +157,7 @@ export default function Investigations() {
         </div>
 
         {loading ? (
-          <LoadingSpinner text="Carregando investigações..." />
+          <TableSkeleton rows={8} cols={8} />
         ) : filtered.length === 0 ? (
           <EmptyState title="Nenhuma investigação encontrada" description="Tente ajustar os filtros." />
         ) : (
@@ -163,25 +165,37 @@ export default function Investigations() {
             <table className="w-full min-w-[960px]">
               <thead className="sticky top-0 z-10 bg-driven-cream border-b border-driven-border shadow-sm">
                 <tr>
-                  {TABLE_COLS.map(h => (
+                  {[
+                    { h: 'Caso', key: 'investigation_code' },
+                    { h: 'Cliente', key: null },
+                    { h: 'Tipo de Fraude', key: 'fraud_type' },
+                    { h: 'Score', key: 'risk_score' },
+                    { h: 'Prioridade', key: 'priority' },
+                    { h: 'Status', key: 'status' },
+                    { h: 'Analista', key: null },
+                    { h: 'Data', key: 'created_at' },
+                    { h: '', key: null },
+                  ].map(({ h, key }) => (
                     <th
-                      key={h}
+                      key={h || 'action'}
+                      onClick={key ? () => toggleSort(key) : undefined}
                       className={`px-2 py-1.5 text-left text-[10px] font-semibold text-driven-muted uppercase tracking-wide whitespace-nowrap ${
                         ['Score', 'Prioridade', 'Status'].includes(h) ? 'text-center' : ''
-                      } ${h === '' ? 'w-8' : ''}`}
+                      } ${h === '' ? 'w-8' : ''} ${key ? 'cursor-pointer hover:text-driven-gold transition-colors select-none' : ''}`}
                     >
-                      {h}
+                      {h}{key ? ` ${sortIndicator(key)}` : ''}
                     </th>
                   ))}
                 </tr>
               </thead>
               <tbody className="divide-y divide-driven-border-light">
-                {filtered.map(i => {
+                {sortedFiltered.map(i => {
                   const pri = PRIORITY_STYLES[i.priority] || PRIORITY_STYLES.MEDIUM
                   return (
                     <tr
                       key={i.id}
-                      className={`border-l-2 ${pri.accent} hover:bg-driven-info-light/20 transition-colors group ${scoreRowBg(i.risk_score)}`}
+                      onClick={() => setSelectedRow(selectedRow === i.id ? null : i.id)}
+                      className={`border-l-2 ${pri.accent} table-row-interactive group ${scoreRowBg(i.risk_score)} ${selectedRow === i.id ? 'table-row-selected' : ''}`}
                     >
                       <td className="px-2 py-1 align-middle">
                         <p className="font-mono text-[10px] text-driven-muted leading-tight">{i.investigation_code}</p>
@@ -241,7 +255,7 @@ export default function Investigations() {
           const count = items.filter(i => i.status === status).length
           const pct = total ? Math.round((count / total) * 100) : 0
           return (
-            <div key={status} className={`card px-3 py-1.5 flex items-center gap-2 shadow-sm ${meta.bg}`}>
+            <div key={status} className={`card-interactive px-3 py-1.5 flex items-center gap-2 shadow-sm ${meta.bg}`}>
               <span className={`w-1.5 h-1.5 rounded-full ${meta.dot} animate-pulse`} />
               <span className={`text-[10px] font-semibold ${meta.text} flex-1`}>{status}</span>
               <span className="text-[10px] font-bold text-driven-text tabular-nums">{count}</span>

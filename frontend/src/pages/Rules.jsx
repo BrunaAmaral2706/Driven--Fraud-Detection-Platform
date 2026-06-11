@@ -4,8 +4,11 @@ import {
   BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell,
 } from 'recharts'
 import { rulesAPI } from '../services/api.js'
-import LoadingSpinner from '../components/LoadingSpinner.jsx'
+import AnimatedCounter from '../components/AnimatedCounter.jsx'
+import TableSkeleton from '../components/TableSkeleton.jsx'
 import EmptyState from '../components/EmptyState.jsx'
+import { CHART_ANIMATION, CHART_TOOLTIP_STYLE, ChartTooltip } from '../utils/chartUtils.jsx'
+import { useTableSort } from '../hooks/useTableSort.js'
 
 const CATEGORIES = ['Todas', 'Transacional', 'Comportamento', 'Cadastro', 'Lavagem de Dinheiro']
 
@@ -47,6 +50,7 @@ export default function Rules() {
   const [search, setSearch] = useState('')
   const [categoryFilter, setCategoryFilter] = useState('Todas')
   const [statusFilter, setStatusFilter] = useState('Todas')
+  const [selectedRow, setSelectedRow] = useState(null)
 
   useEffect(() => {
     rulesAPI.list({ limit: 50 })
@@ -55,7 +59,7 @@ export default function Rules() {
       .finally(() => setLoading(false))
   }, [])
 
-  const filtered = items.filter(r => {
+  const filtered = useMemo(() => items.filter(r => {
     const matchSearch = !search || (
       r.name.toLowerCase().includes(search.toLowerCase()) ||
       r.rule_code.toLowerCase().includes(search.toLowerCase()) ||
@@ -66,7 +70,9 @@ export default function Rules() {
       || (statusFilter === 'Ativas' && r.is_active)
       || (statusFilter === 'Inativas' && !r.is_active)
     return matchSearch && matchCategory && matchStatus
-  })
+  }), [items, search, categoryFilter, statusFilter])
+
+  const { sorted: sortedFiltered, toggleSort, sortIndicator } = useTableSort(filtered, 'triggers_count', 'desc')
 
   const activeCount = items.filter(r => r.is_active).length
   const totalTriggers = items.reduce((sum, r) => sum + r.triggers_count, 0)
@@ -86,30 +92,32 @@ export default function Rules() {
   }, [items])
 
   return (
-    <div className="space-y-3">
-      <div className="card px-3 py-2 flex flex-wrap items-stretch divide-x divide-driven-border-light">
+    <div className="space-y-3 page-enter">
+      <div className="card-interactive px-3 py-2 flex flex-wrap items-stretch divide-x divide-driven-border-light">
         {[
           { label: 'Total', value: total, color: 'text-driven-text' },
           { label: 'Ativas', value: activeCount, color: 'text-driven-success' },
           { label: 'Disparos', value: totalTriggers, color: 'text-driven-warning' },
         ].map(({ label, value, color }) => (
-          <div key={label} className="flex items-baseline gap-2 px-4 first:pl-0 last:pr-0 min-w-[100px] flex-1">
+          <div key={label} className="flex items-baseline gap-2 px-4 first:pl-0 last:pr-0 min-w-[100px] flex-1 transition-transform duration-200 hover:scale-[1.02]">
             <p className="text-[10px] uppercase tracking-wide text-driven-muted font-medium">{label}</p>
-            <p className={`text-sm font-display font-bold tabular-nums ${color}`}>{value}</p>
+            <p className={`text-sm font-display font-bold tabular-nums ${color}`}>
+              <AnimatedCounter value={value} />
+            </p>
           </div>
         ))}
       </div>
 
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-3">
-        <div className="card p-3">
+        <div className="card-interactive p-3">
           <p className="text-[10px] uppercase tracking-wide font-semibold text-driven-muted mb-1.5">Top Disparos</p>
           <div className="h-28">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={chartData} margin={{ top: 0, bottom: 0, left: -20, right: 4 }}>
                 <XAxis dataKey="name" tick={{ fontSize: 9 }} axisLine={false} tickLine={false} />
                 <YAxis tick={{ fontSize: 9 }} axisLine={false} tickLine={false} width={28} />
-                <Tooltip contentStyle={{ fontSize: 11, padding: '4px 8px' }} />
-                <Bar dataKey="triggers" radius={[2, 2, 0, 0]} barSize={14}>
+                <Tooltip content={<ChartTooltip />} contentStyle={CHART_TOOLTIP_STYLE} />
+                <Bar dataKey="triggers" radius={[2, 2, 0, 0]} barSize={14} {...CHART_ANIMATION}>
                   {chartData.map((entry, i) => (
                     <Cell key={i} fill={SEVERITY_STYLES[entry.severity]?.bar || '#8C8470'} />
                   ))}
@@ -119,14 +127,14 @@ export default function Rules() {
           </div>
         </div>
 
-        <div className="card p-3">
+        <div className="card-interactive p-3">
           <p className="text-[10px] uppercase tracking-wide font-semibold text-driven-muted mb-1.5">Por Categoria</p>
           <div className="space-y-1.5">
             {byCategory.map(([cat, count]) => (
-              <div key={cat} className="flex items-center gap-2">
-                <span className="text-[10px] text-driven-text-secondary w-28 truncate">{cat}</span>
+              <div key={cat} className="flex items-center gap-2 group cursor-default">
+                <span className="text-[10px] text-driven-text-secondary w-28 truncate group-hover:text-driven-text transition-colors">{cat}</span>
                 <div className="flex-1 h-1 bg-driven-border-light rounded-full overflow-hidden">
-                  <div className="h-full bg-driven-gold rounded-full" style={{ width: `${(count / total) * 100}%` }} />
+                  <div className="h-full bg-driven-gold rounded-full transition-all duration-500 ease-out" style={{ width: `${(count / total) * 100}%` }} />
                 </div>
                 <span className="text-[10px] font-bold text-driven-text tabular-nums w-4 text-right">{count}</span>
               </div>
@@ -149,26 +157,23 @@ export default function Rules() {
                 value={search}
                 onChange={e => setSearch(e.target.value)}
                 placeholder="Buscar..."
-                className="pl-6 pr-2 py-1 text-[11px] border border-driven-border rounded-md bg-white focus:outline-none focus:border-driven-gold/60 w-36"
+                className="pl-6 pr-2 py-1 text-[11px] border border-driven-border rounded-md bg-white input-interactive w-36"
               />
             </div>
             <select
               value={categoryFilter}
               onChange={e => setCategoryFilter(e.target.value)}
-              className="text-[11px] px-2 py-1 border border-driven-border rounded-md bg-white focus:outline-none text-driven-text-secondary"
+              className="text-[11px] px-2 py-1 border border-driven-border rounded-md bg-white input-interactive text-driven-text-secondary"
             >
               {CATEGORIES.map(c => <option key={c}>{c}</option>)}
             </select>
             <div className="flex gap-0.5">
               {['Todas', 'Ativas', 'Inativas'].map(s => (
                 <button
+                  type="button"
                   key={s}
                   onClick={() => setStatusFilter(s)}
-                  className={`text-[10px] px-2 py-1 rounded-md font-semibold transition-colors ${
-                    statusFilter === s
-                      ? 'bg-driven-gold text-white'
-                      : 'bg-white border border-driven-border text-driven-text-secondary hover:bg-driven-cream'
-                  }`}
+                  className={`btn-filter ${statusFilter === s ? 'btn-filter-active' : 'btn-filter-idle'}`}
                 >
                   {s}
                 </button>
@@ -178,7 +183,7 @@ export default function Rules() {
         </div>
 
         {loading ? (
-          <LoadingSpinner text="Carregando regras..." />
+          <TableSkeleton rows={8} cols={6} />
         ) : filtered.length === 0 ? (
           <EmptyState title="Nenhuma regra encontrada" description="Tente ajustar os filtros." />
         ) : (
@@ -186,23 +191,35 @@ export default function Rules() {
             <table className="w-full min-w-[820px]">
               <thead className="sticky top-0 z-10 bg-driven-cream border-b border-driven-border">
                 <tr>
-                  {['Código', 'Regra', 'Categoria', 'Severidade', 'Status', 'Disparos'].map(h => (
+                  {[
+                    { h: 'Código', key: 'rule_code' },
+                    { h: 'Regra', key: 'name' },
+                    { h: 'Categoria', key: 'category' },
+                    { h: 'Severidade', key: 'severity' },
+                    { h: 'Status', key: null },
+                    { h: 'Disparos', key: 'triggers_count' },
+                  ].map(({ h, key }) => (
                     <th
                       key={h}
+                      onClick={key ? () => toggleSort(key) : undefined}
                       className={`px-2 py-1.5 text-left text-[10px] font-semibold text-driven-muted uppercase tracking-wide whitespace-nowrap ${
                         ['Severidade', 'Status', 'Disparos'].includes(h) ? 'text-center' : ''
-                      }`}
+                      } ${key ? 'cursor-pointer hover:text-driven-gold transition-colors select-none' : ''}`}
                     >
-                      {h}
+                      {h}{key ? ` ${sortIndicator(key)}` : ''}
                     </th>
                   ))}
                 </tr>
               </thead>
               <tbody className="divide-y divide-driven-border-light">
-                {filtered.map(r => {
+                {sortedFiltered.map(r => {
                   const sev = SEVERITY_STYLES[r.severity] || SEVERITY_STYLES.MEDIUM
                   return (
-                    <tr key={r.id} className="hover:bg-driven-gold-pale/30 transition-colors">
+                    <tr
+                      key={r.id}
+                      onClick={() => setSelectedRow(selectedRow === r.id ? null : r.id)}
+                      className={`table-row-interactive hover:bg-driven-gold-pale/30 ${selectedRow === r.id ? 'table-row-selected' : ''}`}
+                    >
                       <td className="px-2 py-1.5 font-mono text-[11px] font-bold text-driven-info whitespace-nowrap align-top">
                         {r.rule_code}
                       </td>
@@ -226,7 +243,7 @@ export default function Rules() {
                           </span>
                           <div className="flex-1 h-1 bg-driven-border-light rounded-full overflow-hidden">
                             <div
-                              className="h-full rounded-full"
+                              className="h-full rounded-full transition-all duration-500 ease-out"
                               style={{
                                 width: `${(r.triggers_count / maxTriggers) * 100}%`,
                                 backgroundColor: sev.bar,

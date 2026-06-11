@@ -4,8 +4,10 @@ import { Filter, Search, Bell, AlertTriangle, Clock, ChevronRight, TrendingUp } 
 import { alertsAPI } from '../services/api.js'
 import ScoreBadge from '../components/ScoreBadge.jsx'
 import StatusBadge from '../components/StatusBadge.jsx'
-import LoadingSpinner from '../components/LoadingSpinner.jsx'
+import AnimatedCounter from '../components/AnimatedCounter.jsx'
+import TableSkeleton from '../components/TableSkeleton.jsx'
 import EmptyState from '../components/EmptyState.jsx'
+import { useTableSort } from '../hooks/useTableSort.js'
 
 const FRAUD_CATEGORIES = [
   'Lavagem de Dinheiro',
@@ -17,8 +19,6 @@ const FRAUD_CATEGORIES = [
 
 const FRAUD_TYPES = ['Todos', ...FRAUD_CATEGORIES]
 const STATUSES = ['Todos', 'Novo', 'Em análise', 'Encerrado']
-
-const TABLE_COLS = ['Score', 'Tipo', 'Cliente', 'Valor', 'Localização', 'Status', 'Data', '']
 
 function formatBRL(v) {
   return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(v || 0)
@@ -52,6 +52,7 @@ export default function Alerts() {
   const [statusFilter, setStatusFilter] = useState('Todos')
   const [typeFilter, setTypeFilter] = useState('Todos')
   const [search, setSearch] = useState('')
+  const [selectedRow, setSelectedRow] = useState(null)
 
   useEffect(() => {
     setLoading(true)
@@ -75,6 +76,8 @@ export default function Alerts() {
     ? baseFiltered
     : baseFiltered.filter(a => a.fraud_type === typeFilter),
   [baseFiltered, typeFilter])
+
+  const { sorted: sortedFiltered, toggleSort, sortIndicator } = useTableSort(filtered, 'created_at', 'desc')
 
   const stats = useMemo(() => ({
     novos: alerts.filter(a => a.status === 'Novo').length,
@@ -108,19 +111,21 @@ export default function Alerts() {
   }, [baseFiltered])
 
   return (
-    <div className="space-y-3">
-      <div className="card px-3 py-2 flex flex-wrap items-stretch divide-x divide-driven-border-light shadow-sm">
+    <div className="space-y-3 page-enter">
+      <div className="card-interactive px-3 py-2 flex flex-wrap items-stretch divide-x divide-driven-border-light shadow-sm">
         {[
-          { icon: Bell, label: 'Total', value: total, color: 'text-driven-info' },
-          { icon: AlertTriangle, label: 'Críticos', value: stats.criticos, color: 'text-driven-danger' },
-          { icon: Clock, label: 'Novos', value: stats.novos, color: 'text-driven-warning' },
-          { icon: TrendingUp, label: 'Volume', value: formatBRLShort(stats.volume), color: 'text-driven-gold' },
-        ].map(({ icon: Icon, label, value, color }) => (
-          <div key={label} className="flex items-center gap-2 px-3 first:pl-0 last:pr-0 min-w-[110px] flex-1">
+          { icon: Bell, label: 'Total', value: total, numeric: total, color: 'text-driven-info' },
+          { icon: AlertTriangle, label: 'Críticos', value: stats.criticos, numeric: stats.criticos, color: 'text-driven-danger' },
+          { icon: Clock, label: 'Novos', value: stats.novos, numeric: stats.novos, color: 'text-driven-warning' },
+          { icon: TrendingUp, label: 'Volume', value: formatBRLShort(stats.volume), numeric: stats.volume, color: 'text-driven-gold', format: formatBRLShort },
+        ].map(({ icon: Icon, label, numeric, color, format }) => (
+          <div key={label} className="flex items-center gap-2 px-3 first:pl-0 last:pr-0 min-w-[110px] flex-1 transition-transform duration-200 hover:scale-[1.02]">
             <Icon size={12} className={color} />
             <div className="leading-tight">
               <p className="text-[10px] uppercase tracking-wide text-driven-muted font-medium">{label}</p>
-              <p className={`text-sm font-display font-bold tabular-nums ${color}`}>{value}</p>
+              <p className={`text-sm font-display font-bold tabular-nums ${color}`}>
+                <AnimatedCounter value={numeric} formatter={format} />
+              </p>
             </div>
           </div>
         ))}
@@ -135,8 +140,9 @@ export default function Alerts() {
           </div>
           {typeFilter !== 'Todos' && (
             <button
+              type="button"
               onClick={() => setTypeFilter('Todos')}
-              className="text-[10px] text-driven-gold font-semibold hover:underline"
+              className="text-[10px] text-driven-gold font-semibold hover:underline transition-all active:scale-95"
             >
               Limpar filtro · {typeFilter}
             </button>
@@ -163,8 +169,8 @@ export default function Alerts() {
                 <tr
                   key={row.cat}
                   onClick={() => setTypeFilter(typeFilter === row.cat ? 'Todos' : row.cat)}
-                  className={`cursor-pointer transition-colors hover:bg-driven-gold-pale/40 ${
-                    typeFilter === row.cat ? 'bg-driven-gold-pale/60' : ''
+                  className={`cursor-pointer transition-all duration-200 hover:bg-driven-gold-pale/40 active:scale-[0.99] ${
+                    typeFilter === row.cat ? 'bg-driven-gold-pale/60 ring-1 ring-inset ring-driven-gold/20' : ''
                   }`}
                 >
                   <td className="px-2 py-1.5">
@@ -182,7 +188,7 @@ export default function Alerts() {
                   <td className="px-2 py-1.5 text-center">
                     <div className="flex items-center justify-center gap-1.5">
                       <div className="w-12 h-1 bg-driven-border-light rounded-full overflow-hidden">
-                        <div className="h-full bg-driven-info rounded-full" style={{ width: `${row.pct}%` }} />
+                        <div className="h-full bg-driven-info rounded-full transition-all duration-500 ease-out" style={{ width: `${row.pct}%` }} />
                       </div>
                       <span className="text-[10px] font-bold text-driven-muted tabular-nums w-7">{row.pct}%</span>
                     </div>
@@ -227,19 +233,16 @@ export default function Alerts() {
                 value={search}
                 onChange={e => setSearch(e.target.value)}
                 placeholder="Buscar..."
-                className="pl-6 pr-2 py-1 text-[11px] border border-driven-border rounded-md bg-white focus:outline-none focus:border-driven-gold/60 w-36"
+                className="pl-6 pr-2 py-1 text-[11px] border border-driven-border rounded-md bg-white input-interactive w-36"
               />
             </div>
             <div className="flex gap-0.5">
               {STATUSES.map(s => (
                 <button
+                  type="button"
                   key={s}
                   onClick={() => setStatusFilter(s)}
-                  className={`text-[10px] px-2 py-1 rounded-md font-semibold transition-colors ${
-                    statusFilter === s
-                      ? 'bg-driven-gold text-white shadow-sm'
-                      : 'bg-white border border-driven-border text-driven-text-secondary hover:bg-driven-cream'
-                  }`}
+                  className={`btn-filter ${statusFilter === s ? 'btn-filter-active' : 'btn-filter-idle'}`}
                 >
                   {s}
                 </button>
@@ -248,7 +251,7 @@ export default function Alerts() {
             <select
               value={typeFilter}
               onChange={e => setTypeFilter(e.target.value)}
-              className="text-[11px] px-2 py-1 border border-driven-border rounded-md bg-white focus:outline-none text-driven-text-secondary"
+              className="text-[11px] px-2 py-1 border border-driven-border rounded-md bg-white input-interactive text-driven-text-secondary"
             >
               {FRAUD_TYPES.map(t => <option key={t}>{t}</option>)}
             </select>
@@ -256,7 +259,7 @@ export default function Alerts() {
         </div>
 
         {loading ? (
-          <LoadingSpinner text="Carregando alertas..." />
+          <TableSkeleton rows={8} cols={7} />
         ) : filtered.length === 0 ? (
           <EmptyState title="Nenhum alerta encontrado" description="Tente ajustar os filtros." />
         ) : (
@@ -264,23 +267,34 @@ export default function Alerts() {
             <table className="w-full min-w-[900px]">
               <thead className="sticky top-0 z-10 bg-driven-cream border-b border-driven-border shadow-sm">
                 <tr>
-                  {TABLE_COLS.map(h => (
+                  {[
+                    { h: 'Score', key: 'risk_score' },
+                    { h: 'Tipo', key: 'fraud_type' },
+                    { h: 'Cliente', key: null },
+                    { h: 'Valor', key: 'amount' },
+                    { h: 'Localização', key: null },
+                    { h: 'Status', key: 'status' },
+                    { h: 'Data', key: 'created_at' },
+                    { h: '', key: null },
+                  ].map(({ h, key }) => (
                     <th
-                      key={h}
+                      key={h || 'action'}
+                      onClick={key ? () => toggleSort(key) : undefined}
                       className={`px-2 py-1.5 text-left text-[10px] font-semibold text-driven-muted uppercase tracking-wide whitespace-nowrap ${
                         ['Score', 'Status'].includes(h) ? 'text-center' : ''
-                      } ${h === 'Valor' ? 'text-right' : ''} ${h === '' ? 'w-8' : ''}`}
+                      } ${h === 'Valor' ? 'text-right' : ''} ${h === '' ? 'w-8' : ''} ${key ? 'cursor-pointer hover:text-driven-gold transition-colors select-none' : ''}`}
                     >
-                      {h}
+                      {h}{key ? ` ${sortIndicator(key)}` : ''}
                     </th>
                   ))}
                 </tr>
               </thead>
               <tbody className="divide-y divide-driven-border-light">
-                {filtered.map(a => (
+                {sortedFiltered.map(a => (
                   <tr
                     key={a.id}
-                    className={`border-l-2 ${scoreAccent(a.risk_score)} hover:bg-driven-info-light/20 transition-colors group ${scoreRowBg(a.risk_score)}`}
+                    onClick={() => setSelectedRow(selectedRow === a.id ? null : a.id)}
+                    className={`border-l-2 ${scoreAccent(a.risk_score)} table-row-interactive group ${scoreRowBg(a.risk_score)} ${selectedRow === a.id ? 'table-row-selected' : ''}`}
                   >
                     <td className="px-2 py-1 text-center align-middle">
                       <ScoreBadge score={a.risk_score} compact />

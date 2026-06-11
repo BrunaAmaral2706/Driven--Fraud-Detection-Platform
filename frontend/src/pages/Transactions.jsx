@@ -7,12 +7,13 @@ import {
 import { transactionsAPI } from '../services/api.js'
 import ScoreBadge from '../components/ScoreBadge.jsx'
 import StatusBadge from '../components/StatusBadge.jsx'
-import LoadingSpinner from '../components/LoadingSpinner.jsx'
+import AnimatedCounter from '../components/AnimatedCounter.jsx'
+import TableSkeleton, { KpiSkeleton } from '../components/TableSkeleton.jsx'
 import EmptyState from '../components/EmptyState.jsx'
+import { CHART_ANIMATION, CHART_TOOLTIP_STYLE, ChartTooltip } from '../utils/chartUtils.jsx'
+import { useTableSort } from '../hooks/useTableSort.js'
 
 const COLORS = ['#2D5FA6', '#C9A84C', '#2D7D52', '#D97B2B', '#D94040', '#8C8470']
-
-const FEED_COLS = ['Código', 'Cliente / Estab.', 'Tipo', 'Canal', 'Valor', 'Score', 'Status', 'Data']
 
 function formatBRL(v) {
   return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(v || 0)
@@ -28,6 +29,8 @@ export default function Transactions() {
   const [items, setItems] = useState([])
   const [total, setTotal] = useState(0)
   const [loading, setLoading] = useState(true)
+  const [selectedRow, setSelectedRow] = useState(null)
+  const [activePieIndex, setActivePieIndex] = useState(null)
 
   useEffect(() => {
     transactionsAPI.list({ limit: 50 })
@@ -57,43 +60,54 @@ export default function Transactions() {
     return Object.entries(map).map(([name, value]) => ({ name, value }))
   }, [items])
 
-  if (loading) return <LoadingSpinner text="Carregando transações..." />
+  const { sorted: sortedItems, toggleSort, sortIndicator } = useTableSort(items, 'created_at', 'desc')
+
+  if (loading) {
+    return (
+      <div className="space-y-3 page-enter">
+        <KpiSkeleton count={3} />
+        <TableSkeleton rows={10} cols={8} />
+      </div>
+    )
+  }
   if (items.length === 0) return <EmptyState title="Nenhuma transação encontrada" />
 
   return (
-    <div className="space-y-3">
-      <div className="card px-3 py-2 flex flex-wrap items-stretch divide-x divide-driven-border-light">
+    <div className="space-y-3 page-enter">
+      <div className="card-interactive px-3 py-2 flex flex-wrap items-stretch divide-x divide-driven-border-light">
         {[
-          { icon: ArrowLeftRight, label: 'Volume', value: formatBRLShort(metrics.volume), color: 'text-driven-info' },
-          { icon: TrendingUp, label: 'Score médio', value: metrics.avgScore, color: 'text-driven-gold' },
-          { icon: ShieldAlert, label: 'Bloqueadas', value: metrics.blocked, color: 'text-driven-danger' },
-        ].map(({ icon: Icon, label, value, color }) => (
-          <div key={label} className="flex items-center gap-2 px-4 first:pl-0 last:pr-0 min-w-[140px] flex-1">
+          { icon: ArrowLeftRight, label: 'Volume', numeric: metrics.volume, color: 'text-driven-info', format: formatBRLShort },
+          { icon: TrendingUp, label: 'Score médio', numeric: metrics.avgScore, color: 'text-driven-gold' },
+          { icon: ShieldAlert, label: 'Bloqueadas', numeric: metrics.blocked, color: 'text-driven-danger' },
+        ].map(({ icon: Icon, label, numeric, color, format }) => (
+          <div key={label} className="flex items-center gap-2 px-4 first:pl-0 last:pr-0 min-w-[140px] flex-1 transition-transform duration-200 hover:scale-[1.02]">
             <Icon size={13} className={color} />
             <div className="leading-tight">
               <p className="text-[10px] uppercase tracking-wide text-driven-muted font-medium">{label}</p>
-              <p className={`text-sm font-display font-bold ${color}`}>{value}</p>
+              <p className={`text-sm font-display font-bold tabular-nums ${color}`}>
+                <AnimatedCounter value={numeric} formatter={format} />
+              </p>
             </div>
           </div>
         ))}
       </div>
 
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-3">
-        <div className="card p-3">
+        <div className="card-interactive p-3">
           <p className="text-[10px] uppercase tracking-wide font-semibold text-driven-muted mb-1.5">Volume por Canal</p>
           <div className="h-28">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={byChannel} layout="vertical" margin={{ left: 0, right: 8, top: 0, bottom: 0 }}>
                 <XAxis type="number" tick={{ fontSize: 9 }} axisLine={false} tickLine={false} />
                 <YAxis type="category" dataKey="name" width={88} tick={{ fontSize: 9 }} axisLine={false} tickLine={false} />
-                <Tooltip contentStyle={{ fontSize: 11, padding: '4px 8px' }} />
-                <Bar dataKey="count" fill="#2D5FA6" radius={[0, 2, 2, 0]} barSize={10} />
+                <Tooltip content={<ChartTooltip />} contentStyle={CHART_TOOLTIP_STYLE} />
+                <Bar dataKey="count" fill="#2D5FA6" radius={[0, 2, 2, 0]} barSize={10} {...CHART_ANIMATION} />
               </BarChart>
             </ResponsiveContainer>
           </div>
         </div>
 
-        <div className="card p-3">
+        <div className="card-interactive p-3">
           <p className="text-[10px] uppercase tracking-wide font-semibold text-driven-muted mb-1.5">Distribuição por Tipo</p>
           <div className="h-28 flex items-center">
             <ResponsiveContainer width="100%" height="100%">
@@ -108,19 +122,35 @@ export default function Transactions() {
                   outerRadius={40}
                   paddingAngle={2}
                   stroke="none"
+                  activeIndex={activePieIndex}
+                  onMouseEnter={(_, i) => setActivePieIndex(i)}
+                  onMouseLeave={() => setActivePieIndex(null)}
+                  {...CHART_ANIMATION}
                 >
-                  {byType.map((_, i) => <Cell key={i} fill={COLORS[i % COLORS.length]} />)}
+                  {byType.map((_, i) => (
+                    <Cell
+                      key={i}
+                      fill={COLORS[i % COLORS.length]}
+                      opacity={activePieIndex === null || activePieIndex === i ? 1 : 0.45}
+                    />
+                  ))}
                 </Pie>
-                <Tooltip contentStyle={{ fontSize: 11, padding: '4px 8px' }} />
+                <Tooltip content={<ChartTooltip />} contentStyle={CHART_TOOLTIP_STYLE} />
               </PieChart>
             </ResponsiveContainer>
             <div className="flex-1 space-y-0.5 pl-1">
               {byType.map((t, i) => (
-                <div key={t.name} className="flex items-center gap-1.5 text-[10px]">
+                <button
+                  type="button"
+                  key={t.name}
+                  onMouseEnter={() => setActivePieIndex(i)}
+                  onMouseLeave={() => setActivePieIndex(null)}
+                  className={`legend-item w-full text-[10px] ${activePieIndex === i ? 'legend-item-active' : ''}`}
+                >
                   <span className="w-1.5 h-1.5 rounded-full flex-none" style={{ backgroundColor: COLORS[i % COLORS.length] }} />
                   <span className="text-driven-text-secondary truncate flex-1">{t.name}</span>
                   <span className="font-semibold text-driven-text tabular-nums">{t.value}</span>
-                </div>
+                </button>
               ))}
             </div>
           </div>
@@ -137,23 +167,34 @@ export default function Transactions() {
           <table className="w-full min-w-[900px]">
             <thead className="sticky top-0 z-10 bg-driven-cream border-b border-driven-border">
               <tr>
-                {FEED_COLS.map(h => (
+                {[
+                  { h: 'Código', key: 'transaction_code' },
+                  { h: 'Cliente / Estab.', key: null },
+                  { h: 'Tipo', key: 'tx_type' },
+                  { h: 'Canal', key: 'channel' },
+                  { h: 'Valor', key: 'amount' },
+                  { h: 'Score', key: 'risk_score' },
+                  { h: 'Status', key: 'status' },
+                  { h: 'Data', key: 'created_at' },
+                ].map(({ h, key }) => (
                   <th
                     key={h}
+                    onClick={key ? () => toggleSort(key) : undefined}
                     className={`px-2 py-1.5 text-left text-[10px] font-semibold text-driven-muted uppercase tracking-wide whitespace-nowrap ${
                       ['Valor', 'Score', 'Status'].includes(h) ? 'text-right' : ''
-                    } ${h === 'Score' ? 'text-center' : ''}`}
+                    } ${h === 'Score' ? 'text-center' : ''} ${key ? 'cursor-pointer hover:text-driven-gold transition-colors select-none' : ''}`}
                   >
-                    {h}
+                    {h}{key ? ` ${sortIndicator(key)}` : ''}
                   </th>
                 ))}
               </tr>
             </thead>
             <tbody className="divide-y divide-driven-border-light">
-              {items.map(t => (
+              {sortedItems.map(t => (
                 <tr
                   key={t.id}
-                  className="hover:bg-driven-info-light/25 transition-colors group"
+                  onClick={() => setSelectedRow(selectedRow === t.id ? null : t.id)}
+                  className={`table-row-interactive group ${selectedRow === t.id ? 'table-row-selected' : ''}`}
                 >
                   <td className="px-2 py-1 font-mono text-[11px] font-bold text-driven-info whitespace-nowrap">
                     {t.transaction_code}

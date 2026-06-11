@@ -66,7 +66,7 @@ export default function AlertDetail() {
   const scoreRiskLabel = alert.risk_score >= 85 ? 'Crítico' : alert.risk_score >= 70 ? 'Alto' : alert.risk_score >= 50 ? 'Médio' : 'Baixo'
 
   return (
-    <div className="space-y-5 max-w-5xl">
+    <div className="space-y-5 max-w-5xl page-enter">
       {/* Back + header */}
       <div className="flex items-center gap-3">
         <Link to="/alertas" className="flex items-center gap-1.5 text-xs text-driven-muted hover:text-driven-text transition-colors">
@@ -91,7 +91,7 @@ export default function AlertDetail() {
         <button
           onClick={handleGenerateReport}
           disabled={generating}
-          className="flex items-center gap-2 bg-driven-gold text-white px-4 py-2.5 rounded-lg text-sm font-semibold hover:bg-yellow-600 transition-colors disabled:opacity-60 shadow-sm"
+          className="btn-primary flex items-center gap-2 px-4 py-2.5 text-sm font-semibold disabled:opacity-60 shadow-sm"
         >
           {generating ? <Loader2 size={15} className="animate-spin" /> : <Sparkles size={15} />}
           {generating ? 'Gerando análise...' : 'Gerar análise automática'}
@@ -100,7 +100,7 @@ export default function AlertDetail() {
 
       {/* AI Report */}
       {report && (
-        <div className="card p-5 border-l-4 border-driven-gold bg-driven-gold-pale/40">
+        <div className="card-interactive p-5 border-l-4 border-driven-gold bg-driven-gold-pale/40 animate-fade-in-up">
           <div className="flex items-center justify-between mb-3">
             <div className="flex items-center gap-2">
               <Sparkles size={14} className="text-driven-gold" />

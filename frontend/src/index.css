@@ -17,11 +17,50 @@
   .card {
     @apply bg-white rounded-xl border border-driven-border shadow-card;
   }
+  .card-interactive {
+    @apply card transition-all duration-300 ease-out hover:shadow-card-hover hover:-translate-y-0.5 hover:border-driven-gold/25;
+  }
   .btn-primary {
-    @apply bg-driven-gold text-white font-medium px-4 py-2 rounded-lg hover:bg-yellow-600 transition-colors;
+    @apply bg-driven-gold text-white font-medium px-4 py-2 rounded-lg transition-all duration-200 hover:bg-yellow-600 hover:shadow-sm active:scale-[0.98];
   }
   .btn-ghost {
-    @apply text-driven-text-secondary hover:bg-driven-border-light px-3 py-1.5 rounded-lg transition-colors;
+    @apply text-driven-text-secondary hover:bg-driven-border-light px-3 py-1.5 rounded-lg transition-all duration-200 active:scale-[0.98];
+  }
+  .btn-filter {
+    @apply text-[10px] px-2 py-1 rounded-md font-semibold transition-all duration-200 active:scale-95;
+  }
+  .btn-filter-active {
+    @apply bg-driven-gold text-white shadow-sm;
+  }
+  .btn-filter-idle {
+    @apply bg-white border border-driven-border text-driven-text-secondary hover:bg-driven-cream hover:border-driven-gold/30;
+  }
+  .btn-icon {
+    @apply p-2 rounded-lg transition-all duration-200 text-driven-muted hover:text-driven-text hover:bg-driven-border-light active:scale-95;
+  }
+  .input-interactive {
+    @apply transition-all duration-200 focus:outline-none focus:border-driven-gold/60 focus:ring-2 focus:ring-driven-gold/10;
+  }
+  .table-row-interactive {
+    @apply transition-all duration-200 cursor-pointer hover:bg-driven-info-light/20 hover:shadow-sm;
+  }
+  .table-row-selected {
+    @apply bg-driven-gold-pale/50 ring-1 ring-inset ring-driven-gold/20;
+  }
+  .page-enter {
+    @apply animate-fade-in-up;
+  }
+  .skeleton-shimmer {
+    @apply bg-gradient-to-r from-driven-border-light via-white to-driven-border-light bg-[length:200%_100%] animate-shimmer;
+  }
+  .nav-link-interactive {
+    @apply transition-all duration-200 ease-out hover:translate-x-0.5 active:scale-[0.98];
+  }
+  .legend-item {
+    @apply flex items-center justify-between gap-2 rounded-md px-1.5 py-1 -mx-1.5 transition-all duration-200 cursor-pointer hover:bg-driven-cream;
+  }
+  .legend-item-active {
+    @apply bg-driven-gold-pale/80 ring-1 ring-driven-gold/20;
   }
   .badge-novo {
     @apply bg-driven-danger-light text-driven-danger text-xs font-semibold px-2.5 py-1 rounded-full;

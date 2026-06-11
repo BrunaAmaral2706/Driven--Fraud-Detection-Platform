@@ -30,6 +30,7 @@ export default function InvestigationDetail() {
   const { id } = useParams()
   const [inv, setInv] = useState(null)
   const [loading, setLoading] = useState(true)
+  const [activeEvent, setActiveEvent] = useState(null)
 
   useEffect(() => {
     investigationsAPI.get(id)
@@ -50,7 +51,7 @@ export default function InvestigationDetail() {
   const timeline = inv.timeline || []
 
   return (
-    <div className="space-y-5 max-w-5xl">
+    <div className="space-y-5 max-w-5xl page-enter">
       {/* Breadcrumb */}
       <div className="flex items-center gap-3">
         <Link to="/investigacoes" className="flex items-center gap-1.5 text-xs text-driven-muted hover:text-driven-text transition-colors">
@@ -76,7 +77,7 @@ export default function InvestigationDetail() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
         {/* Timeline */}
         <div className="lg:col-span-2 space-y-4">
-          <div className="card p-5">
+          <div className="card-interactive p-5">
             <div className="flex items-center gap-2 mb-4">
               <Clock size={14} className="text-driven-gold" />
               <h2 className="text-sm font-semibold text-driven-text">Timeline de Eventos</h2>
@@ -92,8 +93,13 @@ export default function InvestigationDetail() {
                     const Icon = TIMELINE_ICONS[type] || Info
                     const colorCls = TIMELINE_COLORS[type] || TIMELINE_COLORS.info
                     return (
-                      <div key={i} className="flex gap-4 relative">
-                        <div className={`w-8 h-8 rounded-full border flex items-center justify-center flex-none z-10 ${colorCls}`}>
+                      <div
+                        key={i}
+                        className={`flex gap-4 relative rounded-lg px-2 py-1 -mx-2 transition-all duration-200 cursor-pointer ${activeEvent === i ? 'bg-driven-gold-pale/60 ring-1 ring-driven-gold/20' : 'hover:bg-driven-cream/80'}`}
+                        onMouseEnter={() => setActiveEvent(i)}
+                        onMouseLeave={() => setActiveEvent(null)}
+                      >
+                        <div className={`w-8 h-8 rounded-full border flex items-center justify-center flex-none z-10 transition-transform duration-200 ${colorCls} ${activeEvent === i ? 'scale-110' : ''}`}>
                           <Icon size={13} />
                         </div>
                         <div className="flex-1 pt-0.5">
