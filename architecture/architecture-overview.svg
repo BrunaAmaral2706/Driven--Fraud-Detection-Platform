@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 520" role="img" aria-label="Driven Fraud Detection Platform Architecture">
+  <defs>
+    <style>
+      .bg { fill: #0f1117; }
+      .panel { fill: #2a2d35; fill-opacity: 0.55; stroke: #4b5563; stroke-width: 1.5; }
+      .panel-title { fill: #f3f4f6; font: 600 18px 'Segoe UI', Inter, Arial, sans-serif; }
+      .node { fill: #111827; stroke: #6b7280; stroke-width: 1.2; }
+      .node-text { fill: #f9fafb; font: 500 14px 'Segoe UI', Inter, Arial, sans-serif; }
+      .node-sub { fill: #d1d5db; font: 400 11px 'Segoe UI', Inter, Arial, sans-serif; }
+      .db { fill: #e5e7eb; stroke: #9ca3af; stroke-width: 1.2; }
+      .db-text { fill: #111827; font: 600 13px 'Segoe UI', Inter, Arial, sans-serif; }
+      .future { fill: #1f2937; stroke: #6b7280; stroke-width: 1.2; stroke-dasharray: 6 4; }
+      .arrow { stroke: #e5e7eb; stroke-width: 1.6; fill: none; marker-end: url(#arrowhead); }
+      .arrow-dashed { stroke: #9ca3af; stroke-width: 1.4; fill: none; stroke-dasharray: 6 4; marker-end: url(#arrowhead-muted); }
+    </style>
+    <marker id="arrowhead" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#e5e7eb"/>
+    </marker>
+    <marker id="arrowhead-muted" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#9ca3af"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" width="1200" height="520"/>
+
+  <!-- Data Pipeline -->
+  <rect class="panel" x="24" y="24" width="340" height="472" rx="10"/>
+  <text class="panel-title" x="194" y="58" text-anchor="middle">Data Pipeline</text>
+  <text class="node-sub" x="194" y="78" text-anchor="middle">Medallion Architecture</text>
+
+  <rect class="node" x="84" y="110" width="220" height="44" rx="6"/>
+  <text class="node-text" x="194" y="137" text-anchor="middle">Demo Seed / Raw Layer</text>
+
+  <rect class="node" x="84" y="178" width="220" height="44" rx="6"/>
+  <text class="node-text" x="194" y="205" text-anchor="middle">Bronze</text>
+
+  <rect class="node" x="84" y="246" width="220" height="44" rx="6"/>
+  <text class="node-text" x="194" y="273" text-anchor="middle">Silver</text>
+
+  <rect class="node" x="84" y="314" width="220" height="44" rx="6"/>
+  <text class="node-text" x="194" y="341" text-anchor="middle">Gold Analytics</text>
+
+  <path class="arrow" d="M194 154 L194 178"/>
+  <path class="arrow" d="M194 222 L194 246"/>
+  <path class="arrow" d="M194 290 L194 314"/>
+
+  <!-- FastAPI Backend -->
+  <rect class="panel" x="390" y="24" width="380" height="472" rx="10"/>
+  <text class="panel-title" x="580" y="58" text-anchor="middle">FastAPI Backend</text>
+  <text class="node-sub" x="580" y="78" text-anchor="middle">REST API · Operational Services</text>
+
+  <rect class="node" x="500" y="110" width="160" height="44" rx="6"/>
+  <text class="node-text" x="580" y="137" text-anchor="middle">seed_service.py</text>
+
+  <!-- dataStore cylinder -->
+  <ellipse class="db" cx="580" cy="218" rx="78" ry="18"/>
+  <rect class="db" x="502" y="218" width="156" height="72" rx="4"/>
+  <ellipse class="db" cx="580" cy="290" rx="78" ry="18"/>
+  <text class="db-text" x="580" y="258" text-anchor="middle">dataStore</text>
+  <text class="node-sub" x="580" y="276" text-anchor="middle" fill="#374151">Lakehouse / ODS</text>
+  <text class="node-sub" x="580" y="292" text-anchor="middle" fill="#374151">SQLite · PostgreSQL</text>
+
+  <rect class="future" x="470" y="340" width="220" height="52" rx="6"/>
+  <text class="node-text" x="580" y="363" text-anchor="middle">Future ML Layer</text>
+  <text class="node-sub" x="580" y="380" text-anchor="middle">Prepared structure only</text>
+
+  <rect class="node" x="470" y="418" width="220" height="44" rx="6"/>
+  <text class="node-text" x="580" y="445" text-anchor="middle">REST Endpoints /api/v1</text>
+
+  <path class="arrow" d="M364 336 C390 336 430 255 502 255"/>
+  <path class="arrow" d="M580 154 L580 200"/>
+  <path class="arrow-dashed" d="M580 308 L580 340"/>
+  <path class="arrow" d="M580 392 L580 418"/>
+
+  <!-- React SPA -->
+  <rect class="panel" x="796" y="24" width="380" height="472" rx="10"/>
+  <text class="panel-title" x="986" y="58" text-anchor="middle">React SPA</text>
+  <text class="node-sub" x="986" y="78" text-anchor="middle">Vite · TailwindCSS · Recharts</text>
+
+  <rect class="node" x="876" y="200" width="220" height="52" rx="6"/>
+  <text class="node-text" x="986" y="224" text-anchor="middle">Dashboards</text>
+  <text class="node-sub" x="986" y="242" text-anchor="middle">6 operational modules</text>
+
+  <rect class="node" x="836" y="310" width="140" height="44" rx="6"/>
+  <text class="node-text" x="906" y="337" text-anchor="middle">Risk Monitoring</text>
+
+  <rect class="node" x="996" y="310" width="140" height="44" rx="6"/>
+  <text class="node-text" x="1066" y="337" text-anchor="middle">Fraud Analytics</text>
+
+  <rect class="node" x="876" y="390" width="220" height="44" rx="6"/>
+  <text class="node-text" x="986" y="417" text-anchor="middle">Transaction Monitoring</text>
+
+  <path class="arrow" d="M690 440 C760 440 820 360 876 226"/>
+  <path class="arrow" d="M986 252 L906 310"/>
+  <path class="arrow" d="M986 252 L1066 310"/>
+  <path class="arrow" d="M986 252 L986 390"/>
+
+  <!-- Module labels -->
+  <text class="node-sub" x="986" y="470" text-anchor="middle">Alertas · Investigações · Clientes · Regras · Mock Fallback (Vercel)</text>
+</svg>

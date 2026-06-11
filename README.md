@@ -30,70 +30,13 @@ Visão arquitetural da **Driven Fraud Detection Platform** — organizada em cam
 
 ### Architecture Overview
 
-```mermaid
-%%{init: {'theme': 'dark', 'themeVariables': { 'primaryColor': '#1e293b', 'primaryTextColor': '#e2e8f0', 'primaryBorderColor': '#475569', 'lineColor': '#64748b', 'secondaryColor': '#0f172a', 'tertiaryColor': '#1e3a5f'}}}%%
-flowchart LR
-    subgraph USERS[" "]
-        U["Analysts & Operators<br/>Web Browser"]
-    end
+![Driven Fraud Detection Platform — Enterprise Architecture](./architecture/architecture-overview.svg)
 
-    subgraph FRONTEND["Frontend — React SPA"]
-        direction TB
-        SPA["React 18 · Vite · TailwindCSS"]
-        UI["Dashboard · Alertas · Investigações<br/>Transações · Clientes · Regras"]
-        MOCK["Mock Fallback<br/>Vercel demo layer"]
-        SPA --> UI
-        UI -.-> MOCK
-    end
-
-    subgraph BACKEND["Backend — FastAPI"]
-        direction TB
-        API["REST API /api/v1"]
-        SVC["Dashboard · Alerts · Investigations<br/>Transactions · Clients · Rules"]
-        RPT["Rule-based Report Service"]
-        API --> SVC
-        SVC --> RPT
-    end
-
-    subgraph OPS["Operational Domains"]
-        direction TB
-        RM["Risk Monitoring"]
-        FA["Fraud Analytics"]
-        TM["Transaction Monitoring"]
-        OW["Operational Workflow"]
-    end
-
-    subgraph DATA["Lakehouse / Operational Data Store"]
-        direction TB
-        ODS["SQLite fraud.db<br/>PostgreSQL optional"]
-        SEED["Seed Service<br/>seed_service.py"]
-        ODS --- SEED
-    end
-
-    subgraph FUTURE["Future ML Layer — Prepared Only"]
-        ML["ml-pipeline/<br/>Scoring Preparation Layer<br/>No active inference"]
-    end
-
-    U -->|HTTPS| SPA
-    UI -->|REST JSON| API
-    SVC --> ODS
-    SVC --> RM
-    SVC --> FA
-    SVC --> TM
-    SVC --> OW
-    ODS -.->|future integration| ML
-
-    classDef frontend fill:#1e3a5f,stroke:#60a5fa,color:#e2e8f0
-    classDef backend fill:#134e4a,stroke:#2dd4bf,color:#e2e8f0
-    classDef data fill:#422006,stroke:#fbbf24,color:#fef3c7
-    classDef ops fill:#312e81,stroke:#a78bfa,color:#e2e8f0
-    classDef future fill:#1f2937,stroke:#6b7280,color:#9ca3af
-    class SPA,UI,MOCK frontend
-    class API,SVC,RPT backend
-    class ODS,SEED data
-    class RM,FA,TM,OW ops
-    class ML future
-```
+| Zona | Componentes reais |
+|---|---|
+| **Data Pipeline** | Medallion lógico: Demo Seed → Bronze → Silver → Gold Analytics |
+| **FastAPI Backend** | `seed_service.py` · Lakehouse/ODS · REST `/api/v1` · ML preparado (sem inferência) |
+| **React SPA** | Dashboards operacionais · Risk Monitoring · Fraud Analytics · Transaction Monitoring |
 
 | Camada | Componente real | Papel |
 |---|---|---|
