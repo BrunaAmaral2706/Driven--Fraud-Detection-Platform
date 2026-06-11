@@ -28,6 +28,97 @@ Aplicação full-stack para visualização e triagem de alertas, investigações
 
 ---
 
+## Enterprise Architecture
+
+Arquitetura analítica e operacional da plataforma — inspirada em **Medallion Architecture**, **Lakehouse** e fluxo **ETL**, descrevendo somente o que está implementado no repositório (demo local + deploy estático do frontend).
+
+```mermaid
+%%{init: {'theme': 'dark', 'themeVariables': { 'primaryColor': '#1e293b', 'lineColor': '#64748b'}}}%%
+flowchart LR
+    RAW["Raw Data<br/>Demo seed sources"]
+    ETL["Python ETL<br/>seed_service.py"]
+    BRZ["Bronze<br/>SQLAlchemy models"]
+    SLV["Silver<br/>API services & joins"]
+    GLD["Gold JSON Analytics<br/>KPIs & metrics"]
+    API["FastAPI REST API<br/>/api/v1"]
+    UI["React Dashboard<br/>Operational SPA"]
+
+    RAW --> ETL --> BRZ --> SLV --> GLD --> API --> UI
+
+    subgraph STORE["Lakehouse / Operational Data Store"]
+        DB[("SQLite / PostgreSQL<br/>fraud.db")]
+    end
+
+    subgraph FUTURE["Future Analytics Layer — prepared only"]
+        ML["ml-pipeline/<br/>No active inference"]
+    end
+
+    BRZ --> DB
+    SLV --> DB
+    GLD --> API
+    DB -.-> ML
+```
+
+### Fluxo analítico
+
+| Etapa | O que acontece no projeto |
+|---|---|
+| **Raw Data** | Eventos simulados gerados em `seed_service.py` (alertas, transações, clientes — maio/2024) |
+| **Python ETL** | `seed_service.py` transforma e persiste entidades via SQLAlchemy na inicialização do backend |
+| **Bronze** | Tabelas normalizadas: `User`, `FraudAlert`, `Transaction`, `Investigation`, `FraudRule` |
+| **Silver** | Serviços de domínio com filtros, vínculos e regras operacionais (`dashboard_service`, routers REST) |
+| **Gold JSON Analytics** | Agregações e KPIs serializados em JSON (`/dashboard/metrics`, listagens paginadas) |
+| **FastAPI REST API** | 6 módulos REST + parecer por regras (`generate-report`) — sem IA |
+| **React Dashboard** | SPA com monitoramento operacional, triagem e visualização de risco |
+
+### Medallion Architecture
+
+Estrutura **lógica** de organização analítica — não é um pipeline distribuído em produção.
+
+```mermaid
+%%{init: {'theme': 'dark', 'themeVariables': { 'lineColor': '#64748b'}}}%%
+flowchart TB
+    R["Raw Data"] --> B["Bronze"] --> S["Silver"] --> G["Gold JSON"]
+
+    classDef layer fill:#1e293b,stroke:#64748b,color:#e2e8f0
+    class R,B,S,G layer
+```
+
+| Camada | Implementação real |
+|---|---|
+| **Raw** | Geração programática de dados de demo no seed |
+| **Bronze** | Persistência relacional normalizada (SQLite/PostgreSQL) |
+| **Silver** | Camada de serviços com filtros, status e relacionamentos |
+| **Gold JSON** | Respostas JSON com KPIs, métricas e dados para dashboards |
+
+### Lakehouse / Operational Data Store
+
+Centralização analítica e armazenamento operacional:
+
+- **SQLite** (`fraud.db`) — padrão em desenvolvimento
+- **PostgreSQL** — opção via `docker-compose.yml`
+- **Integração** — ETL Python → banco → APIs REST → React
+- **Vercel** — frontend com mock fallback (`frontend/src/mocks/`) quando a API não está online
+
+> *Lakehouse* aqui descreve o **conceito de store operacional unificado** para analytics e dashboards — não uma plataforma cloud externa.
+
+### Camadas operacionais (frontend)
+
+| Domínio | Módulo React | Função |
+|---|---|---|
+| **Dashboard Layer** | `/` | KPIs, gráficos e alertas recentes |
+| **Fraud Analytics** | `/alertas` | Resumo por tipo de fraude e triagem |
+| **Investigative Workflow** | `/investigacoes` | Casos, status e analistas |
+| **Transaction Monitoring** | `/transacoes` | Feed transacional e gráficos |
+| **Risk Monitoring** | `/clientes` | Mapa de risco e perfis |
+| **Operational Rules** | `/regras` | Catálogo de regras e disparos |
+
+### Future Analytics Layer
+
+A pasta `ml-pipeline/` contém **apenas estrutura preparada** para evolução futura de scoring analítico. Não há modelo treinado, inferência, LLM ou IA generativa em execução.
+
+---
+
 ## Sobre o Projeto
 
 A **Driven Fraud Detection Platform** é um sistema de demonstração que simula o fluxo de uma central antifraude corporativa. Foi construído com **React 18** no frontend e **FastAPI** no backend, comunicando-se via APIs versionadas em `/api/v1`.
